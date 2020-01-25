@@ -1,9 +1,21 @@
-- var projescts = [{id: 1, name: "Сайт школы образования", desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!", link: "#"}, {id: 2, name: "Ещё один сайт", desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!", link: "#"}, {id: 3, name: "Сайт №3", desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!", link: "#"}]
+- var projects = [{id: 1, prev: "first-preview.png", name: "Сайт школы образования", desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!", link: "#"}, {id: 2, prev: "second-site.png", name: "Ещё один сайт", desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!", link: "#"}, {id: 3, prev: "third-preview.png", name: "Сайт №3", desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!", link: "#"}]
 
-section.pojects
+section.projects
     h2.projects__title Мои работы
     .projects__container
+        include projects-els/site-list.pug
         ul.preview__list
-            each item in projescts
+            each item in projects
                 li.preview__item
-    
+                    .prev
+                        img(src=`/images/${item.prev}`, class="preview__image")
+                    .number= item.id
+                    .desc
+                        .tools__container
+                            button.tools__item HTML
+                            button.tools__item CSS
+                            button.tools__item Javascript
+                        .desc__name= item.name
+                        .desc__site-desc= item.desc
+                        .desc__link(src=`${item.link}`) Посмотреть сайт
+
