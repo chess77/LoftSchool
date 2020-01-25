@@ -1,0 +1,101 @@
+.skills {
+    display: flex;
+    flex-direction: column;
+    color: #100022;
+    font-family: "Open Sans";
+    margin: 0px 60px 0px 25%;
+    position: relative;
+
+    & .skills__h2 {
+        font-size: 30px;
+        font-weight: 700;
+        padding-bottom: 65px;
+    }
+
+    & .skills__desc {
+        z-index: 1;
+        width: 599px;
+        height: 75px;
+        font-size: 16px;
+        font-weight: 600;
+        padding-bottom: 100px;
+        color: #877f90;
+    }
+}
+
+.skills__level-container {
+    padding-left: 9%;
+    padding-bottom: 145px;
+
+    &:before {
+        content: "";
+        display: block;
+        width: 600px;
+        height: 500px;
+        position: absolute;
+        left: -55%;
+        top: 25%;
+        background-image: url(/images/rock-sign.png);
+        background-position: center;
+        background-size: 100% 100%;
+        z-index: 0;
+    }
+}
+
+.skills__name {
+    font-size: 24px;
+    line-height: 48px;
+    font-weight: 700;
+    padding-bottom: 40px;
+}
+
+.skills__list {
+    display: flex;
+    padding-bottom: 54px;
+    flex-wrap: wrap;
+}
+
+.skills__item {
+    font-size: 18px;
+    line-height: 48px;
+    color: rgb(135, 127, 144);
+    font-weight: 700;
+    padding-right: 40px;
+    padding-bottom: 20px;
+
+    &:last-child {
+        padding-right: 0px;
+    }
+}
+
+.skills__level {
+    display: block;
+    width: 140px;
+    height: 140px;
+}
+
+.level__empty {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.item__name {
+    width: 90%;
+    text-align: center;
+    line-height: 100%;
+}
+
+.item__icon {
+    position: absolute;
+}
+
+.full-circle {
+    /* stroke-dasharray: 200%;
+    stroke-dashoffset: 200; */
+    transform: rotate(0deg);
+    transform-origin: 50% 50%;
+}
