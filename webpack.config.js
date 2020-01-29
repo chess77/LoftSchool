@@ -9,7 +9,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = (env, argv) => {
   const isProductionBuild = argv.mode === "production";
-  const publicPath = '/dist';
+  const publicPath = './';
 
   const pcss = {
     test: /\.(p|post|)css$/,
@@ -40,36 +40,10 @@ module.exports = (env, argv) => {
     loader: "file-loader",
     options: {
       name: "[name].[ext]",
+      // publicPath: './',
       outputPath: 'images',
     }
   };
-
-  // const svg = {
-  //   test: /\.svg$/,
-  //   use: [
-  //     {
-  //       loader: "svg-sprite-loader",
-  //       options: {
-  //         extract: true,
-          // spriteFilename: svgPath => `sprite${svgPath.substr(-4)}`
-  //       }
-  //     },
-  //     "svg-transform-loader",
-  //     {
-  //       loader: "svgo-loader",
-  //       options: {
-  //         plugins: [
-  //           { removeTitle: true },
-  //           {
-  //             removeAttrs: {
-  //               attrs: "(fill|stroke)"
-  //             }
-  //           }
-  //         ]
-  //       }
-  //     }
-  //   ]
-  // };
 
   const pug = {
     test: /\.pug$/,
@@ -98,9 +72,11 @@ module.exports = (env, argv) => {
     },
     output: {
       path: path.resolve(__dirname, "./dist"),
-      filename: "[name].[hash].build.js",
+      // filename: "[name].[hash].build.js",
+      filename: "[name].build.js",
       publicPath: isProductionBuild ? publicPath : "",
-      chunkFilename: "[chunkhash].js"
+      // chunkFilename: "[chunkhash].js"
+      chunkFilename: "min.js"
     },
     module: {
       rules: [pcss, vue, js, files, pug]
@@ -145,8 +121,10 @@ module.exports = (env, argv) => {
         }
       }),
       new MiniCssExtractPlugin({
-        filename: "[name].[contenthash].css",
-        chunkFilename: "[contenthash].css"
+        // filename: "[name].[contenthash].css",
+        filename: "[name].min.css",
+        // chunkFilename: "[contenthash].css"
+        chunkFilename: "min.css"
       })
     ]);
 
