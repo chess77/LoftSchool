@@ -1,0 +1,7 @@
+- var social = [{class: "insta", link: "#"}, {class: "vk", link: "#"}, {class: "github", link: "https://github.com/Margarita23"}]
+
+.social
+    each socialEl in social
+        .social__item
+            a(href=`${socialEl.link}`, class=`.social__link ${socialEl.class}`)
+                +image(`icons/${socialEl.class}.svg`, 'user-pic')

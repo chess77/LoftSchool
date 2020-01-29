@@ -1,0 +1,94 @@
+.review__form {
+    display: flex;
+    flex-direction: column;
+    width: 825px;
+}
+
+.form__row {
+    display: flex;
+    width: 100%;
+    margin-bottom: 40px;
+
+    &:nth-last-child(2) {
+        margin-bottom: 60px;
+    }
+
+    &:last-child {
+        margin-bottom: 0px;
+    }
+
+    & .form__element-box {
+        margin-right: 90px;
+
+        &:last-child {
+            margin-right: none;
+        }
+    }
+}
+
+.form__element-box {
+    width: 100%;
+
+    & input[type=text] {
+        font-size: 18px;
+        padding: 20px 45px 20px 60px;
+        color: #ffffff;
+        font-weight: 700;
+        outline: none;
+        border-bottom: 2px solid #ffffff;
+        background-repeat: no-repeat;
+        background-position: 0px 10px; 
+        background-size: 40px 40px;
+
+        &:focus {
+            border-color: #5500f2;
+            color: #5500f2;
+        }
+    }
+
+    & .form__input {
+        background: none;
+        border: none;
+        width: 100%;
+    }
+
+    & p {
+        color: #5a5266;
+        font-size: 16px;
+        font-weight: 600;
+    }
+}
+
+.form__input.form__name {
+    background-image: url('/images/user.svg');
+
+    &:focus {
+        background-image: url('/images/user-focus.svg');
+    }
+}
+
+.form__input.form__email {
+    background-image: url('/images/envelope.svg');
+
+    &:focus {
+        background-image: url('/images/envelope-focus.svg');
+    }
+}
+
+.form__input.form__message {
+    background-image: url('/images/message.svg');
+
+    &:focus {
+        background-image: url('/images/message-focus.svg');
+    }
+}
+
+.form__submit-btn {
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 30px 118px;
+    border-radius: 40px;
+    background-image: linear-gradient(90deg, #3056e8 0%, #4c87ee 100%);
+}

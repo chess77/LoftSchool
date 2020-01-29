@@ -1,15 +1,4 @@
-- var menu = ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"]
-- var social = [{class: "insta", link: "#"}, {class: "vk", link: "#"}, {class: "github", link: "https://github.com/Margarita23"}]
-
 .wrap
     .logo АМ
-    nav.menu
-        ul.menu__list
-            each item in menu
-                li.menu__item
-                    a(href="#").menu__link= item
-    .social
-        each socialEl in social
-            .social__item
-                a(href=`${socialEl.link}`, class=`${socialEl.class}`)
-                    +image(`icons/${socialEl.class}.svg`, 'user-pic')
+    include menu.pug    
+    include social-links.pug    

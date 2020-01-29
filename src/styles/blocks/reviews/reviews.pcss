@@ -1,0 +1,121 @@
+.reviews {
+    font-family: "Open Sans";
+    background: linear-gradient(90deg,
+                    rgba(17, 3, 34, 1), 
+                    rgba(17, 3, 34, 0.1)
+                ), url(/images/reviews-back.png);
+    padding: 145px 60px 180px 60px;
+}
+
+.reviews__title {
+    font-size: 36px;
+    color: #ffffff;
+    font-weight: 700;
+    display: inline-block;
+    padding-right: 80px;
+}
+
+.reviews__form-title {
+    font-size: 36px;
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 95px;
+}
+
+.sliders-btn__box {
+    display: inline-block;
+}
+
+.reviews__box {
+    width: 920px;
+    display: flex;
+    overflow: hidden;
+    margin-bottom: 115px;
+}
+
+.reviews__list {
+    display: flex;
+}
+
+.reviews__item {
+    width: 350px;
+    flex: 1;
+    margin-left: 110px;
+
+    &:before {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 50px;
+        background-image: url(/image/quote.svg);
+    }
+}
+
+.reviews__desc {
+    color: #898492;
+    padding-bottom: 30px;
+    position: relative;
+
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: -95px;
+        width: 75px;
+        height: 75px;
+        background-image: url(/images/quote.svg);
+        background-position: cover;
+        background-size: 100% 100%;
+        opacity: 0.05;
+    }
+}
+
+.review-slider__btn {
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    background-image: url(/images/arrow-down.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 30%;
+    width: 36px;
+    height: 36px;
+    background-color: transparent;
+
+    &.review-slider__btn--back {
+        transform: rotate(-180deg);
+    }
+}
+
+.author__box {
+    display: flex;
+}
+
+.author__photo {
+    width: 75px;
+    height: 75px;
+    margin-right: 18px;
+}
+
+.author__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.author__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.author__name {
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.author__position {
+    font-size: 16px;
+    color: #5d5569;
+    font-weight: 600;
+}
