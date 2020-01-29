@@ -40,7 +40,7 @@ module.exports = (env, argv) => {
     loader: "file-loader",
     options: {
       name: "[name].[ext]",
-      // publicPath: './',
+      // publicPath: './images',
       outputPath: 'images',
     }
   };
