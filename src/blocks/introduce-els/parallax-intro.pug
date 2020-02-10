@@ -1,0 +1,6 @@
+- var parallax = ['people-1.png', 'people-2.png', 'smog-3.png', 'people-3.png', 'smog-2.png', 'people-4.png', 'darkRectangle.png', 'sparks.png', 'smog-1.png']
+ 
+ .introduce__parallax
+    each layer in parallax
+        .paralax__layer
+            +image(`design/parallax-intro/${layer}`, 'image__layer')

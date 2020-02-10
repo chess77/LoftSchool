@@ -1,0 +1,89 @@
+.introduce__parallax {
+    min-width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* overflow-y: hidden; */
+}
+
+.paralax__layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* height: 100vh; */
+
+    &:nth-child(1) {
+        & .image__layer {
+            min-width: 120%;
+            transform: translateX(-5%);
+        }
+    }
+
+    &:nth-child(2) {
+        top: 44%;
+
+        & .image__layer {
+            min-width: 160%;
+            transform: translateX(-15%);
+        }
+    }
+
+    &:nth-child(3) {
+        top: 44%;
+        & .image__layer {
+            min-width: 120%;
+            transform: translateX(-5%);
+        }
+    }
+
+    &:nth-child(4) {
+        top: 50%;
+        & .image__layer {
+            min-width: 180%;
+            transform: translateX(-20%);
+        }
+    }
+
+    &:nth-child(5) {
+        top: 44%;
+        & .image__layer {
+            min-width: 140%;
+            transform: translateX(-10%);
+        }
+    }
+
+    &:nth-child(6) {
+        top: 56%;
+        & .image__layer {
+            min-width: 140%;
+            transform: translateX(-10%);
+        }
+    }
+
+    &:nth-child(7) { // темный нижний прямоугольник
+        top: 98%;
+        left: -2%;
+
+        & .image__layer {
+            min-width: 140%;
+        }
+    }
+
+    &:nth-child(8) { // блестки
+        top: 53%;
+
+        & .image__layer {
+            min-width: 100%;
+        }
+    }
+
+    &:nth-child(9) {
+        top: 52%;
+
+        & .image__layer {
+            min-width: 100%;
+        }
+    }
+}

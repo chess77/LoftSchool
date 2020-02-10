@@ -3,12 +3,16 @@
     flex-direction: column;
     min-height: 100vh;
     width: 100%;
-    padding: 60px 60px 0px 60px;
+    padding: 60px 60px 130px 60px;
     margin-bottom: 125px;
-    background-image: url(../images/design/introduce.png);
-    background-position: center;
-    background-size: 100% 100%;
     position: relative;
+    overflow-y: hidden;
+
+    & .container {
+        z-index: 2;
+        overflow: hidden;
+        padding-bottom: 18px;
+    }
 }
 
 .scroll__container {
@@ -18,7 +22,10 @@
     justify-content: center;
     cursor: pointer;
     user-select: none;
-    padding-bottom: 400px;
+    position: fixed;
+    left: 50%;
+    top: 75%;
+    transform: translateX(-50%);
 }
 
 .scroll-image {
@@ -27,4 +34,14 @@
     height: 30px;
     margin-left: 22px;
     fill: #fff;
+}
+
+.svg-triangle {
+    height: 145px;
+    /* width: 100%; */
+    /* background-color: #100022; */
+
+    & polygon {
+        fill: #100022;
+    }
 }

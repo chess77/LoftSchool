@@ -1,7 +1,10 @@
 section.introduce
+    include introduce-els/parallax-intro.pug
     .container
         include introduce-els/wrap.pug
         include introduce-els/who-am-i.pug
-        .scroll__container Скролл
-            +icon("scroll", 'scroll-image')
         include /profile.pug
+    .scroll__container Скролл
+            +icon("scroll", 'scroll-image')
+    svg(xmlns="http://www.w3.org/2000/svg" class="svg-triangle" style="border: 1px solid red")
+        polygon(points="0,0 930,0 750,100")
