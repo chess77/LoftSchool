@@ -7,7 +7,7 @@
                 .reviews__desc= item.text
                 .author__box
                     .author__photo
-                        img(src=`/images/${item.photo}`, class="author__image")
+                        +image(`content/${item.photo}`, "author__image")
                     .author__info
                         .author__name= item.name
                         .author__position= item.position

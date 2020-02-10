@@ -5,7 +5,8 @@
         each item in projects
             li.site__item
                 .site__image-box
-                    img(src=`/images/${item.prev}`, class="site__image")
+                    +image(`content/${item.prev}`, "site__image")
+                    .hover__block
     .vectors__container(id="vectorsContainer")
         button.vectors__btn.vectors__btn--next(id="nextBtn") !{'>'}
         button.vectors__btn.vectors__btn--back.vectors__btn--not-go(id="backBtn") !{'<'} 

@@ -9,7 +9,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = (env, argv) => {
   const isProductionBuild = argv.mode === "production";
-  const publicPath = './';
+  const publicPath = '/';
 
   const pcss = {
     test: /\.(p|post|)css$/,
@@ -36,13 +36,38 @@ module.exports = (env, argv) => {
   };
 
   const files = {
-    test: /\.(svg|png|jpe?g|gif|woff2?)$/i,
+    test: /\.(png|jpe?g|gif|woff2?)$/i,
     loader: "file-loader",
     options: {
-      name: "[name].[ext]",
-      // publicPath: './images',
-      outputPath: 'images',
+      name: "[hash].[ext]"
     }
+  };
+
+  const svg = {
+    test: /\.svg$/,
+    use: [
+      {
+        loader: "svg-sprite-loader",
+        options: {
+          extract: true,
+          spriteFilename: svgPath => `sprite${svgPath.substr(-4)}`
+        }
+      },
+      "svg-transform-loader",
+      {
+        loader: "svgo-loader",
+        options: {
+          plugins: [
+            { removeTitle: true },
+            {
+              removeAttrs: {
+                attrs: "(fill|stroke)"
+              }
+            }
+          ]
+        }
+      }
+    ]
   };
 
   const pug = {
@@ -50,17 +75,10 @@ module.exports = (env, argv) => {
     oneOf: [
       {
         resourceQuery: /^\?vue/,
-        use: ["pug-plain-loader"],
+        use: ["pug-plain-loader"]
       },
       {
-        use: [
-          {
-            loader: "pug-loader",
-            options: {
-              pretty: true,
-            }
-          }
-        ],
+        use: ["pug-loader"]
       }
     ]
   };
@@ -72,14 +90,12 @@ module.exports = (env, argv) => {
     },
     output: {
       path: path.resolve(__dirname, "./dist"),
-      // filename: "[name].[hash].build.js",
-      filename: "[name].build.js",
+      filename: "[name].[hash].build.js",
       publicPath: isProductionBuild ? publicPath : "",
-      // chunkFilename: "[chunkhash].js"
-      chunkFilename: "min.js"
+      chunkFilename: "[chunkhash].js"
     },
     module: {
-      rules: [pcss, vue, js, files, pug]
+      rules: [pcss, vue, js, files, svg, pug]
     },
     resolve: {
       alias: {
@@ -106,7 +122,7 @@ module.exports = (env, argv) => {
         filename: "admin/index.html",
         chunks: ["admin"]
       }),
-      // new SpriteLoaderPlugin({ plainSprite: true }),
+      new SpriteLoaderPlugin({ plainSprite: true }),
       new VueLoaderPlugin()
     ],
     devtool: "#eval-source-map"
@@ -121,10 +137,8 @@ module.exports = (env, argv) => {
         }
       }),
       new MiniCssExtractPlugin({
-        // filename: "[name].[contenthash].css",
-        filename: "[name].min.css",
-        // chunkFilename: "[contenthash].css"
-        chunkFilename: "min.css"
+        filename: "[name].[contenthash].css",
+        chunkFilename: "[contenthash].css"
       })
     ]);
 

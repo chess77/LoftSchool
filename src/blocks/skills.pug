@@ -2,33 +2,37 @@
 - var workFlowSkills = [{name: "GIT", level: 45}, {name: "Terminal", level: 50}, {name: "Gulp", level: 50}, {name: "Webpack", level: 60}]
 
 section.skills
-    .skills__h2 Чем я могу быть полезен вам
-    .skills__desc
-        p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftShool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё класно и красиво!
-    .skills__level-container
-        h2.skills__name Front-end
-        ul.skills__list
-            each item in frontSkills
-                .skills__item
-                    .skills__level
-                        .level__empty
-                            .item__name= item.name
-                            svg(width="132" height="132" viewBox="0 0 132 132" fill="none").item__icon
-                                circle(cx="66" cy="66" r="61" stroke="#E9E9E9" stroke-width="10")
-                                circle(cx="66" cy="66" r="61" stroke="url(#gradient)" stroke-width="10" stroke-dashoffset=`${383-383*item.level/100}`).full-circle
-                                linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
-                                    stop(offset="0%" stop-color="#5500f2")
-                                    stop(offset="100%" stop-color="#8f00ef")
-        h2.skills__name Workflow
-        ul.skills__list
-            each item in workFlowSkills
-                .skills__item
-                    .skills__level
-                        .level__empty
-                            .item__name= item.name
-                            svg(width="132" height="132" viewBox="0 0 132 132" fill="none").item__icon
-                                circle(cx="66" cy="66" r="61" stroke="#E9E9E9" stroke-width="10")
-                                circle(cx="66" cy="66" r="61" stroke="url(#gradient)" stroke-width="10" stroke-dashoffset=`${383-383*item.level/100}`).full-circle
-                                linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
-                                    stop(offset="0%" stop-color="#5500f2")
-                                    stop(offset="100%" stop-color="#8f00ef")
+    .container.skills__container
+        .skills__image-container
+            +image('design/guitar.png', 'skills__image')
+        .skills__content
+            .skills__h2 Чем я могу быть полезена вам
+            .skills__desc
+                p Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftShool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё класно и красиво!
+            .skills__level-container
+                h2.skills__name Front-end
+                ul.skills__list
+                    each item in frontSkills
+                        .skills__item
+                            .skills__level
+                                .level__empty
+                                    .item__name= item.name
+                                    svg(width="132" height="132" viewBox="0 0 132 132" fill="none").item__icon
+                                        circle(cx="66" cy="66" r="56" stroke="#E9E9E9" stroke-width="10")
+                                        circle(cx="66" cy="66" r="56" stroke="url(#gradient)" stroke-width="20" stroke-dashoffset=`${383-383*item.level/100}`).full-circle
+                                        linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
+                                            stop(offset="0%" stop-color="#4d87ee")
+                                            stop(offset="100%" stop-color="#3157e8")
+                h2.skills__name Workflow
+                ul.skills__list
+                    each item in workFlowSkills
+                        .skills__item
+                            .skills__level
+                                .level__empty
+                                    .item__name= item.name
+                                    svg(width="132" height="132" viewBox="0 0 132 132" fill="none").item__icon
+                                        circle(cx="66" cy="66" r="56" stroke="#E9E9E9" stroke-width="10")
+                                        circle(cx="66" cy="66" r="56" stroke="url(#gradient)" stroke-width="20" stroke-dashoffset=`${383-383*item.level/100}`).full-circle
+                                        linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
+                                            stop(offset="0%" stop-color="#5500f2")
+                                            stop(offset="100%" stop-color="#8f00ef")
