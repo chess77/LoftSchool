@@ -4,7 +4,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    /* overflow-y: hidden; */
+    overflow-y: hidden;
 }
 
 .paralax__layer {
@@ -58,7 +58,7 @@
         top: 56%;
         & .image__layer {
             min-width: 140%;
-            transform: translateX(-10%);
+            transform: translateX(-10%) scale(1);
         }
     }
 
@@ -73,6 +73,7 @@
 
     &:nth-child(8) { // блестки
         top: 53%;
+        z-index: 3;
 
         & .image__layer {
             min-width: 100%;
@@ -85,5 +86,13 @@
         & .image__layer {
             min-width: 100%;
         }
+    }
+
+    &:nth-child(10) {
+        top: 100%;
+        width: 100%;
+        min-height: 1000px;
+        background-color: #100022;
+        z-index: 2;
     }
 }

@@ -3,15 +3,14 @@
     flex-direction: column;
     min-height: 100vh;
     width: 100%;
-    padding: 60px 60px 130px 60px;
-    margin-bottom: 125px;
+    padding: 60px 60px 125px 60px;
     position: relative;
-    overflow-y: hidden;
+    overflow: hidden;
+    background-color: #100022;
 
     & .container {
         z-index: 2;
         overflow: hidden;
-        padding-bottom: 18px;
     }
 }
 
@@ -26,6 +25,8 @@
     left: 50%;
     top: 75%;
     transform: translateX(-50%);
+    z-index: 3;
+    text-shadow: 1px 0.5px 0.5px #000;
 }
 
 .scroll-image {
@@ -37,9 +38,10 @@
 }
 
 .svg-triangle {
+    margin-bottom: 125px;
     height: 145px;
-    /* width: 100%; */
-    /* background-color: #100022; */
+    width: 100%;
+    position: relative;
 
     & polygon {
         fill: #100022;

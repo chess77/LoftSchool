@@ -1,6 +1,22 @@
 - var parallax = ['people-1.png', 'people-2.png', 'smog-3.png', 'people-3.png', 'smog-2.png', 'people-4.png', 'darkRectangle.png', 'sparks.png', 'smog-1.png']
- 
- .introduce__parallax
-    each layer in parallax
-        .paralax__layer
-            +image(`design/parallax-intro/${layer}`, 'image__layer')
+- var coef = 0.3;
+ .introduce__parallax#introduce__parallax
+    .paralax__layer(data-speed="0.1")
+        +image(`design/parallax-intro/people-1.png`, 'image__layer')
+    .paralax__layer(data-speed="0.16")
+        +image(`design/parallax-intro/people-2.png`, 'image__layer')
+    .paralax__layer(data-speed="0.2")
+        +image(`design/parallax-intro/smog-3.png`, 'image__layer')
+    .paralax__layer(data-speed="0.22")
+        +image(`design/parallax-intro/people-3.png`, 'image__layer')
+    .paralax__layer(data-speed="0.24")
+        +image(`design/parallax-intro/smog-2.png`, 'image__layer')
+    .paralax__layer(data-speed="0.30")
+        +image(`design/parallax-intro/people-4.png`, 'image__layer')
+    .paralax__layer(data-speed="0.24")
+        +image(`design/parallax-intro/darkRectangle.png`, 'image__layer')
+    .paralax__layer(data-speed="0")
+        +image(`design/parallax-intro/sparks.png`, 'image__layer')
+    .paralax__layer(data-speed="0.35")
+        +image(`design/parallax-intro/smog-1.png`, 'image__layer')
+    .paralax__layer(data-speed="0.35")
