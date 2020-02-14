@@ -1,0 +1,30 @@
+- var direction = ["Front-end", "Workflow"]
+
+script(type="text/x-template")#skills-list
+    .skills__level-container
+        ul.skills
+            li.skills__direction(v-for="skill in skills")
+                h2.skills__name {{skill.skillsGroup}}
+                skills-row(
+                    :skill="skill"
+                )
+
+script(type="text/x-template")#skills-row
+    ul.skills__list
+        li.skills__item(v-for="(skillPercent, skillName) in skill.skills")
+            skill(
+                :skillName="skillName"
+                :skillPercent="skillPercent"
+            )
+            .skills__level
+                .level__empty
+                    .item__name {{skillName}}
+                    
+
+script(type="text/x-template")#skill
+    svg(width="132" height="132" viewBox="0 0 132 132" fill="none").item__icon
+        circle(cx="66" cy="66" r="56" stroke="#E9E9E9" stroke-width="10")
+        circle(cx="66" cy="66" r="56" stroke="url(#gradient)" stroke-width="20" ref="color-circle" stroke-dasharray="383").full-circle
+        linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
+            stop(offset="0%" stop-color="#5500f2")
+            stop(offset="100%" stop-color="#8f00ef")
