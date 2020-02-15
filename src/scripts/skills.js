@@ -1,4 +1,5 @@
 import Vue from "vue";
+
 const skill = {
     template: "#skill",
     props: ["skillName", "skillPercent"],
@@ -15,7 +16,6 @@ const skill = {
     mounted() {
         this.drawColoredCircle();
     }
-
 }
 
 const skillsRow = {

@@ -3,21 +3,4 @@
 section.projects
     .container
         h2.projects__title Мои работы
-        .projects__container
-            include projects-els/site-list.pug
-            ul.preview__list(id="previewList")
-                each item in projects
-                    li.preview__item
-                        .item__cover
-                            .prev
-                                +image(`content/${item.prev}`, "preview__image")
-                            .number= item.id
-                            .desc
-                                .tools__container
-                                    button.tools__item HTML
-                                    button.tools__item CSS
-                                    button.tools__item Javascript
-                                .desc__name= item.name
-                                .desc__site-desc= item.desc
-                                .desc__link(src=`${item.link}`) Посмотреть сайт
-
+        #slider-component
