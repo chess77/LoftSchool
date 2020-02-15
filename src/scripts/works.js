@@ -2,11 +2,16 @@ import Vue from "vue";
 
 const prevs = {
     template: "#slider-prevs",
-    props: ["id", "prev"],
+    props: ["works"]
 }
 
 const btns = {
     template: "#slider-btns"
+}
+
+const works = {
+    template: "#slider-works",
+    props: ["works"]
 }
 
 new Vue({
@@ -18,10 +23,19 @@ new Vue({
         };
     },
     components: {
-        prevs, btns
+        prevs, btns, works
+    },
+    methods: {
+        makeArrWithRequiredImages(data) {
+            return data.map( item => {
+                const requiredPic = require(`../images/content/${item.prev}`);
+                item.prev = requiredPic;
+                return item;
+            })
+        }
     },
     mounted() {
         const data = require("../data/works.json");
-        this.works = data;
+        this.works = this.makeArrWithRequiredImages(data);
     }
 });

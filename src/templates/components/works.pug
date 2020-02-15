@@ -1,33 +1,38 @@
 script(type="text/x-template")#slider-container
     .projects__container
         .slider-box
-            prevs
+            prevs(
+                :works="works"
+            )
             btns
-        ul.preview__list(id="previewList")
-            each item in [{id: 1, prev: "first-preview.png", name: "Сайт школы образования", desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!", link: "#"}, {id: 2, prev: "second-site.png", name: "Ещё один сайт", desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!", link: "#"}, {id: 3, prev: "third-preview.png", name: "Сайт №3", desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!", link: "#"}]
-                li.preview__item
-                    .item__cover
-                        .prev
-                            +image(`content/${item.prev}`, "preview__image")
-                        .number= item.id
-                        .desc
-                            .tools__container
-                                button.tools__item HTML
-                                button.tools__item CSS
-                                button.tools__item Javascript
-                            .desc__name= item.name
-                            .desc__site-desc= item.desc
-                            .desc__link(src=`${item.link}`) Посмотреть сайт
+        works(
+            :works="works"
+        )
 
 script(type="text/x-template")#slider-prevs
     ul.site__list(id="siteList")
-        each item in [{id: 1, prev: "first-preview.png", name: "Сайт школы образования", desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!", link: "#"}, {id: 2, prev: "second-site.png", name: "Ещё один сайт", desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!", link: "#"}, {id: 3, prev: "third-preview.png", name: "Сайт №3", desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!", link: "#"}]
-            li.site__item
-                .site__image-box
-                    +image(`content/${item.prev}`, "site__image")
-                    .hover__block
+        li.site__item(v-for="work in works")
+            .site__image-box
+                img(:src="work.prev", class="site__image")
+                .hover__block
 
 script(type="text/x-template")#slider-btns
     .vectors__container(id="vectorsContainer")
         button.vectors__btn.vectors__btn--next(id="nextBtn") !{'>'}
         button.vectors__btn.vectors__btn--back.vectors__btn--not-go(id="backBtn") !{'<'} 
+
+script(type="text/x-template")#slider-works
+    ul.preview__list(id="previewList")
+        li.preview__item(v-for="work in works")
+            .item__cover
+                .prev
+                    img(:src="work.prev", class="site__image")
+                .number {{work.id}}
+                .desc
+                    .tools__container
+                        button.tools__item HTML
+                        button.tools__item CSS
+                        button.tools__item Javascript
+                    .desc__name {{work.name}}
+                    .desc__site-desc {{work.desc}}
+                    .desc__link(:src="work.link") Посмотреть сайт
