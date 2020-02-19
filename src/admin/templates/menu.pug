@@ -1,0 +1,7 @@
+- var menu = ["Обо мне", "Работы", "Отзывы"]
+script(type="text/x-template")#menu
+    .container
+        nav.menu__container
+            ul.menu__list
+                each item in menu
+                    li.menu__item= item
