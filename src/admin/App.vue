@@ -21,7 +21,7 @@
         .block-intro__title
           h2.admin__title Блок &laquo;Обо мне&raquo;
           button.add__group.btn__add--plus Добавить группу
-        .group
+        .group.group__skills-list
           ul.group__list
             li.group__item
               .form__group
@@ -77,18 +77,232 @@
                     .percent__conteiner
                       input.skill__new-rate(placeholder="100")
                     button.add__skill.btn__add--plus +
-
             li.group__item
-            
-              
-          
-            
-
-
+              .form__group
+                .group__name
+                  form.form__group-name
+                    input.group__new-name(placeholder="Название новой группы" value="Frontend")
+                    .control__btns
+                      input.btn__control.set__new-name(type="submit" value="")
+                      input.btn__control.delete__new-name(type="reset" value="")
+                .group__skill
+                  ul.skill__list
+                    li.skill__item
+                      .skill__name Html5
+                      .skill__percent 100 %
+                      .skill__control
+                        .skill__redactor
+                        .skill__remove
+                    li.skill__item
+                      .skill__name CSS3
+                      .skill__percent 90 %
+                      .skill__control
+                        .skill__redactor
+                        .skill__remove
+                    li.skill__item
+                      .skill__name JavaScript
+                      .skill__percent 80 %
+                      .skill__control
+                        .skill__redactor
+                        .skill__remove
+                    li.skill__item
+                      .skill__name Jquery и Vue.js
+                      .skill__percent 85 %
+                      .skill__control
+                        .skill__redactor
+                        .skill__remove
+                .group__skill
+                  form.form__group-skill
+                    input.skill__new-name(placeholder="Новый навык")
+                    .percent__conteiner
+                      input.skill__new-rate(placeholder="100")
+                    button.add__skill.btn__add--plus +
+        
+        .group.group__works-list
+          form.form__works  
+            h3.form__title Редактирование Работы
+            .form__block
+              .form__column
+                .upload__image
+                  h5.title__upload-image Перетащите или загрузите для загрузки изображения
+                  button.upload__btn ЗАГРУЗИТЬ
+              .form__column
+                .form__row
+                  h6.work__input-title.work__name Название
+                  input.input__work.input__work--name(value="Дизайн сайта для авто салона Porsche")
+                .form__row
+                  h6.work__input-title.work__link Ссылка
+                  input.input__work.input__work--link(value="some/link/params")
+                .form__row
+                  h6.work__input-title.work__desc Описание
+                  textarea.input__work.input__work--desc Порше Центр Пулково - является официальным дилером марки Порше в Санкт-Петербурге и предоставляет полный цикл услуг по продаже и сервисному обслуживанию автомобилей
+                .form__row
+                  h6.work__input-title.work__tags Добавление тэга
+                  input.input__work.input__work--tags(value="Jquery, Vue.js, HTML5")
+                .form__row
+                  button.btn__tag HTML
+                  button.btn__tag CSS
+                  button.btn__tag Javascript
+                .form__row.control-btns
+                  button.works__control-btn.works-new__reset(type="reset") Отмена
+                  button.works__control-btn.works-new__save(type="submit") СОХРАНИТЬ
 
 </template>
 
 <style lang="postcss">
+
+  .control-btns {
+    margin-left: auto;
+  }
+
+  .works__control-btn {
+    border: none;
+    font-size: 16px;
+  }
+
+  .works-new__reset {
+    color: #4b6fd7;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 55px;
+  }
+
+  .works-new__save {
+    background: linear-gradient(70deg, #008bff 0%, #0066ef 45%);
+    color: white;
+    border-radius: 40px 40px;
+    cursor: pointer;
+    padding: 24px 40px;
+    font-weight: 700;
+  }
+
+  .btn__tag {
+    background-color: #f4f4f4;
+    position: relative;
+    padding: 10px 32px 10px 18px;
+    font-size: 13px;
+    color: #283340;
+    font-weight: 600;
+    border: none;
+    border-radius: 20px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+
+    &:last-child {
+      margin-right: 0px;
+    }
+
+    &:after {
+      position: absolute;
+      content: "";
+      width: 10px;
+      height: 10px;
+      background-image: url(./images/design/cancel.png);
+      background-position: center center;
+      background-repeat: none;
+      background-size: 100%;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+    }
+  }
+
+  .form__block {
+    display: flex;
+  }
+
+  .input__work {
+    font-size: 16px;
+    color: #414c63;
+    font-weight: 600;
+    border: none;
+    border-bottom: 1px solid #0a001d;
+    width: 100%;
+  }
+
+  .input__work.input__work--desc {
+    border: 1px solid #d9dbe0;
+    height: 145px;
+    resize: none;
+    overflow: scroll;
+    color: #414c63;
+    line-height: 30px;
+  }
+
+  .work__input-title {
+    font-size: 16px;
+    color: #414c63;
+    font-weight: 600;
+    opacity: 0.5;
+    margin: 0px 0px 20px 0px;
+  }
+
+  .form__column {
+    margin-right: 30px;
+    width: 100%;
+
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+
+  .form__row {
+    margin: 30px 0px 0px 0px;
+  }
+
+  .title__upload-image {
+    width: 220px;
+    font-size: 16px;
+    line-height: 34px;
+    color: rgba(65, 76, 99, 0.5);
+    font-weight: 600;
+    margin: 0px 0px 10px 0px;
+  }
+
+  .upload__image {
+    width: 495px;
+    height: 275px;
+    border: 1px dashed #414c63;
+    background-color: #dee4ed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .upload__btn {
+    padding: 17px 48px;
+    background: linear-gradient(90deg, #1e51dd 10%, #3f35cb 50%);
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 700;
+    border-radius: 30px 30px;
+  }
+
+  .form__works {
+    background-color: white;
+    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.1);
+    padding: 20px 20px 34px 20px;
+    margin-bottom: 30px;
+  }
+
+  .form__title {
+    font-size: 18px;
+    color: #414c63;
+    font-weight: 700;
+    padding-bottom: 25px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid #dedee0;
+  }
+
+
+
+
+
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
+//-------------------------------------------------------
   body {
     margin: 0;
     padding: 0;
@@ -136,7 +350,6 @@
   .maincontent__sibling {
     display: flex;
     width: 100%;
-    /* align-items: center; */
     flex-direction: column;
     z-index: 1;
   }
@@ -284,10 +497,11 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    align-items: start;
   }
 
   .group__item {
-    height: 388px;
+    min-height: 388px;
     width: 525px;
     background-color: white;
     box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.1);
@@ -299,11 +513,11 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
   }
 
   .group__name {
     padding-bottom: 15px;
+    margin-bottom: 30px;
     border-bottom: 1px solid #dedee0;
   }
 
@@ -347,7 +561,6 @@
     
   }
 
-
 ///SKILLS
 
   .group__skill {
@@ -365,11 +578,13 @@
 
   .skill__item {
     display: flex;
-    margin: 0px 10px 0px 10px;
+    margin: 0px 10px 30px 10px;
+    color: #414c63;
   }
 
   .skill__percent {
     margin-right: 60px;
+    color: #2b3948;
   }
 
   .skill__control {
