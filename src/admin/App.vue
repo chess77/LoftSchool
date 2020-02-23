@@ -299,10 +299,6 @@
       padding: 0px 10px 55px 10px;
     }
 
-    & .group__list {
-      justify-content: space-between;
-    }
-
     & .group__item {
       min-width: 300px;
       max-width: 340px;
