@@ -127,24 +127,24 @@
                   button.upload__btn ЗАГРУЗИТЬ
               .form__column
                 .form__row
-                  h6.work__input-title.work-edit__name Название
-                  input.input__work.input__work--name(value="Дизайн сайта для авто салона Porsche")
+                  h6.input-title.work-edit__name Название
+                  input.input__item.input__work--name(value="Дизайн сайта для авто салона Porsche")
                 .form__row
-                  h6.work__input-title.work__link Ссылка
-                  input.input__work.input__work--link(value="some/link/params")
+                  h6.input-title.work__link Ссылка
+                  input.input__item.input__work--link(value="some/link/params")
                 .form__row
-                  h6.work__input-title.work__desc Описание
-                  textarea.input__work.input__work--desc Порше Центр Пулково - является официальным дилером марки Порше в Санкт-Петербурге и предоставляет полный цикл услуг по продаже и сервисному обслуживанию автомобилей
+                  h6.input-title.work__desc Описание
+                  textarea.input__item.input__work--desc Порше Центр Пулково - является официальным дилером марки Порше в Санкт-Петербурге и предоставляет полный цикл услуг по продаже и сервисному обслуживанию автомобилей
                 .form__row
-                  h6.work__input-title.work__tags Добавление тэга
-                  input.input__work.input__work--tags(value="Jquery, Vue.js, HTML5")
+                  h6.input-title.work__tags Добавление тэга
+                  input.input__item.input__work--tags(value="Jquery, Vue.js, HTML5")
                 .form__row
                   button.btn__tag HTML
                   button.btn__tag CSS
                   button.btn__tag Javascript
                 .form__row.control-btns
-                  button.works__control-btn.works-new__reset(type="reset") Отмена
-                  button.works__control-btn.works-new__save(type="submit") СОХРАНИТЬ
+                  button.control-btn.new__reset(type="reset") Отмена
+                  button.control-btn.new__save(type="submit") СОХРАНИТЬ
           ul.group__list
             li.group__item.works__add
               button.works__add-btn Добавить работу
@@ -175,9 +175,84 @@
               .work__control-btns
                 button.work__control-btn.work__edit Править
                 button.work__control-btn.work__delete Удалить
+        .group.group__feeds-list
+          form.form__feed
+              h3.form__title Новый отзыв
+              .form__block
+                .form__column
+                  .avatar__container
+                    img.avatar__image
+                  button.feed__add-btn Добавить фото
+                .form__column
+                  .form__row
+                    .author__info
+                      .author__name
+                        h6.input-title Имя автора
+                        input.input__item(value="Ковальчук Дмитрий")
+                      .author__position
+                        h6.input-title Титул автора
+                        input.input__item(value="Основатель LoftSchool")
+                  .form__row
+                    h6.input-title Описание
+                    textarea.input__item.input__work--desc Порше Центр Пулково - является официальным дилером марки Порше в Санкт-Петербурге и предоставляет полный цикл услуг по продаже и сервисному обслуживанию автомобилей
+                  .form__row.control-btns.control-btns--for-feeds
+                    button.control-btn.new__reset(type="reset") Отмена
+                    button.control-btn.new__save(type="submit") СОХРАНИТЬ
 </template>
 
 <style lang="postcss">
+
+//------------------feeds----------------------
+
+  .control-btns--for-feeds {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .author__info {
+    display: flex;
+  }
+
+  .author__name {
+    width: 100%;
+    margin-right: 30px;
+  }
+
+  .author__position {
+    width: 100%;
+  }
+
+  .feed__add-btn {
+    width: 100%;
+    font-size: 16px;
+    color: #008bff;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    
+    &:hover {
+      text-decoration-skip: 5px;
+      text-decoration-line: underline;
+    }
+  }
+
+  .avatar__container {
+    border: none;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-image: url(./images/content/empty-avatar.png);
+    margin-bottom: 30px;
+  }
+
+  .avatar__image {
+    width: 100%;
+    height: 100%;
+    display: none;
+    object-fit: cover;
+  }
+
+  //---------------work----------------
 
   .work_prev {
     width: 100%;
@@ -329,19 +404,24 @@
     }
   }
 
-  .works__control-btn {
+  .control-btn {
     border: none;
     font-size: 16px;
+    cursor: pointer;
   }
 
-  .works-new__reset {
-    color: #4b6fd7;
+  .new__reset {
+    color: #008bff;
     font-weight: 600;
     cursor: pointer;
     margin-right: 55px;
+
+    &:hover {
+      text-decoration-line: underline;
+    }
   }
 
-  .works-new__save {
+  .new__save {
     background: linear-gradient(70deg, #008bff 0%, #0066ef 45%);
     color: white;
     border-radius: 40px 40px;
@@ -386,7 +466,7 @@
     flex-wrap: wrap;
   }
 
-  .input__work {
+  .input__item {
     font-size: 16px;
     color: #414c63;
     font-weight: 600;
@@ -395,7 +475,7 @@
     width: 100%;
   }
 
-  .input__work.input__work--desc {
+  .input__item.input__work--desc {
     border: 1px solid #d9dbe0;
     height: 145px;
     resize: none;
@@ -404,7 +484,7 @@
     line-height: 30px;
   }
 
-  .work__input-title {
+  .input-title {
     font-size: 16px;
     color: #414c63;
     font-weight: 600;
@@ -464,6 +544,15 @@
     box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.1);
     padding: 20px 20px 34px 20px;
     margin-bottom: 30px;
+  }
+
+  .form__feed {
+    background-color: white;
+    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.1);
+    padding: 20px 20px 34px 20px;
+    margin-bottom: 30px;
+    /* width: 100%; */
+
   }
 
   .form__title {
