@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 153 153" width="153" height="153">
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="M-153 -1262L1047 -1262L1047 1021L-153 1021Z" />
+		</clipPath>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+		.shp0 { fill: none;stroke: #ffffff;stroke-width: 2 } 
+	</style>
+	<g id="Works with Add" clip-path="url(#cp1)">
+		<g id="Работы">
+			<g id="+">
+				<g id="Группа 4">
+					<path id="Эллипс 4" class="shp0" d="M77 2C118.42 2 152 35.58 152 77C152 118.42 118.42 152 77 152C35.58 152 2 118.42 2 77C2 35.58 35.58 2 77 2Z" />
+				</g>
+			</g>
+		</g>
+	</g>
+</svg>

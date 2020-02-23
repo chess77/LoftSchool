@@ -117,7 +117,6 @@
                     .percent__conteiner
                       input.skill__new-rate(placeholder="100")
                     button.add__skill.btn__add--plus +
-        
         .group.group__works-list
           form.form__works  
             h3.form__title Редактирование Работы
@@ -128,7 +127,7 @@
                   button.upload__btn ЗАГРУЗИТЬ
               .form__column
                 .form__row
-                  h6.work__input-title.work__name Название
+                  h6.work__input-title.work-edit__name Название
                   input.input__work.input__work--name(value="Дизайн сайта для авто салона Porsche")
                 .form__row
                   h6.work__input-title.work__link Ссылка
@@ -146,13 +145,188 @@
                 .form__row.control-btns
                   button.works__control-btn.works-new__reset(type="reset") Отмена
                   button.works__control-btn.works-new__save(type="submit") СОХРАНИТЬ
-
+          ul.group__list
+            li.group__item.works__add
+              button.works__add-btn Добавить работу
+            li.group__item
+              .work_prev
+                img.prev__image(src="./images/content/work-1.png")
+              .work__name Сайт школы образования
+              .work__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+              a.work__link(href="#") http://loftschool.ru
+              .work__control-btns
+                button.work__control-btn.work__edit Править
+                button.work__control-btn.work__delete Удалить
+            li.group__item
+              .work_prev
+                img.prev__image(src="./images/content/work-2.png")
+              .work__name Ещё один сайт школы образования
+              .work__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+              a.work__link(href="#") http://loftschool.ru
+              .work__control-btns
+                button.work__control-btn.work__edit Править
+                button.work__control-btn.work__delete Удалить
+            li.group__item
+              .work_prev
+                img.prev__image(src="./images/content/work-3.png")
+              .work__name Третий сайт школы образования
+              .work__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+              a.work__link(href="#") http://loftschool.ru
+              .work__control-btns
+                button.work__control-btn.work__edit Править
+                button.work__control-btn.work__delete Удалить
 </template>
 
 <style lang="postcss">
 
-  .control-btns {
-    margin-left: auto;
+  .work_prev {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    & .prev__image {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .group__works-list {
+    
+    & .group__item {
+      max-width: 340px;
+      height: 555px;
+      padding: 20px 20px 34px 20px;
+      position: relative;
+    }
+  }
+
+  .work__name {
+    font-size: 18px;
+    /* line-height: 30px; */
+    color: #414c63;
+    font-weight: 700;
+    padding-top: 225px;
+    padding-bottom: 25px;
+  }
+
+  .work__desc {
+    font-size: 16px;
+    line-height: 30px;
+    color: rgba(65, 76, 99, 0.6);
+    font-weight: 600;
+    padding-bottom: 25px;
+  }
+
+  .work__link {
+    display: inline-block;
+    color: #008bff;
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 600;
+    margin-bottom: 50px;
+    text-decoration-line: none;
+
+    &:hover {
+      text-decoration-line: underline;
+    }
+  }
+
+  .work__control-btns {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .work__control-btn {
+    color: #414c63;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration-line: underline;
+    }
+  }
+
+  .work__edit {
+    display: block;
+    position: relative;
+    padding-right: 30px;
+
+    &:after {
+      display: block;
+      content: "";
+      width: 17px;
+      height: 17px;
+      position: absolute;
+      background-image: url(./images/design/pencil-edit-button.png);
+      background-position: center center;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
+  }
+
+  .work__delete {
+    position: relative;
+    padding-right: 30px;
+
+    &:after {
+      display: block;
+      content: "";
+      width: 17px;
+      height: 17px;
+      position: absolute;
+      background-image: url(./images/design/work-cancel.png);
+      background-position: center center;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
+  }
+
+  .group__item.works__add {
+    background: linear-gradient(90deg, #008bff 0%, #0066ef 45%);
+    display: flex;
+    justify-content: center;
+  }
+
+  .works__add-btn {
+    width: 95px;
+    font-size: 18px;
+    line-height: 30px;
+    color: #ffffff;
+    font-weight: 700;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    position: relative;
+
+    &:before {
+      display: block;
+      width: 150px;
+      height: 150px;
+      font-size: 54px;
+      font-weight: 100;
+      content: "+";
+      border-radius: 50%;
+      border: 2px solid #fff;
+      background-position: center center;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 50%);
+    }
   }
 
   .works__control-btn {
@@ -209,6 +383,7 @@
 
   .form__block {
     display: flex;
+    flex-wrap: wrap;
   }
 
   .input__work {
@@ -239,15 +414,20 @@
 
   .form__column {
     margin-right: 30px;
-    width: 100%;
 
     &:last-child {
       margin-right: 0px;
+       min-width: 350px;
+       flex: 1;
     }
   }
 
   .form__row {
     margin: 30px 0px 0px 0px;
+
+    &:first-child {
+      margin: 0px;
+    }
   }
 
   .title__upload-image {
@@ -473,6 +653,8 @@
     border: none;
     position: relative;
     height: 100%;
+    font-size: 16px;
+    font-weight: 600;
 
     &:before {
       content: "+";
@@ -507,6 +689,7 @@
     box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.1);
     padding: 20px 20px 34px 20px;
     margin-bottom: 30px;
+    /* box-sizing: border-box; */
   }
 
   .form__group {
