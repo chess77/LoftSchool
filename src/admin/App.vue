@@ -304,6 +304,7 @@
     }
 
     & .group__item {
+      min-width: 300px;
       max-width: 340px;
       min-height: 316px;
       padding: 30px 20px 34px 20px;
