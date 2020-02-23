@@ -783,6 +783,10 @@
     opacity: 0.8;
     font-weight: 400;
     cursor: pointer;
+
+    &:hover {
+      text-decoration-line: underline;
+    }
   }
 
   //----------------------------------------
