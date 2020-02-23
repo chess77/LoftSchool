@@ -133,7 +133,7 @@
                   h6.input-title.work__link Ссылка
                   input.input__item.input__work--link(value="some/link/params")
                 .form__row
-                  h6.input-title.work__desc Описание
+                  h6.input-title.info__desc Описание
                   textarea.input__item.input__work--desc Порше Центр Пулково - является официальным дилером марки Порше в Санкт-Петербурге и предоставляет полный цикл услуг по продаже и сервисному обслуживанию автомобилей
                 .form__row
                   h6.input-title.work__tags Добавление тэга
@@ -146,13 +146,15 @@
                   button.control-btn.new__reset(type="reset") Отмена
                   button.control-btn.new__save(type="submit") СОХРАНИТЬ
           ul.group__list
-            li.group__item.works__add
-              button.works__add-btn Добавить работу
+            li.group__item.item__add-btn
+              .add-btn__container
+                button.items__add-btn--icon +
+                button.items__add-btn--text Добавить работу
             li.group__item
               .work_prev
                 img.prev__image(src="./images/content/work-1.png")
-              .work__name Сайт школы образования
-              .work__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+              .info__name Сайт школы образования
+              .info__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
               a.work__link(href="#") http://loftschool.ru
               .work__control-btns
                 button.work__control-btn.work__edit Править
@@ -160,8 +162,8 @@
             li.group__item
               .work_prev
                 img.prev__image(src="./images/content/work-2.png")
-              .work__name Ещё один сайт школы образования
-              .work__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+              .info__name Ещё один сайт школы образования
+              .info__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
               a.work__link(href="#") http://loftschool.ru
               .work__control-btns
                 button.work__control-btn.work__edit Править
@@ -169,40 +171,145 @@
             li.group__item
               .work_prev
                 img.prev__image(src="./images/content/work-3.png")
-              .work__name Третий сайт школы образования
-              .work__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+              .info__name Третий сайт школы образования
+              .info__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
               a.work__link(href="#") http://loftschool.ru
               .work__control-btns
                 button.work__control-btn.work__edit Править
                 button.work__control-btn.work__delete Удалить
         .group.group__feeds-list
           form.form__feed
-              h3.form__title Новый отзыв
-              .form__block
-                .form__column
-                  .avatar__container
-                    img.avatar__image
-                  button.feed__add-btn Добавить фото
-                .form__column
-                  .form__row
-                    .author__info
-                      .author__name
-                        h6.input-title Имя автора
-                        input.input__item(value="Ковальчук Дмитрий")
-                      .author__position
-                        h6.input-title Титул автора
-                        input.input__item(value="Основатель LoftSchool")
-                  .form__row
-                    h6.input-title Описание
-                    textarea.input__item.input__work--desc Порше Центр Пулково - является официальным дилером марки Порше в Санкт-Петербурге и предоставляет полный цикл услуг по продаже и сервисному обслуживанию автомобилей
-                  .form__row.control-btns.control-btns--for-feeds
-                    button.control-btn.new__reset(type="reset") Отмена
-                    button.control-btn.new__save(type="submit") СОХРАНИТЬ
+            h3.form__title Новый отзыв
+            .form__block
+              .form__column
+                .avatar__container
+                  img.avatar__image
+                button.feed__add-btn Добавить фото
+              .form__column
+                .form__row
+                  .author__info
+                    .author__name
+                      h6.input-title Имя автора
+                      input.input__item(value="Ковальчук Дмитрий")
+                    .author__position
+                      h6.input-title Титул автора
+                      input.input__item(value="Основатель LoftSchool")
+                .form__row
+                  h6.input-title Описание
+                  textarea.input__item.input__work--desc Порше Центр Пулково - является официальным дилером марки Порше в Санкт-Петербурге и предоставляет полный цикл услуг по продаже и сервисному обслуживанию автомобилей
+                .form__row.control-btns.control-btns--for-feeds
+                  button.control-btn.new__reset(type="reset") Отмена
+                  button.control-btn.new__save(type="submit") СОХРАНИТЬ
+          ul.group__list
+            li.group__item.item__add-btn
+              .add-btn__container
+                button.items__add-btn--icon +
+                button.items__add-btn--text Добавить отзыв
+            li.group__item
+              .feed__author-info
+                .feed__avatar-container
+                  img.feed__avatar-image(src="./images/content/author-1.png")
+                .author__name-position
+                  .info__name Владимир Сабанцев
+                  .info__author-desc Предприниматель
+              .info__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+              .work__control-btns
+                button.work__control-btn.work__edit Править
+                button.work__control-btn.work__delete Удалить
+            li.group__item
+              .feed__author-info
+                .feed__avatar-container
+                  img.feed__avatar-image(src="./images/content/author-1.png")
+                .author__name-position
+                  .info__name Владимир Сабанцев
+                  .info__author-desc Предприниматель
+              .info__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+              .work__control-btns
+                button.work__control-btn.work__edit Править
+                button.work__control-btn.work__delete Удалить
+            li.group__item
+              .feed__author-info
+                .feed__avatar-container
+                  img.feed__avatar-image(src="./images/content/author-1.png")
+                .author__name-position
+                  .info__name Владимир Сабанцев
+                  .info__author-desc Предприниматель
+              .info__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+              .work__control-btns
+                button.work__control-btn.work__edit Править
+                button.work__control-btn.work__delete Удалить
+            li.group__item
+              .feed__author-info
+                .feed__avatar-container
+                  img.feed__avatar-image(src="./images/content/author-1.png")
+                .author__name-position
+                  .info__name Владимир Сабанцев
+                  .info__author-desc Предприниматель
+              .info__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+              .work__control-btns
+                button.work__control-btn.work__edit Править
+                button.work__control-btn.work__delete Удалить
+            
+            
 </template>
 
 <style lang="postcss">
 
+//------------------feeds-author----------------------
+
+  .feed__author-info {
+    display: flex;
+    border-bottom: 1px solid #dedee0;
+    margin-bottom: 30px;
+  }
+
+  .feed__avatar-container {
+    margin-right: 20px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .feed__avatar-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .author__name-position {
+    margin-bottom: 30px;
+
+    & .info__name {
+      padding: 0px;
+    }
+
+    & .info__author-desc {
+      padding: 0px;
+      font-size: 16px;
+      line-height: 30px;
+      color: rgba(65, 76, 99, 0.6);
+      font-weight: 600;
+    }
+  }
+
 //------------------feeds----------------------
+  .group__feeds-list {
+
+    & .info__desc {
+      padding: 0px 10px 55px 10px;
+    }
+
+    & .group__list {
+      justify-content: space-between;
+    }
+
+    & .group__item {
+      max-width: 340px;
+      min-height: 316px;
+      padding: 30px 20px 34px 20px;
+      position: relative;
+    }
+  }
 
   .control-btns--for-feeds {
     display: flex;
@@ -276,16 +383,15 @@
     }
   }
 
-  .work__name {
+  .info__name {
     font-size: 18px;
-    /* line-height: 30px; */
     color: #414c63;
     font-weight: 700;
     padding-top: 225px;
     padding-bottom: 25px;
   }
 
-  .work__desc {
+  .info__desc {
     font-size: 16px;
     line-height: 30px;
     color: rgba(65, 76, 99, 0.6);
@@ -365,42 +471,41 @@
     }
   }
 
-  .group__item.works__add {
+  .group__item.item__add-btn {
     background: linear-gradient(90deg, #008bff 0%, #0066ef 45%);
     display: flex;
     justify-content: center;
   }
 
-  .works__add-btn {
-    width: 95px;
-    font-size: 18px;
-    line-height: 30px;
-    color: #ffffff;
-    font-weight: 700;
-    text-align: center;
-    background-color: transparent;
-    border: none;
-    position: relative;
+  .add-btn__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto 0;
+    color: white;
+    cursor: pointer;
 
-    &:before {
-      display: block;
+    & .items__add-btn--icon {
       width: 150px;
       height: 150px;
       font-size: 54px;
       font-weight: 100;
-      content: "+";
       border-radius: 50%;
-      border: 2px solid #fff;
-      background-position: center center;
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-      position: absolute;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      top: 0;
-      left: 50%;
-      transform: translate(-50%, 50%);
+      border: 2px solid white;
+      color: #ffffff;
+      background-color: transparent;
+      margin-bottom: 30px;
+    }
+    
+    & .items__add-btn--text {
+      width: 95px;
+      font-size: 18px;
+      line-height: 30px;
+      color: #ffffff;
+      font-weight: 700;
+      text-align: center;
+      background-color: transparent;
+      border: none;
     }
   }
 
