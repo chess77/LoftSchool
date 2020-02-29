@@ -1,260 +1,32 @@
 <template lang="pug">
   .maincontent__sibling
-    .admin-head
-      .container
-        .admin-head__admin-panel
-          .user-info    
-            .user-info__avatar
-              img(src="./images/content/user.jpg").user-info__avatar-image
-            .user-info__name Маргарита Андрюхина
-          .place Панель администрирования
-        a.btn-exit Выйти
-    .menu
-      .container
-        nav.menu__container
-          ul.menu__list
-            li.menu__item Обо мне
-            li.menu__item Работы
-            li.menu__item Отзывы
+    adminHeader
+    mainMenu
     .admin__body
-      .container
-        .block-intro__title
-          h2.admin__title Блок &laquo;Обо мне&raquo;
-          button.add__group.btn__add--plus Добавить группу
-        .group.group__skills-list
-          ul.group__list
-            li.group__item
-              .form__group
-                .group__name
-                  form.form__group-name
-                    input.group__new-name(placeholder="Название новой группы")
-                    .control__btns
-                      input.btn__control.set__new-name(type="submit" value="")
-                      input.btn__control.delete__new-name(type="reset" value="")
-                .group__skill
-                  form.form__group-skill
-                    input.skill__new-name(placeholder="Новый навык")
-                    .percent__conteiner
-                      input.skill__new-rate(placeholder="100")
-                    button.add__skill.btn__add--plus +
-            li.group__item
-              .form__group
-                .group__name
-                  form.form__group-name
-                    input.group__new-name(placeholder="Название новой группы" value="Workflow")
-                    .control__btns
-                      input.btn__control.set__new-name(type="submit" value="")
-                      input.btn__control.delete__new-name(type="reset" value="")
-                .group__skill
-                  ul.skill__list
-                    li.skill__item
-                      .skill__name Git
-                      .skill__percent 100 %
-                      .skill__control
-                        .skill__redactor
-                        .skill__remove
-                    li.skill__item
-                      .skill__name Terminal
-                      .skill__percent 90 %
-                      .skill__control
-                        .skill__redactor
-                        .skill__remove
-                    li.skill__item
-                      .skill__name Gulp
-                      .skill__percent 80 %
-                      .skill__control
-                        .skill__redactor
-                        .skill__remove
-                    li.skill__item
-                      .skill__name Webpack
-                      .skill__percent 85 %
-                      .skill__control
-                        .skill__redactor
-                        .skill__remove
-                .group__skill
-                  form.form__group-skill
-                    input.skill__new-name(placeholder="Новый навык")
-                    .percent__conteiner
-                      input.skill__new-rate(placeholder="100")
-                    button.add__skill.btn__add--plus +
-            li.group__item
-              .form__group
-                .group__name
-                  form.form__group-name
-                    input.group__new-name(placeholder="Название новой группы" value="Frontend")
-                    .control__btns
-                      input.btn__control.set__new-name(type="submit" value="")
-                      input.btn__control.delete__new-name(type="reset" value="")
-                .group__skill
-                  ul.skill__list
-                    li.skill__item
-                      .skill__name Html5
-                      .skill__percent 100 %
-                      .skill__control
-                        .skill__redactor
-                        .skill__remove
-                    li.skill__item
-                      .skill__name CSS3
-                      .skill__percent 90 %
-                      .skill__control
-                        .skill__redactor
-                        .skill__remove
-                    li.skill__item
-                      .skill__name JavaScript
-                      .skill__percent 80 %
-                      .skill__control
-                        .skill__redactor
-                        .skill__remove
-                    li.skill__item
-                      .skill__name Jquery и Vue.js
-                      .skill__percent 85 %
-                      .skill__control
-                        .skill__redactor
-                        .skill__remove
-                .group__skill
-                  form.form__group-skill
-                    input.skill__new-name(placeholder="Новый навык")
-                    .percent__conteiner
-                      input.skill__new-rate(placeholder="100")
-                    button.add__skill.btn__add--plus +
-        .group.group__works-list
-          form.form__works  
-            h3.form__title Редактирование Работы
-            .form__block
-              .form__column
-                .upload__image
-                  h5.title__upload-image Перетащите или загрузите для загрузки изображения
-                  button.upload__btn ЗАГРУЗИТЬ
-              .form__column
-                .form__row
-                  h6.input-title.work-edit__name Название
-                  input.input__item.input__work--name(value="Дизайн сайта для авто салона Porsche")
-                .form__row
-                  h6.input-title.work__link Ссылка
-                  input.input__item.input__work--link(value="some/link/params")
-                .form__row
-                  h6.input-title.info__desc Описание
-                  textarea.input__item.input__work--desc Порше Центр Пулково - является официальным дилером марки Порше в Санкт-Петербурге и предоставляет полный цикл услуг по продаже и сервисному обслуживанию автомобилей
-                .form__row
-                  h6.input-title.work__tags Добавление тэга
-                  input.input__item.input__work--tags(value="Jquery, Vue.js, HTML5")
-                .form__row
-                  button.btn__tag HTML
-                  button.btn__tag CSS
-                  button.btn__tag Javascript
-                .form__row.control-btns
-                  button.control-btn.new__reset(type="reset") Отмена
-                  button.control-btn.new__save(type="submit") СОХРАНИТЬ
-          ul.group__list
-            li.group__item.item__add-btn
-              .add-btn__container
-                button.items__add-btn--icon +
-                button.items__add-btn--text Добавить работу
-            li.group__item
-              .work_prev
-                img.prev__image(src="./images/content/work-1.png")
-              .info__name Сайт школы образования
-              .info__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              a.work__link(href="#") http://loftschool.ru
-              .work__control-btns
-                button.work__control-btn.work__edit Править
-                button.work__control-btn.work__delete Удалить
-            li.group__item
-              .work_prev
-                img.prev__image(src="./images/content/work-2.png")
-              .info__name Ещё один сайт школы образования
-              .info__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              a.work__link(href="#") http://loftschool.ru
-              .work__control-btns
-                button.work__control-btn.work__edit Править
-                button.work__control-btn.work__delete Удалить
-            li.group__item
-              .work_prev
-                img.prev__image(src="./images/content/work-3.png")
-              .info__name Третий сайт школы образования
-              .info__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              a.work__link(href="#") http://loftschool.ru
-              .work__control-btns
-                button.work__control-btn.work__edit Править
-                button.work__control-btn.work__delete Удалить
-        .group.group__feeds-list
-          form.form__feed
-            h3.form__title Новый отзыв
-            .form__block
-              .form__column
-                .avatar__container
-                  img.avatar__image
-                button.feed__add-btn Добавить фото
-              .form__column
-                .form__row
-                  .author__info
-                    .author__name
-                      h6.input-title Имя автора
-                      input.input__item(value="Ковальчук Дмитрий")
-                    .author__position
-                      h6.input-title Титул автора
-                      input.input__item(value="Основатель LoftSchool")
-                .form__row
-                  h6.input-title Описание
-                  textarea.input__item.input__work--desc Порше Центр Пулково - является официальным дилером марки Порше в Санкт-Петербурге и предоставляет полный цикл услуг по продаже и сервисному обслуживанию автомобилей
-                .form__row.control-btns.control-btns--for-feeds
-                  button.control-btn.new__reset(type="reset") Отмена
-                  button.control-btn.new__save(type="submit") СОХРАНИТЬ
-          ul.group__list
-            li.group__item.item__add-btn
-              .add-btn__container
-                button.items__add-btn--icon +
-                button.items__add-btn--text Добавить отзыв
-            li.group__item
-              .feed__author-info
-                .feed__avatar-container
-                  img.feed__avatar-image(src="./images/content/author-1.png")
-                .author__name-position
-                  .info__name Владимир Сабанцев
-                  .info__author-desc Предприниматель
-              .info__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              .work__control-btns
-                button.work__control-btn.work__edit Править
-                button.work__control-btn.work__delete Удалить
-            li.group__item
-              .feed__author-info
-                .feed__avatar-container
-                  img.feed__avatar-image(src="./images/content/author-1.png")
-                .author__name-position
-                  .info__name Владимир Сабанцев
-                  .info__author-desc Предприниматель
-              .info__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              .work__control-btns
-                button.work__control-btn.work__edit Править
-                button.work__control-btn.work__delete Удалить
-            li.group__item
-              .feed__author-info
-                .feed__avatar-container
-                  img.feed__avatar-image(src="./images/content/author-1.png")
-                .author__name-position
-                  .info__name Владимир Сабанцев
-                  .info__author-desc Предприниматель
-              .info__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              .work__control-btns
-                button.work__control-btn.work__edit Править
-                button.work__control-btn.work__delete Удалить
-            li.group__item
-              .feed__author-info
-                .feed__avatar-container
-                  img.feed__avatar-image(src="./images/content/author-1.png")
-                .author__name-position
-                  .info__name Владимир Сабанцев
-                  .info__author-desc Предприниматель
-              .info__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              .work__control-btns
-                button.work__control-btn.work__edit Править
-                button.work__control-btn.work__delete Удалить
-            
-            
+      aboutBlock
+      workBlock
+      feedBlock
 </template>
 
-<style lang="postcss">
+<script>
+  import adminHeader from "./components/adminHeader";
+  import mainMenu from "./components/mainMenu";
+  import aboutBlock from "./components/aboutBlock";
+  import workBlock from "./components/workBlock";
+  import feedBlock from "./components/feedBlock";
 
+  export default {
+    components: {
+      adminHeader,
+      mainMenu,
+      aboutBlock,
+      workBlock,
+      feedBlock
+    }
+  }
+</script>
+
+<style lang="postcss">
 //------------------feeds-author----------------------
 
   .feed__author-info {
@@ -666,12 +438,6 @@
     border-bottom: 1px solid #dedee0;
   }
 
-
-
-
-
-//-------------------------------------------------------
-//-------------------------------------------------------
 //-------------------------------------------------------
 //-------------------------------------------------------
   body {
@@ -726,103 +492,7 @@
   }
 
   //----------------------------------------
-  //-----------.admin-head------------------
-
-  .admin-head {
-    background: linear-gradient(30deg, #3e3e59 30%, #454573 90%);
-    width: 100%;
-    height: 80px;
-    display: flex;
-
-    & .container {
-      justify-content: space-between;
-    }
-  }
-
-  .admin-head__admin-panel {
-    display: flex;
-    align-items: center;
-  }
-
-  .user-info {
-    display: flex;
-    align-items: center;
-  }
-
-  .user-info__avatar {
-    width: 45px;
-    height: 45px;
-    position: relative;
-    padding-right: 20px;
-  }
-
-  .user-info__avatar-image {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-  }
-
-  .user-info__name {
-    font-size: 18px;
-    font-weight: 600;
-    padding-right: 30px;
-  }
-
-  .place {
-    font-size: 14px;
-    opacity: 0.8;
-    font-weight: 400;
-  }
-
-  .btn-exit {
-    font-size: 16px;
-    opacity: 0.8;
-    font-weight: 400;
-    cursor: pointer;
-
-    &:hover {
-      text-decoration-line: underline;
-    }
-  }
-
-  //----------------------------------------
-  //--------------menu----------------------
-
-  .menu {
-    background: white;
-
-    & .container{
-      height: 100%;
-    }
-  }
-
-  .menu__container {
-    color: #2b3948;
-    height: 100%;
-  }
-
-  .menu__list {
-    display: flex;
-    height: 100%;
-    position: relative;
-  }
-
-  .menu__item {
-    line-height: 80px;
-    height: 100%;
-    font-size: 16px;
-    padding: 0px 30px;
-    font-weight: 400;
-
-    &:hover {
-      color: #008bff;
-      border-bottom: 3px solid #008bff;
-    }
-  }
-
-  //----------------------------------------
   //---------block-intro__title-------------
-  //
 
   .admin__body {
     & .container {
