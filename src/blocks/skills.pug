@@ -1,8 +1,30 @@
+mixin skill(percent,text)
+    .skills__level
+        svg(viewBox="0 0 200 200").skill__shape
+            circle(r="80" cx="100" cy="100")
+            text(x="50%" y="50%" text-anchor='middle').item__name #{text}
+            circle(r="80" cx="100" cy="100" style=`animation-delay: -25s`).skill__value
+
+
 section.skills
     .container.skills__container
         .skills__image-container
         .skills__content
-            .skills__h2 Чем я могу быть полезена вам
+            .skills__h2 Чем я могу быть полезен вам
             .skills__desc
                 p Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftShool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё класно и красиво!
-            #skills-component
+            .skills__container_image
+                ul.user-skills
+                    -
+                        var skills = [
+                            ['Front end', ['HTMLS', 'CSS3', 'JavaScript','Jvery и Vue.js'],[20,50,60,100]],
+                            ['Workflow', ['GIT', 'Terminal', 'Gulp','Webpack'],[25,50,60,100]],
+                        ]
+                    each item in skills
+                        li.skills__list
+                            h3.skills__name #{item[0]}
+                            ul.skills__list
+                                each skill,index in item[1]
+                                    li.skills__item:  +skill(item[2][index],skill)
+
+

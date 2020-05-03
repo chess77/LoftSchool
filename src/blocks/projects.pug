@@ -3,4 +3,26 @@
 section.projects
     .container
         h2.projects__title Мои работы
-        #slider-component
+        .projets__contaner
+            +image("content/first-preview.png", "first-preview")
+            .slider-box
+                ul.site__list
+                    li.site__item
+                        +image("content/first-site.png", "first-site")
+                    li.site__item
+                        +image("content/second-site.png", "second-site")
+                    li.site__item
+                        +image("content/third-site.png", "third-site")
+                .vectors__container(id="vectorsContainer")
+                    button.vectors__btn.vectors__btn--next(id="nextBtn") !{'>'}
+                    button.vectors__btn.vectors__btn--back.vectors__btn--not-go(id="backBtn") !{'<'}
+                .number=1
+        .desc
+                    .tools__container
+                        button.tools__item="HTML"
+                        button.tools__item="CSS"
+                        button.tools__item="JavaScript"
+                    .desc__name="Сайт школы образования"
+                    .desc__site-desc="Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
+                    .desc__link="Посмотреть сайт"
+

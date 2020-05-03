@@ -7,26 +7,26 @@
     position: relative;
     overflow: hidden;
     background-color: #100022;
+    background: url(../images/design/background1.jpg) top center;
+    background-size: auto 100%;
+    background-repeat: no-repeat
 
-    & .container {
-        z-index: 2;
-        overflow: hidden;
-    }
+}
+.about {
+  display: flex;
+  justify-content: space-between;
+}
+.hero {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
 }
 
 .scroll__container {
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    user-select: none;
-    position: fixed;
-    left: 50%;
-    top: 75%;
-    transform: translateX(-50%);
-    z-index: 3;
-    text-shadow: 1px 0.5px 0.5px #000;
+   color: #fff;
+   display: flex;
+   justify-content: center;
+   padding: 50px 0;
 }
 
 .scroll-image {

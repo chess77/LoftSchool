@@ -4,6 +4,3 @@ if (process.env.NODE_ENV === "development") {
 }
 
 import "./scripts/skills";
-import "./scripts/works";
-import "./scripts/projects-slider";
-import "./scripts/parallax";
