@@ -10,6 +10,12 @@
     padding-bottom: 70px;
 }
 
+
+.first-preview{
+        position: relative;
+        z-index: 4;
+
+}
 .preview__list {
     display: flex;
     width: 100hv;
@@ -33,25 +39,29 @@
 .prev {
     min-width: 635px;
     height: 355px;
-    z-index: 1;
+    z-index: 3;
     margin-right: 115px;
 }
 
 .preview__image {
     width: 100%;
     height: 100%;
+        position: relative;
+        z-index: 2;
 }
 
 .number {
-    font-size: 350px;
+    font-size: 280px;
     font-weight: 800;
     color: #e6e6e6;
     position: absolute;
     left: 590px;
-    z-index: 1000;
+
+    z-index: 1;
     line-height: 100%;
     vertical-align: text-bottom;
-    margin-top: -210px;
+    margin-top: -50px;
+    margin-left: 90px;
 }
 
 .desc {
@@ -114,4 +124,5 @@
         left: -40px;
         background-image: svg-load('link.svg', fill=#586fd3, width=100%, height=100%);
     }
+    cursor: pointer;
 }

@@ -1,9 +1,17 @@
 mixin skill(percent,text)
     .skills__level
         svg(viewBox="0 0 200 200").skill__shape
+            defs
+                linearGradient(id="gradient" x1="0%" y1="0%" x2="0%" y2="100%")
+                stop(offset="0%"  stop-color="#00bc9b")
+                stop(offset="100%" stop-color="#5eaefd")
+
+
             circle(r="80" cx="100" cy="100")
             text(x="50%" y="50%" text-anchor='middle').item__name #{text}
-            circle(r="80" cx="100" cy="100" style=`animation-delay: -25s`).skill__value
+            circle(r="80" cx="100" cy="100" style=`animation-delay: -25s; stroke: url(#gradient)` ).skill__value
+
+
 
 
 section.skills
