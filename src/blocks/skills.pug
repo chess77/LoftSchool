@@ -1,16 +1,18 @@
 mixin skill(percent,text)
+    - var radius = 80, val1_string = (2*radius*3.14/100*percent)
+    - var val2_string =(2*radius*3.14/100*(100-percent))
+    - var skill_val_string = val1_string.toString()+" "+val2_string.toString()
     .skills__level
         svg(viewBox="0 0 200 200").skill__shape
             defs
                 linearGradient(id="gradient" x1="0%" y1="0%" x2="0%" y2="100%")
                     stop(offset="0%"  stop-color="#0d1fbc")
-                    stop(offset="100%" stop-color="#5eaefd")
+                    stop(offset="100%" stop-color="#fdf7f9")
 
 
-            circle(r="80" cx="100" cy="100")
+            circle(r=`${radius}` cx="100" cy="100")
             text(x="50%" y="50%" text-anchor='middle').item__name #{text}
-            circle(r="80" cx="100" cy="100" style=`animation-delay: -25s; stroke: url(#gradient)` ).skill__value
-
+            circle(r=`${radius}` cx="100" cy="100" style=`stroke-dasharray: ${skill_val_string};stroke: url(#gradient)`).skill__value
 
 
 

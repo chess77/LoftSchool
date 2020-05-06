@@ -1,8 +1,14 @@
 section.introduce
-    section.hero
+    section.hero__bg(id='herobg')
+        +image(`design/background_parallax.png`, 'image__layer')
+    section.hands(id='hands')
+        +image(`design/hands.png`, 'image__layer')
+    section.stars(id='stars')
+         +image(`design/sparks.png`, 'image__layer')
+    section.hero(id="hero")
         include introduce-els/wrap.pug
         include introduce-els/who-am-i.pug
-    section.about
+    section.about(id="about")
         include /profile.pug
     .scroll__container#scroll__container
 
