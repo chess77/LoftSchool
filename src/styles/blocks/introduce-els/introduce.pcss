@@ -4,13 +4,9 @@
     min-height: 650px;
     width: 100%;
     height: 140vh;
-
     position: relative;
     overflow: hidden;
     background-color: #0a001d;
-
-
-
 }
 .hero__bg{
     position: absolute;
@@ -18,8 +14,15 @@
     left: 0;
     right: 0;
     height: 1650px;
+    background-position: 50% 0;
+    background-size: cover;
+    text-align:center;
+
     img {
         display: block;
+        margin:auto
+
+
     }
 }
 .hands{
@@ -28,8 +31,11 @@
     left: 0;
     right: 0;
     height: 1650px;
+    text-align:center;
     img {
         display: block;
+        background-size: cover;
+         margin:auto
     }
 }
 .stars{
@@ -38,8 +44,11 @@
     left: 0;
     right: 0;
     height: 956px;
+    text-align:center;
     img {
         display: block;
+        background-size: cover;
+         margin:auto
     }
 }
 
@@ -50,7 +59,8 @@
     right: 0;
     height: 1270;
   display: flex;
-  justify-content: space-between;
+
+  justify-content: center;
 }
 
 .hero {
@@ -64,47 +74,67 @@
   flex-direction: column;
 }
 
-.scroll__container {
+.scroll{
+
     position: absolute;
-    top: 250px;
-    left: 600px;
+    top:300px;
+    left: 0;
+    right: 0;
+    height: 1270;
+  display: flex;
+
+  justify-content: center;
+
+
+}
+.scroll__container {
+
    color: #fff;
    display: flex;
-   justify-content: center;
-   padding: 50px 0;
+     justify-content: center;
+  cursor: pointer;
+  &:hover {
+      color: #ff9a00;
+      .scroll-down:after {
+            background-image: svg-load('scroll.svg', fill=#ff9a00, width=100%, height=100%);
+      }
+  }
 }
 
 .scroll-down {
 
-
-    color: white;
     font-size: 14px;
     font-weight: 700;
     position: relative;
     margin-left: 20px;
     text-decoration: none;
+    display:block;
+    margin-right: 80px;
 
-    &:after {
-        content: "";
-        display: block;
-        width: 25px;
-        height: 25px;
-        position: absolute;
-        margin-top: -25px;
-        margin-left: 80px;
-        background-image: svg-load('scroll.svg', fill=white, width=100%, height=100%);
-    }
-
+ &:after {
+             content: "";
+             display: block;
+             width: 25px;
+             height: 25px;
+             position: absolute;
+             margin-top: -25px;
+             margin-left: 80px;
+             background-image: svg-load('scroll.svg', fill=white, width=100%, height=100%);
+         }
 
   cursor: pointer;
 
 }
 
+
 .scroll-image {
-    position: relative;
-    width: 27px;
-    height: 30px;
-    margin-left: 22px;
+             display: block;
+             width: 25px;
+             height: 25px;
+             position: absolute;
+             margin-top: -25px;
+             margin-left: 80px;
+
     fill: #fff;
 }
 

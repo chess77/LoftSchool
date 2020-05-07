@@ -8,22 +8,33 @@ section.projects
             +image("content/first-preview.png", "first-preview")
             .slider-box
                 ul.site__list
-                    li.site__item
-                        +image("content/first-site.png", "first-site")
-                    li.site__item
-                        +image("content/second-site.png", "second-site")
-                    li.site__item
-                        +image("content/third-site.png", "third-site")
+                   li.site__item
+                        .site__image-box
+                            +image("content/first-site.png", "first-site")
+                            .hover__block
+                   ul.site__list
+                        li.site__item
+                            .site__image-box
+                                +image("content/second-site.png", "second-site")
+                                .hover__block
+                   ul.site__list
+                        li.site__item
+                            .site__image-box
+                                +image("content/third-site.png", "third-site")
+                                .hover__block
+
                 .vectors__container(id="vectorsContainer")
                     button.vectors__btn.vectors__btn--next(id="nextBtn") !{'>'}
                     button.vectors__btn.vectors__btn--back.vectors__btn--not-go(id="backBtn") !{'<'}
 
         .desc
-                    .tools__container
-                        button.tools__item="HTML"
-                        button.tools__item="CSS"
-                        button.tools__item="JavaScript"
+
+                    ul.tools__container
+                        li.tools__item="HTML"
+                        li.tools__item="CSS"
+                        li.tools__item="JavaScript"
                     .desc__name="Сайт школы образования"
                     .desc__site-desc="Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
-                    a(href=`#`, class=`desc__link`)="Посмотреть сайт"
+                    .link__container
+                            a(href=`#`, class=`desc__link`)="Посмотреть сайт"
 

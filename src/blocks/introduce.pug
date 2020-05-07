@@ -10,8 +10,9 @@ section.introduce
         include introduce-els/who-am-i.pug
     section.about(id="about")
         include /profile.pug
-    .scroll__container#scroll__container
+    section.scroll
+        .scroll__container#scroll__container
 
-        a(href=`#`, class=`scroll-down`)="Скролл"
+            a(href=`#`, class=`scroll-down`)="Скролл"
 svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 3000" class="svg-triangle" preserveAspectRatio="none")
     polygon(points="0,0 3000,0 2500,2000")

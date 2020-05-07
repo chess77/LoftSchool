@@ -75,8 +75,10 @@
 .tools__container {
     padding-bottom: 50px;
 
+
     & .tools__item {
         margin-right: 10px;
+        display: inline;
 
         &:last-child {
             margin-right: 0px;
@@ -107,14 +109,22 @@
     font-weight: 600;
     padding-bottom: 50px;
 }
-
+.link__container {
+   color: $href-color;
+   display: flex;
+   justify-content: center;
+   cursor: pointer;
+}
 .desc__link {
+    text-decoration: none;
     color: $href-color;
     font-size: 18px;
     font-weight: 700;
     position: relative;
     margin-left: 40px;
-
+    &:hover {
+    text-decoration: underline;
+    }
     &:before {
         content: "";
         display: block;
