@@ -123,4 +123,44 @@
 .item__icon {
     position: absolute;
 }
+@media screen and (max-width: 768px){
+    .skills__container {
+        display: flex;
+        flex-direction: column;
+    }
+    .skills {
+        display: flex;
 
+    }
+
+    .skills__image-container {
+        flex: 1;
+        position: relative;
+
+
+
+        &:before {
+            display: block;
+            content: "";
+            position: absolute;
+            width: 100%;
+
+            background-image: url(../images/design/guitar_768.png);
+
+            background-size: 100%;
+            background-repeat: no-repeat;
+            top: -60%;
+            right: 30px;
+            z-index: 2;
+        }
+            &:after {
+                background-image: none;
+
+            }
+}
+
+
+
+
+
+}
