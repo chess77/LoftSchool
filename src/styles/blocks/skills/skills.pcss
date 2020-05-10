@@ -1,6 +1,6 @@
 .skills {
     color: #100022;
-    position: relative;
+    //position: relative;
 
     & .skills__h2 {
         font-size: 30px;
@@ -10,7 +10,7 @@
 
     & .skills__desc {
         z-index: 1;
-        width: 599px;
+        width: 100%;
         font-size: 16px;
         font-weight: 600;
         padding-bottom: 100px;
@@ -25,7 +25,8 @@
 .skills__image-container {
     flex: 1;
     position: relative;
-
+    z-index:3;
+/*
     &:after {
         display: block;
         content: "";
@@ -37,6 +38,7 @@
         background-repeat: no-repeat;
         bottom: 5%;
         left: -20%;
+         z-index:6;
     }
 
     &:before {
@@ -50,12 +52,14 @@
         background-repeat: no-repeat;
         top: -60%;
         right: 30px;
-        z-index: 2;
+        z-index:1;
     }
+*/
 }
 
 .skills__content {
     flex: 2;
+    z-index:0;
 }
 
 .skills__level-container {
@@ -73,8 +77,36 @@
         background-image: url(../images/design/rock-sign.png);
         background-position: center;
         background-size: 100% 100%;
-        z-index: 0;
+
     }
+}
+
+.guitar{
+        display: block;
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 1350px;
+        background-image: url(../images/design/guitar.png);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        top: -60%;
+        right: 30px;
+        z-index:1;
+}
+
+.rockskin{
+        content: "";
+        display: block;
+        width: 600px;
+        height: 500px;
+        position: absolute;
+        left: -55%;
+        top: 25%;
+        background-image: url(../images/design/rock-sign.png);
+        background-position: center;
+        background-size: 100% 100%;
+
 }
 
 .skills__name {
@@ -108,10 +140,12 @@
   height: 200px;
   fill: none;
   stroke-dashoffset: 250;
+  stroke-dasharray:383;
   transition: all .8s ease-in-out;
   stroke: blue;
-  stroke-width: 15px;
+  stroke-width: 10px;
 }
+
 .item__name {
     font-size: 15px;
     stroke-width: 1px;
@@ -124,43 +158,74 @@
     position: absolute;
 }
 @media screen and (max-width: 768px){
+    .container{
+    width:100%;
+    }
+    .skills {
+        color: #100022;
+        position: relative;
+
+
+    }
+    .skills__content {
+        flex: none;
+        z-index:0;
+        height:1500px;
+    &:after {
+        display: block;
+        content: "";
+        position: absolute;
+        width:100%;
+        height: 500px;
+        background-image: url(../images/design/guitar_768.png);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        top: 900px;
+
+        z-index:1;
+    }
+
+    }
+
     .skills__container {
         display: flex;
         flex-direction: column;
+        background-color: white;
     }
     .skills {
         display: flex;
+       // height:120vh;
 
     }
 
     .skills__image-container {
-        flex: 1;
-        position: relative;
-
+        display: none;
 
 
         &:before {
-            display: block;
-            content: "";
-            position: absolute;
-            width: 100%;
-
-            background-image: url(../images/design/guitar_768.png);
-
-            background-size: 100%;
-            background-repeat: no-repeat;
-            top: -60%;
-            right: 30px;
-            z-index: 2;
+            display: none;
         }
             &:after {
-                background-image: none;
-
+            display: none;
             }
 }
 
 
-
-
-
+    .skills__h2 {
+        text-align: center
+    }
+    .skills__desc {
+        text-align: center;
+        width: 80%;
+        margin: auto;
+        padding-left: 9%;
+        padding-right: 9%;
+    }
+    .skill__shape {
+      width: 180px;
+      height: 180px;
+      fill: transparent;
+      stroke: #877f90;
+      stroke-width: 8px;
+    }
 }

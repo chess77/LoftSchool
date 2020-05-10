@@ -1,40 +1,45 @@
-- var projects = [{id: 1, prev: "first-preview.png", name: "Сайт школы образования", desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!", link: "#"}, {id: 2, prev: "second-site.png", name: "Ещё один сайт", desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!", link: "#"}, {id: 3, prev: "third-preview.png", name: "Сайт №3", desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!", link: "#"}]
+// - var projects = [{id: 1, prev: "first-preview.png", name: "Сайт школы образования", desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!", link: "#"}, {id: 2, prev: "second-site.png", name: "Ещё один сайт", desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!", link: "#"}, {id: 3, prev: "third-preview.png", name: "Сайт №3", desc: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!", link: "#"}]
+//
+// section.projects
+//     .container
+//         h2.projects__title Мои работы
+//         .projets__contaner
+//             .number=1
+//             +image("content/first-preview.png", "first-preview")
+//             .slider-box
+//                 ul.site__list
+//                    li.site__item
+//                         .site__image-box
+//                             +image("content/first-site.png", "first-site")
+//                             .hover__block
+//                    ul.site__list
+//                         li.site__item
+//                             .site__image-box
+//                                 +image("content/second-site.png", "second-site")
+//                                 .hover__block
+//                    ul.site__list
+//                         li.site__item
+//                             .site__image-box
+//                                 +image("content/third-site.png", "third-site")
+//                                 .hover__block
+//
+//                 .vectors__container(id="vectorsContainer")
+//                     button.vectors__btn.vectors__btn--next(id="nextBtn") !{'>'}
+//                     button.vectors__btn.vectors__btn--back.vectors__btn--not-go(id="backBtn") !{'<'}
+//
+//         .desc
+//
+//                     ul.tools__container
+//                         li.tools__item="HTML"
+//                         li.tools__item="CSS"
+//                         li.tools__item="JavaScript"
+//                     .desc__name="Сайт школы образования"
+//                     .desc__site-desc="Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
+//                     .link__container
+//                             a(href=`#`, class=`desc__link`)="Посмотреть сайт"
 
 section.projects
     .container
         h2.projects__title Мои работы
-        .projets__contaner
-            .number=1
-            +image("content/first-preview.png", "first-preview")
-            .slider-box
-                ul.site__list
-                   li.site__item
-                        .site__image-box
-                            +image("content/first-site.png", "first-site")
-                            .hover__block
-                   ul.site__list
-                        li.site__item
-                            .site__image-box
-                                +image("content/second-site.png", "second-site")
-                                .hover__block
-                   ul.site__list
-                        li.site__item
-                            .site__image-box
-                                +image("content/third-site.png", "third-site")
-                                .hover__block
-
-                .vectors__container(id="vectorsContainer")
-                    button.vectors__btn.vectors__btn--next(id="nextBtn") !{'>'}
-                    button.vectors__btn.vectors__btn--back.vectors__btn--not-go(id="backBtn") !{'<'}
-
-        .desc
-
-                    ul.tools__container
-                        li.tools__item="HTML"
-                        li.tools__item="CSS"
-                        li.tools__item="JavaScript"
-                    .desc__name="Сайт школы образования"
-                    .desc__site-desc="Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
-                    .link__container
-                            a(href=`#`, class=`desc__link`)="Посмотреть сайт"
+        #slider-component
 

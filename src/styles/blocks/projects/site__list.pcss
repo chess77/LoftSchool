@@ -1,39 +1,25 @@
 .slider-box {
     display: flex;
     position: absolute;
-    z-index: 5;
+    z-index: 2;
     justify-content: flex-end;
     width: 685px;
-    margin-top: -160px;
+    margin-top: 210px;
 }
-.first-preview{
-
-    z-index: 4;
-}
-
 
 .site__list {
     display: flex;
 }
 
 .site__item {
-
-  cursor: pointer;
-  &:hover {
-      background-color: rgba(0,141,255, 0.6);
-       border: 5px solid $main-color;
-               & .hover__block {
-                   background-color: rgba($main-color, 0.6);
-               }
-
-  }
-
     &.site__item--active {
         & .site__image {
-            border: 10px solid $main-color;
+            border: 1px solid $main-color;
         }
 
-
+        & .hover__block {
+            background-color: rgba($main-color, 0.6);
+        }
     }
 }
 

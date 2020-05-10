@@ -1,11 +1,14 @@
-.social {
+
+
+.socials {
     display: flex;
-    width: 164px;
-    justify-content: space-around;
+    width: 60%;
+    //justify-content: space-around;
+    justify-content: flex-end;
 }
 
 .socials__item {
-  margin-right: 40px;
+  margin-right: 0.3rem;
 
   &:last-child {
     margin-right: 0;
@@ -17,4 +20,28 @@
   width: 28px;
   height: 31px;
   display: block;
+  fill: #524d5b;
+          &:hover {
+              fill: #ff9a00;
+              //border-bottom: 2px solid #ff9a00;
+              cursor: pointer;
+
+          }
+
+}
+
+ .social__link {
+    width: 28px;
+    height: 25px;
+    position: relative;
+    fill: #524d5b;
+    text-decoration: none;
+    margin-left: 10px;
+    margin-right: 10px;
+        &:hover {
+            fill: #ff9a00;
+            //border-bottom: 2px solid #ff9a00;
+            cursor: pointer;
+
+        }
 }

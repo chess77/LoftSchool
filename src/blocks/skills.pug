@@ -1,40 +1,43 @@
-mixin skill(percent,text)
-    - var radius = 80, val1_string = (2*radius*3.14/100*percent)
-    - var val2_string =(2*radius*3.14/100*(100-percent))
-    - var skill_val_string = val1_string.toString()+" "+val2_string.toString()
-    .skills__level
-        svg(viewBox="0 0 200 200").skill__shape
-            defs
-                linearGradient(id="gradient" x1="0%" y1="0%" x2="0%" y2="100%")
-                    stop(offset="0%"  stop-color="#0d1fbc")
-                    stop(offset="100%" stop-color="#fdf7f9")
-
-
-            circle(r=`${radius}` cx="100" cy="100")
-            text(x="50%" y="50%" text-anchor='middle').item__name #{text}
-            circle(r=`${radius}` cx="100" cy="100" style=`stroke-dasharray: ${skill_val_string};stroke: url(#gradient)`).skill__value
-
+//mixin skill(percent,text)
+//    - var radius = 70, val1_string = (2*radius*3.14/100*percent)
+//    - var val2_string =(2*radius*3.14/100*(100-percent))
+//    - var skill_val_string = val1_string.toString()+" "+val2_string.toString()
+//    .skills__level
+//        svg(viewBox="0 0 200 200").skill__shape
+//            defs
+//                linearGradient(id="gradient" x1="0%" y1="0%" x2="0%" y2="100%")
+//                    stop(offset="0%"  stop-color="#0d1fbc")
+//                    stop(offset="100%" stop-color="#fdf7f9")
+//
+//
+//            circle(r=`${radius}` cx="100" cy="100")
+//            text(x="50%" y="50%" text-anchor='middle').item__name #{text}
+//            circle(r=`${radius}` cx="100" cy="100" style=`stroke-dasharray: ${skill_val_string};stroke: url(#gradient)`).skill__value
+//
 
 
 section.skills
     .container.skills__container
         .skills__image-container
+            .guitar
+            .rockskin
         .skills__content
             .skills__h2 Чем я могу быть полезен вам
             .skills__desc
                 p Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftShool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё класно и красиво!
-            .skills__container_image
-                ul.user-skills
-                    -
-                        var skills = [
-                            ['Front end', ['HTMLS', 'CSS3', 'JavaScript','Jvery и Vue.js'],[20,50,60,100]],
-                            ['Workflow', ['GIT', 'Terminal', 'Gulp','Webpack'],[25,50,60,100]],
-                        ]
-                    each item in skills
-                        li.skills__list
-                            h3.skills__name #{item[0]}
-                            ul.skills__list
-                                each skill,index in item[1]
-                                    li.skills__item:  +skill(item[2][index],skill)
+            .skills__container_image#skills-component
+
+                //ul.user-skills
+                //    -
+                //        var skills = [
+                //            ['Front end', ['HTMLS', 'CSS3', 'JavaScript','Jvery и Vue.js'],[20,50,60,100]],
+                //            ['Workflow', ['GIT', 'Terminal', 'Gulp','Webpack'],[25,50,60,100]],
+                //        ]
+                //    each item in skills
+                //        li.skills__list
+                //            h3.skills__name #{item[0]}
+                //            ul.skills__list
+                //                each skill,index in item[1]
+                //                    li.skills__item:  +skill(item[2][index],skill)
 
 

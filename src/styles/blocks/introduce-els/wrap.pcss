@@ -50,30 +50,19 @@
 
 .social {
     display: flex;
-    width: 164px;
+    width: 25%;
     justify-content: space-around;
+
 }
 
-.social__link1 {
+.social__link {
     text-decoration: none;
     &:hover svg{
         fill: $main-color;
     }
 }
 
-.social__lin1k, .social__link svg{
-    width: 28px;
-    height: 25px;
-    position: relative;
-    fill: #524d5b;
-    text-decoration: none;
-        &:hover {
-            fill: #ff9a00;
-            border-bottom: 2px solid #ff9a00;
-            cursor: pointer;
 
-        }
-}
 
 .social__link.vk, .social__link.vk svg{
     height: 25px;
@@ -81,3 +70,120 @@
 
 
 }
+
+
+/* скрываем чекбокс */
+#menu__toggle {
+  opacity: 0;
+}
+/* стилизуем кнопку */
+.menu__btn {
+    visibility: hidden;
+  display: flex; /* используем flex для центрирования содержимого */
+  align-items: center;  /* центрируем содержимое кнопки */
+  position: fixed;
+  //top: 20px;
+  left: 20px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  z-index: 1;
+  margin-left:90%;
+
+}
+/* добавляем "гамбургер" */
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: #616161;
+}
+.menu__btn > span::before {
+  content: '';
+  top: -8px;
+}
+.menu__btn > span::after {
+  content: '';
+  top: 8px;
+
+}
+
+/* контейнер меню */
+.menu__box {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  visibility: hidden;
+  top: -20px;
+  left: 70%%;
+  width: 40%;
+  height: 200%;
+  margin: 0;
+  margin-left:60%;
+  padding: 80px 0;
+  list-style: none;
+  text-align: center;
+  background-color: #ECEFF1;
+  box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+}
+/* элементы меню */
+.menu__item_burg {
+  display: block;
+  padding: 12px 24px;
+  color: #333;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.menu__item_burg:hover {
+  background-color: #CFD8DC;
+}
+
+.social_burg{
+   //visibility: hidden;
+   margin:auto;
+   bottom: 10px;
+
+
+}
+
+#menu__toggle:checked ~ .menu__btn > span {
+  transform: rotate(45deg);
+}
+#menu__toggle:checked ~ .menu__btn > span::before {
+  top: 0;
+  transform: rotate(0);
+}
+#menu__toggle:checked ~ .menu__btn > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+#menu__toggle:checked ~ .menu__box {
+  visibility: visible;
+  left: 0;
+}
+#menu__toggle:checked ~ .social_burg {
+  visibility: visible;
+  left: 0;
+}
+
+
+@media screen and (max-width: 768px){
+    .menu__btn {
+        visibility: visible;
+
+
+    }
+    .menu {
+
+        visibility: hidden;
+
+    }
+
+
+}
+

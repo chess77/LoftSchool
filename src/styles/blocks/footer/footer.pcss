@@ -9,14 +9,16 @@
 }
 
 .author-info {
+    display: flex;
     width: 55%;
     color: #271a38;
     padding-right: 10px;
     box-sizing: content-box;
+    flex-direction:row;
 }
 
 .connection-box {
-    width: 100%;
+    width: 65%;
 }
 
 .author-info__year {
@@ -60,9 +62,11 @@
 .connection-box__add-info {
     color: #574d64;
     display: flex;
+    flex-direction: row;
     font-size: 18px;
     line-height: 30px;
     font-weight: 400;
+    padding-left: 20px;
 }
 
 .add-info__social-links {
@@ -75,6 +79,12 @@
 
 .connection-box__menu {
     position: relative;
+    display: flex;
+    flex-wrap:wrap;
+    .menu{
+    visibility: visible;
+
+    }
 }
 
 .connection-box__menu .menu{
@@ -110,4 +120,78 @@
 
 
     border-radius: 50%;
+}
+
+.socials__box{
+    display: block;
+    margin-left: 40px;
+
+
+}
+@media screen and (max-width: 768px){
+    .author-info {
+        display:flex;
+        flex-direction:column;
+
+        width: 35%;
+        color: #271a38;
+        padding-right: 10px;
+        box-sizing: content-box;
+    }
+    .connection-box__add-info {
+
+        flex-direction: column;
+
+    }
+
+    .connection-box__menu .menu{
+        margin: 0px 0px 10px 0px;
+        display: flex;
+        max-width: 100%;
+        flex-wrap:wrap;
+                & .menu__list {
+                    /* text-align: left; */
+                    /* border: none; */
+                    display: flex;
+                    flex-wrap:wrap;
+                    justify-content: flex-start;
+                }
+
+        & .menu__item {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom:10px;
+            /* text-align: left; */
+            /* border: none; */
+        }
+
+        & .menu__link:hover {
+            /* padding-bottom: 45px; */
+            /* border-bottom: 2px solid #ff9a00; */
+        }
+    }
+    .connection-box {
+        width: 65%;
+        max-height:40%;
+    }
+    .add-info__social-links .socials__item{
+        //border: 1px solid #564b63;
+        padding: 10px;
+        margin-left: 0.3rem;
+
+
+
+        width:60px;
+        height:40px;
+}
+
+    .socials__box{
+        display: block;
+        width: 60px;
+        height: 60px;
+        border: 1px solid #564b63;
+        border-radius: 50%;
+
+    }
+
 }
