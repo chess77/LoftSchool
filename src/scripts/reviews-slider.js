@@ -11,6 +11,8 @@ new Vue({
 
     data() {
         return {
+            statusSlider_back:  false,
+            statusSlider_next: false,
             flickityOptions: {
 
                 initialIndex: 0,
@@ -55,20 +57,18 @@ new Vue({
             console.log(this.$refs.flickity.selectedIndex());
             console.log(this.$refs.flickity.selectedIndex());
             if (this.$refs.flickity.selectedIndex() == 0){
-                //document.getElementById("backBtn").disabled="disabled";
-                console.log(111);
-                //document.getElementById("backBtn").classList.remove('review-slider__btn');
-                //.getElementById("backBtn").classList.add('review-slider__btn__notactive');
-                document.getElementById("backBtn").disabled;
-                this.$el.querySelector('.review-slider__btn--next').disabled;
-                //this.$el.querySelector('.review-slider__btn--back').style.display="none";
-
-                //this.$el.querySelector('.review-slider__btn--back').style.cursor= "not-allowed";
-            } else if(this.$refs.flickity.selectedIndex()>=this.$refs.flickity.slides()){
-                this.$el.querySelector('.review-slider__btn--next').style.display="none";
+                this.statusSlider_back=true;
+                this.statusSlider_next=false;
+                document.getElementById("backBtn").disabled=true;
+            } else if(this.$refs.flickity.selectedIndex()==this.$refs.flickity.slides().length-1){
+                document.getElementById("nextBtn").disabled=true;
+                this.statusSlider_next=true;
+                this.statusSlider_back=false;
             } else{
-                this.$el.querySelector('.review-slider__btn--back').style.display="inline-block";
-                this.$el.querySelector('.review-slider__btn--next').style.display="inline-block";
+                this.statusSlider_back=false;
+                this.statusSlider_next=false;
+                document.getElementById("backBtn").disabled=false;
+                document.getElementById("nextBtn").disabled=false;
             }
         },
     }

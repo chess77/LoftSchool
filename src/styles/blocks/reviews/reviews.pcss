@@ -108,7 +108,7 @@
     width: 36px;
     height: 36px;
     background-color: transparent;
-
+    outline: none !important;
     &:hover {
         border-color: $main-color;
         color: $main-color;
@@ -135,12 +135,25 @@
     }
 
     &.disabled{
+        border-color: #5d5569;
+        color: #5d5569;
+        overflow: hidden;
+        & .btn__icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            fill: #5d5569;
+            width: 12px;
+            height: 12px;
+
+        }
         &:hover {
-            border-color: #ccc;
-            color: #ccc;
+            border-color: #5d5569;
+            color: #5d5569;
 
             &:hover .btn__icon {
-                fill: #ccc;
+                fill: #5d5569;
             }
         }
 
@@ -149,9 +162,8 @@
 
 
 
-.review-slider__btn--not-go {
-    fill: $text-color;
-}
+
+
 
 .author__box {
     display: flex;
