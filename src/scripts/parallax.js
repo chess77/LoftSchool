@@ -24,7 +24,6 @@ var parallax=(function () {
 }());
 
  window.onscroll=function () {
-    console.log(222222);
      var wScroll=window.pageYOffset;
      parallax.init(wScroll);
 }

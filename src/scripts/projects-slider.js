@@ -8,6 +8,7 @@ window.onload = function() {
     firstPreviewItem.classList.add("preview__item--active");
 
     let vectorsContainer = document.getElementById("vectorsContainer");
+
     vectorsContainer.addEventListener("click", goGoNextOrPrevPage);
 
 
@@ -40,7 +41,7 @@ window.onload = function() {
     
         let newActiveItemInSlider = document.getElementsByClassName("site__item site__item--active")[0];
         let newIndex = getIdFromArrayByClassName(listAsArray, newActiveItemInSlider);
-    
+
         if(newIndex === (listAsArray.length-1)) {
             event.target.classList.add("vectors__btn--not-go");
         } else if(newIndex === 0) {
@@ -57,4 +58,7 @@ window.onload = function() {
         });
         return res;
     }
+
+
+
 }

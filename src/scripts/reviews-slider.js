@@ -11,8 +11,8 @@ new Vue({
 
     data() {
         return {
-            statusSlider_back:  false,
-            statusSlider_next: false,
+            statusSliderback:  false,
+            statusSlidernext: false,
             flickityOptions: {
 
                 initialIndex: 0,
@@ -42,8 +42,6 @@ new Vue({
 
         previous() {
             this.$refs.flickity.previous();
-            //console.log(this.$ref.flickity.selectedIndex);
-
             this.checkArrows();
         },
         makeArrWithRequireImages(array) {
@@ -54,22 +52,24 @@ new Vue({
             });
         },
         checkArrows(){
-            console.log(this.$refs.flickity.selectedIndex());
-            console.log(this.$refs.flickity.selectedIndex());
             if (this.$refs.flickity.selectedIndex() == 0){
-                this.statusSlider_back=true;
-                this.statusSlider_next=false;
+                this.statusSliderback=true;
+                this.statusSlidernext=false;
                 document.getElementById("backBtn").disabled=true;
-            } else if(this.$refs.flickity.selectedIndex()==this.$refs.flickity.slides().length-1){
-                document.getElementById("nextBtn").disabled=true;
-                this.statusSlider_next=true;
-                this.statusSlider_back=false;
-            } else{
-                this.statusSlider_back=false;
-                this.statusSlider_next=false;
-                document.getElementById("backBtn").disabled=false;
-                document.getElementById("nextBtn").disabled=false;
-            }
+            } else
+                if(this.$refs.flickity.selectedIndex()
+                    ==this.$refs.flickity.slides().length-1)
+                {
+                    document.getElementById("nextBtn").disabled=true;
+                    this.statusSlidernext=true;
+                    this.statusSliderback=false;
+                } else
+                    {
+                    this.statusSliderback=false;
+                    this.statusSlidernext=false;
+                    document.getElementById("backBtn").disabled=false;
+                    document.getElementById("nextBtn").disabled=false;
+                     }
         },
     }
 });
