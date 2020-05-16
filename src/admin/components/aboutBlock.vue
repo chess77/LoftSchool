@@ -19,46 +19,7 @@
                 .percent__conteiner
                    input.skill__new-rate(placeholder="100")
                 button.add__skill.btn__add--plus +
-          li.group__item
-            .form__group
-              .group__name
-                form.form__group-name
-                  input.group__new-name(placeholder="Название новой группы" value="Workflow")
-                  .control__btns
-                    input.btn__control.set__new-name(type="submit" value="")
-                    input.btn__control.delete__new-name(type="reset" value="")
-              .group__skill
-                ul.skill__list
-                  li.skill__item
-                    .skill__name Git
-                    .skill__percent 100 %
-                    .skill__control
-                      .skill__redactor
-                      .skill__remove
-                  li.skill__item
-                    .skill__name Terminal
-                    .skill__percent 90 %
-                    .skill__control
-                      .skill__redactor
-                      .skill__remove
-                  li.skill__item
-                    .skill__name Gulp
-                    .skill__percent 80 %
-                    .skill__control
-                      .skill__redactor
-                      .skill__remove
-                  li.skill__item
-                    .skill__name Webpack
-                    .skill__percent 85 %
-                    .skill__control
-                      .skill__redactor
-                      .skill__remove
-              .group__skill
-                form.form__group-skill
-                  input.skill__new-name(placeholder="Новый навык")
-                  .percent__conteiner
-                    input.skill__new-rate(placeholder="100")
-                  button.add__skill.btn__add--plus +
+
           li.group__item
             .form__group
               .group__name
@@ -70,26 +31,20 @@
               .group__skill
                 ul.skill__list
                   li.skill__item
-                    .skill__name Html5
-                    .skill__percent 100 %
+                    .skill__name Html
+                    .skill__percent 30 %
                     .skill__control
                       .skill__redactor
                       .skill__remove
                   li.skill__item
-                    .skill__name CSS3
-                    .skill__percent 90 %
+                    .skill__name CSS
+                    .skill__percent 50 %
                     .skill__control
                       .skill__redactor
                       .skill__remove
                   li.skill__item
                     .skill__name JavaScript
-                    .skill__percent 80 %
-                    .skill__control
-                      .skill__redactor
-                      .skill__remove
-                  li.skill__item
-                    .skill__name Jquery и Vue.js
-                    .skill__percent 85 %
+                    .skill__percent 100 %
                     .skill__control
                       .skill__redactor
                       .skill__remove
@@ -97,7 +52,7 @@
                 form.form__group-skill
                   input.skill__new-name(placeholder="Новый навык")
                   .percent__conteiner
-                    input.skill__new-rate(placeholder="100")
+                    input.skill__new-rate(placeholder="0")
                   button.add__skill.btn__add--plus +
 </template>
 

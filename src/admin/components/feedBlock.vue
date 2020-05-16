@@ -13,13 +13,13 @@
               .author__info
                 .author__name
                   h6.input-title Имя автора
-                  input.input__item(value="Ковальчук Дмитрий")
+                  input.input__item(value="")
                 .author__position
                   h6.input-title Титул автора
-                  input.input__item(value="Основатель LoftSchool")
+                  input.input__item(value="")
             .form__row
               h6.input-title Описание
-              textarea.input__item.input__work--desc Порше Центр Пулково - является официальным дилером марки Порше в Санкт-Петербурге и предоставляет полный цикл услуг по продаже и сервисному обслуживанию автомобилей
+              textarea.input__item.input__work--desc
             .form__row.control-btns.control-btns--for-feeds
               button.control-btn.new__reset(type="reset") Отмена
               button.control-btn.new__save(type="submit") СОХРАНИТЬ
@@ -33,45 +33,13 @@
             .feed__avatar-container
               img.feed__avatar-image(src="../images/content/author-1.png")
             .author__name-position
-              .info__name Владимир Сабанцев
-              .info__author-desc Предприниматель
+              .info__name Имя Фамилия
+              .info__author-desc Программист
           .info__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
           .work__control-btns
             button.work__control-btn.work__edit Править
             button.work__control-btn.work__delete Удалить
-        li.group__item
-          .feed__author-info
-            .feed__avatar-container
-              img.feed__avatar-image(src="../images/content/author-1.png")
-            .author__name-position
-              .info__name Владимир Сабанцев
-              .info__author-desc Предприниматель
-          .info__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-          .work__control-btns
-            button.work__control-btn.work__edit Править
-            button.work__control-btn.work__delete Удалить
-        li.group__item
-          .feed__author-info
-            .feed__avatar-container
-              img.feed__avatar-image(src="../images/content/author-1.png")
-            .author__name-position
-              .info__name Владимир Сабанцев
-              .info__author-desc Предприниматель
-          .info__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-          .work__control-btns
-            button.work__control-btn.work__edit Править
-            button.work__control-btn.work__delete Удалить
-        li.group__item
-          .feed__author-info
-            .feed__avatar-container
-              img.feed__avatar-image(src="../images/content/author-1.png")
-            .author__name-position
-              .info__name Владимир Сабанцев
-              .info__author-desc Предприниматель
-          .info__desc Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-          .work__control-btns
-            button.work__control-btn.work__edit Править
-            button.work__control-btn.work__delete Удалить
+
 </template>
 <script>
     export default {

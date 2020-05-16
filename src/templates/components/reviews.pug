@@ -1,25 +1,19 @@
-script(type="text/x-template")#reviews-container
+script(type="text/x-template")#reviews-check-template
 
-        .sliders-btn__box
-            button.review-slider__btn.review-slider__btn--back.review-slider__btn--not-go(id="backBtn" @click="previous")
-                +icon('arrow-down', 'btn__icon')
-            button.review-slider__btn.review-slider__btn--next(id="nextBtn" @click="next")
-                +icon('arrow-down', 'btn__icon')
-        flickity(ref="flickity" :options="flickityOptions").reviews__box
+    h2.reviews__title Связаться со мной
 
 
-
-                    ul.reviews__list(v-for="item in reviews" :key="item.name")
-
-
-                            li.reviews__item.carousel-cell
-                                .reviews__desc
-                                    p {{item.text}}
-                                .author__box
-                                    .author__photo
-                                        +image(`content/user.jpg`, "author__image")
-                                    .author__info
-                                        .author__name
-                                            p ${{item.name}}
-                                        .author__position
-                                            p ${{item.position}}
+        form.review__form(id="review_form" action="" )
+            .form__row
+                .form__element-box
+                    p Введите ваше имя
+                    input.form__input.form__name(type="text", placeholder="Ваше имя" v-model="name" )
+                .form__element-box
+                    p Введите ваш email
+                    input.form__input.form__email(type="text", placeholder="Ваша почта" v-model="email")
+            .form__row
+                .form__element-box
+                    p Сообщение к письму
+                    input.form__input.form__message(type="text", placeholder="Ваш отзыв" v-model="content")
+            .form__row
+                button.form__submit-btn(@click="checkForm") Отправить

@@ -10,7 +10,12 @@ new Vue({
     },
 
     data() {
+
         return {
+            errors: [],
+            _name: null,
+            _email: null,
+            _content: null,
             statusSliderback:  false,
             statusSlidernext: false,
             flickityOptions: {

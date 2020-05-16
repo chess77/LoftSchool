@@ -5,7 +5,7 @@
         .user-info    
           .user-info__avatar
             img(src="../../images/content/user.jpg").user-info__avatar-image
-          .user-info__name Маргарита Андрюхина
+          .user-info__name Владимир Астаханов
         .place Панель администрирования
       a.btn-exit Выйти
 </template>

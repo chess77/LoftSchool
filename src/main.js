@@ -8,3 +8,4 @@ import "./scripts/parallax.js";
 import "./scripts/works.js";
 import "./scripts/projects-slider.js";
 import "./scripts/reviews-slider.js";
+import "./scripts/check-form.js";
