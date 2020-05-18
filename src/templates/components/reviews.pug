@@ -3,17 +3,21 @@ script(type="text/x-template")#reviews-check-template
     h2.reviews__title Связаться со мной
 
 
-        form.review__form(id="review_form" action="" )
+        form.review__form(id="review_form" action="" @submit.prevent="checkForm()")
             .form__row
                 .form__element-box
                     p Введите ваше имя
-                    input.form__input.form__name(type="text", placeholder="Ваше имя" v-model="name" )
+                    input.form__input.form__name(type="text", placeholder="Ваше имя" v-model="name" @blur="$v.name.$touch()" :class="{error__box__input: $v.name.$error}" )
+                    span.error__box(v-if="$v.name.$error") Имя обязательно для заполнения
+
                 .form__element-box
                     p Введите ваш email
-                    input.form__input.form__email(type="text", placeholder="Ваша почта" v-model="email")
+                    input.form__input.form__email(type="text", placeholder="Ваша почта" v-model="email" @blur="$v.email.$touch()"  :class="{error__box__input: $v.email.$error}" )
+                    span.error__box(v-if="$v.email.$error") Email обязательно для заполнения
             .form__row
                 .form__element-box
                     p Сообщение к письму
-                    input.form__input.form__message(type="text", placeholder="Ваш отзыв" v-model="content")
+                    input.form__input.form__message(type="text", placeholder="Ваш отзыв" v-model="content" @blur="$v.content.$touch()" :class="{error__box__input: $v.content.$error}" )
+                    span.error__box(v-if="$v.content.$error") Сообщение обязательно для заполнения
             .form__row
-                button.form__submit-btn(@click="checkForm") Отправить
+                button.form__submit-btn(type="submit" :disabled="$v.$invalid") Отправить
