@@ -20,9 +20,11 @@
               textarea.input__item.input__work--desc
             .form__row
               h6.input-title.work__tags Добавление тэга
-              input.input__item.input__work--tags()
+              input.input__item.input__work--tags(value="Jquery, Vue.js, HTML5")
             .form__row
-
+                button.btn__tag HTML
+                button.btn__tag CSS
+                button.btn__tag Javascript
             .form__row.control-btns
               button.control-btn.new__reset(type="reset") Отмена
               button.control-btn.new__save(type="submit") СОХРАНИТЬ

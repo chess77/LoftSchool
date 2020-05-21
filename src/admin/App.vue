@@ -6,6 +6,7 @@
       aboutBlock
       workBlock
       feedBlock
+      loginBlock
 </template>
 
 <script>
@@ -14,20 +15,20 @@
   import aboutBlock from "./components/aboutBlock";
   import workBlock from "./components/workBlock";
   import feedBlock from "./components/feedBlock";
-
+  import loginBlock from "./components/loginBlock";
   export default {
     components: {
       adminHeader,
       mainMenu,
       aboutBlock,
       workBlock,
-      feedBlock
+      feedBlock,
+      loginBlock
     }
   }
 </script>
 
 <style lang="postcss">
-//------------------feeds-author----------------------
 
   .feed__author-info {
     display: flex;
@@ -82,8 +83,10 @@
 
   .control-btns--for-feeds {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+
   }
+
 
   .author__info {
     display: flex;
@@ -264,6 +267,7 @@
       color: #ffffff;
       background-color: transparent;
       margin-bottom: 30px;
+      cursor: pointer;
     }
     
     & .items__add-btn--text {
@@ -305,6 +309,17 @@
     font-weight: 700;
   }
 
+  .new__save__login {
+      background: linear-gradient(70deg, #008bff 0%, #0066ef 45%);
+      color: white;
+      border-radius: 33px 0 33px 0;
+      outline: none;
+      cursor: pointer;
+      padding: 24px 80px;
+      font-weight: 700;
+      margin-left: 12.5%;
+      margin-top: 10px;
+  }
   .btn__tag {
     background-color: #f4f4f4;
     position: relative;
@@ -413,6 +428,7 @@
     color: #ffffff;
     font-weight: 700;
     border-radius: 30px 30px;
+    cursor: pointer;
   }
 
   .form__works {
@@ -463,6 +479,10 @@
     background-image: url('./images/design/introduce.png');
     background-color: rgb(247, 249, 254);
     opacity: 0.1;
+    z-index: -1;
+  }
+  .form__input__block{
+      width:500px;
   }
 
   .maincontent {
@@ -733,5 +753,92 @@
     cursor: pointer;
     background: linear-gradient(90deg, #1e51dd 10%, #3f35cb 50%);
   }
+  .form__container{
+      margin: auto;
+  }
+  .form__login {
+      background-color: white;
+      box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.1);
+      padding: 20px 20px 34px 20px;
+      margin-top: 30px;
+      align-content: center;
+  }
 
+  .form__element-box {
+      width: 60%;
+
+      & input[type=text] {
+            font-size: 18px;
+            padding: 20px 45px 20px 60px;
+            color: #5a5266;
+            font-weight: 700;
+            outline: none;
+            border-bottom: 2px solid #b9b9b9;
+            background-repeat: no-repeat;
+            background-position: 0px 10px;
+            background-size: 40px 40px;
+
+      &:focus {
+           border-color: $main-color;
+           color: $main-color;
+       }
+      }
+
+      & .form__input {
+            background: none;
+            border: none;
+           // width: 100%;
+        }
+
+      & p {
+            color: #b9b9b9;
+            font-size: 16px;
+            font-weight: 600;
+            padding-left: 60px;
+        }
+  }
+
+
+
+  .form__input.form__name {
+
+      background-image: svg-load('user.svg', fill=#b9b9b9, width=100%, height=100%);
+
+      &:focus {
+           background-image: svg-load('user-focus.svg', fill=$main-color, width=100%, height=100%);
+       }
+  }
+  .form__input.form__password {
+
+      background-image: svg-load('key.svg', fill=#b9b9b9, width=100%, height=100%);
+
+      &:focus {
+           background-image: svg-load('pencil-focus.svg', fill=$main-color, width=100%, height=100%);
+       }
+  }
+
+  .form__title_login {
+      font-size: 20px;
+      color: #414c63;
+      font-weight: 700;
+      padding-bottom: 25px;
+      text-align: center;
+
+  }
+
+  .cancel_login {
+      background-image: url(./images/design/cancel.png);
+
+      float: right;
+
+  }
+  .form__column.login{
+      margin: auto;
+  }
+  .form__row.login{
+      margin: auto;
+  }
+  .form__row.login_exit{
+      float: right;
+  }
 </style>

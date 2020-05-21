@@ -34,10 +34,10 @@
     font-size: 16px;
     padding: 0px 30px;
     font-weight: 400;
-
-    &:hover {
-      color: #008bff;
-      border-bottom: 3px solid #008bff;
-    }
+    border-bottom: 3px solid transparent;
+        &:hover {
+          color: #008bff;
+          border-bottom: 3px solid #008bff;
+        }
   }
 </style>
