@@ -1,40 +1,147 @@
-const todos = {
-    state: {
-        todos: [],
-        filter: "all",
+import axios from 'axios'
+import {baseURL, token} from "./constants";
+import regeneratorRuntime from "regenerator-runtime";
+//const baseUrl="https://webdev-api.loftschool.com";
+//axios.defaults.headers['Authorization'] = `Bearer ${token}`;
+//axios.defaults.headers['Authorization'] = `Bearer ${token}`;
+import $axios from "../../requests";
+
+export default {
+    namespaced: true,
+    state:{
+        categories:[],
+        error:'',
     },
+
     mutations: {
-        addTodo(state, todo) {
-            state.todos.push(todo);
+
+        loadCategories(state,payload){
+            state.categories=payload
         },
-        removeTodo(state, todoId) {
-            state.todos = state.todos.filter(item => item.id !== todoId);
+        addSkill(state, newSkill) {
+            state.categories = state.categories.map(category => {
+                if (category.id === newSkill.category) {
+                    category.skills.push(newSkill);
+                }
+                return category;
+            });
         },
-        checkTodo(state, todo) {
-            state.todos = state.todos.map(item => (item.id === todo.id ? todo : item));
+
+        ADD_CATEGORY (state, category) {
+            state.categories.push(category);
+            state.error='yyyyyyy'
         },
-        filterTodos(state, filter) {
-            state.filter = filter;
+        REMOVE_CATEGORY(state, category){
+            state.categories = state.categories.filter(item => item.id !== category);
+            //state.categories = state.categories.map(findCategory);
         },
-        testMutation(state, payload) {
-            console.log('testMutation', payload);
-        }
+
+        REMOVE_SKILL(state, deletedSkill) {
+                const removeSkillInCategory = category => {
+                    category.skills = category.skills.filter(
+                        skill => skill.id !== deletedSkill.id
+                    );
+                };
+
+                const findCategory = category => {
+                    if (category.id === deletedSkill.category) {
+                        removeSkillInCategory(category);
+                    }
+
+                    return category;
+                };
+
+                state.categories = state.categories.map(findCategory);
+            },
+
+            EDIT_SKILL(state, editedSkill)  {
+                const editSkillInCategory = category => {
+                    category.skills = category.skills.map(skill => {
+                        return skill.id === editedSkill.id ? editedSkill : skill;
+                    });
+                };
+                const findCategory = category => {
+                    if (category.id === editedSkill.category) {
+                        editSkillInCategory(category);
+                    }
+                    return category;
+                };
+                state.categories = state.categories.map(findCategory);
+            }
     },
-    getters: {
-        todoById: (state) => (id) => {
-            return state.todos.filter(item => item.id === id)
-        }
-    },
+
+
+
     actions: {
-        fetchItems(store) {
-            store.commit('testMutation', 42);
-            store.dispatch('anotherAction', 66);
-            console.log(store);
+         async getCategories ({commit}) {
+             try {
+                 this.dispatch('checkUser')
+                 await $axios
+                     .get('/categories/322')
+                     .then(response => {
+                         commit('loadCategories', response.data)
+                     });
+             } catch (e) {
+                 commit('setError',error,{root: true})
+             }
         },
-        anotherAction(store) {
-            console.log('another action');
+        createCategory ({commit},params) {
+            this.dispatch('checkUser')
+            $axios
+                .post('/categories',{"title":params.title})
+                .then(response => {
+                    commit('ADD_CATEGORY',response.data)
+                });
+        },
+        async addSkill({ commit }, skill) {
+            this.dispatch('checkUser')
+            try {
+                //console.log(skill);
+                await $axios.post("/skills", skill)
+                    .then(response => {
+                        console.log(33333);
+                        commit('addSkill',response.data)
+                    });
+            } catch(e){
+                commit('setError',e)
+            }
+        },
+        async removeCategory({ commit }, category) {
+            this.dispatch('checkUser')
+            try {
+                await $axios.delete(`/categories/${category}`)
+                    .then(response => {
+                        commit('REMOVE_CATEGORY',category)
+                    });
+            } catch (error) {
+                commit('setError',error,{root: true})
+            }
+        },
+
+        async removeSkill({ commit }, skill) {
+            this.dispatch('checkUser')
+            try {
+                await $axios.delete(`/skills/${skill.id}`)
+                    .then(response => {
+                        commit('REMOVE_SKILL',skill)
+                    });
+            } catch (error) {
+                commit('setError',error,{root: true})
+            }
+        },
+
+        async editSkill({ commit }, editedSkill) {
+            this.dispatch('checkUser')
+            try {
+                await this.$axios.post(`/skills/${editedSkill.id}`, editedSkill)
+                    .then(response => {
+                        commit("EDIT_SKILL", response.data);
+
+                    })
+            } catch (error) {
+                commit('setError',error,{root: true})
+            }
         }
     }
-};
 
-export default todos;
+}

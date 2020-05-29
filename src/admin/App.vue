@@ -1,12 +1,25 @@
 <template lang="pug">
+
   .maincontent__sibling
+    .dialog(v-if="error_state"   style=" display:flex; flex-direction: column; background-color: red;  color: white; position: fixed; left: 25%; top: calc(0.25rem); z-index: 2000; width: 30%; padding: 0px calc(1rem);  text-align: center;"
+    )
+        .close_dialog(v-on:click="closeError" style="text-align: right;")  X
+        .text_dialog {{this.error_state}}
+
+
     adminHeader
     mainMenu
+
     .admin__body
-      aboutBlock
-      workBlock
-      feedBlock
-      loginBlock
+
+        router-view
+
+
+
+
+
+
+
 </template>
 
 <script>
@@ -16,19 +29,64 @@
   import workBlock from "./components/workBlock";
   import feedBlock from "./components/feedBlock";
   import loginBlock from "./components/loginBlock";
+  import Vuelidate from "vuelidate";
+  //import VModal from "vue-js-modal";
+  //import VModal from "vue-js-modal";
+
+
+// import Vue from "vue";
+ // import Router from "vue-router";
+ // import Router from "./router/index";
+  import Vue from 'vue';
+  import Snackbar from 'vuejs-snackbar';
+  import PictureInput from 'vue-picture-input'
+
+  // Global register
+  Vue.component('snackbar', Snackbar);
+
+  const eventBus = new Vue();
+
   export default {
-    components: {
-      adminHeader,
-      mainMenu,
-      aboutBlock,
-      workBlock,
-      feedBlock,
-      loginBlock
+      namespaced: true,
+      data: function () {
+          return {
+              position: 'top-center',
+              colors:{open: '#333',info: '#3DBD7D',error: '#FA7377',warn: '#FF6600'}
+          }
+          },
+    computed:{
+      error_state(){
+          //this.$router.push('login')
+
+          return this.$store.getters.errorGet;
+      }
+
+    },
+      components: {
+        loginBlock,
+        adminHeader,
+        mainMenu,
+
+    },
+      mounted() {
+         // if (this.error_state()) {
+              this.$router.push('login')
+        //  }
+      },
+      methods:{
+            closeError(){
+                this.$store.dispatch('closeError', null, {root:true})
+
+        },
     }
   }
 </script>
 
 <style lang="postcss">
+    .error_dialog{
+        color: black;
+
+    }
 
   .feed__author-info {
     display: flex;
@@ -79,6 +137,14 @@
       padding: 30px 20px 34px 20px;
       position: relative;
     }
+
+  & .group__item__edit {
+        min-width: 300px;
+        max-width: 340px;
+        width: 30%;
+        min-height: 316px;
+        position: relative;
+    }
   }
 
   .control-btns--for-feeds {
@@ -108,11 +174,19 @@
     font-weight: 600;
     border: none;
     cursor: pointer;
+    height: 100%;
+    opacity: 0;
+
     
     &:hover {
       text-decoration-skip: 5px;
       text-decoration-line: underline;
     }
+  }
+  .img_footer{
+      color: blue;
+      opacity: 1;
+      text-align: center;
   }
 
   .avatar__container {
@@ -121,14 +195,20 @@
     height: 200px;
     border-radius: 50%;
     background-image: url(./images/content/empty-avatar.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
     margin-bottom: 30px;
   }
 
   .avatar__image {
     width: 100%;
     height: 100%;
-    display: none;
-    object-fit: cover;
+      border-radius: 50%;
+    //display: none;
+      background-size: contain;
+    background-repeat: no-repeat;
+      background-position: center;
   }
 
   //---------------work----------------
@@ -443,6 +523,7 @@
     box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.1);
     padding: 20px 20px 34px 20px;
     margin-bottom: 30px;
+    margin-left: 20px;
     /* width: 100%; */
 
   }
@@ -607,7 +688,13 @@
     line-height: 34px;
     color: #414c63;
   }
+.input_error{
+    border: 2px solid red;
+    outline: red;
 
+
+
+}
   .control__btns {
     display: inline-flex;
   }
@@ -841,4 +928,18 @@
   .form__row.login_exit{
       float: right;
   }
+  .filled{
+      background: no-repeat;
+        &:before {
+            display: none;
+         }
+  }
+  .color__span{
+      color: red;
+  }
+  .group__skill_error{
+      display: flex;
+      padding-left: 175px;
+  }
+
 </style>

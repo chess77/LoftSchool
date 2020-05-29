@@ -7,12 +7,19 @@
             img(src="../../images/content/user.jpg").user-info__avatar-image
           .user-info__name Владимир Астаханов
         .place Панель администрирования
-      a.btn-exit Выйти
+      a.btn-exit(@click="logoutSystem") Выйти
 </template>
 
 <script>
   export default {
-    
+    methods:{
+        logoutSystem(){
+            this.$store.dispatch('logout')
+           // this.$store.login.logout()
+            this.$router.push('/login')
+        }
+
+    }
   }
 </script>
 

@@ -1,12 +1,38 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+Vue.use(VueAxios, axios);
 Vue.use(Vuex);
+import Vuelidate from 'vuelidate';
+Vue.use(Vuelidate);
 
-import todos from './modules/todos'
 
-export const store = new Vuex.Store({
+import login from '../store/modules/login.js';
+import skills from '../store/modules/skills.js';
+import reviews from '../store/modules/reviews';
+import works from '../store/modules/works';
+
+
+
+const baseUrl="https://webdev-api.loftschool.com/";
+
+
+
+
+export default new Vuex.Store({
+//export const store = new Vuex.Store({
     modules: {
-        todos
+        namespaced: true,
+        login,
+        skills,
+        reviews,
+        works
+
+    },
+
+    mutations:{
+
     }
+
 });

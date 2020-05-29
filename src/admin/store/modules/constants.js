@@ -1,0 +1,2 @@
+export  const baseURL= "https://webdev-api.loftschool.com"
+export var token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMyMiwiaXNzIjoiaHR0cDovL3dlYmRldi1hcGkubG9mdHNjaG9vbC5jb20vbG9naW4iLCJpYXQiOjE1OTAxNTAzOTcsImV4cCI6MTU5MDE2ODM5NywibmJmIjoxNTkwMTUwMzk3LCJqdGkiOiJXM0lRa0d6N1h2NFFXSWswIn0.0KCpL6QiqYyHOBN_l7CYz4sebnesAy9Rwkdr9iDd2us"

@@ -1,64 +1,118 @@
 <template lang="pug">
   .container
+
+
     .block-intro__title
       h2.admin__title Блок &laquo;Обо мне&raquo;
-      button.add__group.btn__add--plus Добавить группу
+      button.add__group.btn__add--plus(@click="addCategory=true") Добавить группу
     .group.group__skills-list
       ul.group__list
-        li.group__item
+        li.group__item(v-if="addCategory")
           .form__group
             .group__name
-              form.form__group-name
-                input.group__new-name(placeholder="Название новой группы")
-                .control__btns
-                  input.btn__control.set__new-name(type="submit" value="")
-                  input.btn__control.delete__new-name(type="reset" value="")
+              form.form__group-name(@submit.prevent="createCategory")
+                .input__new__category_block
+                    input.group__new-name(
+                            placeholder="Название новой группы"
+
+                            name="myTitle"
+                            type="text"
+                            v-model="category.title"
+                            :class="{input_error: $v.category.title.$error}"
+                            @blur="$v.category.title.$touch()"
+                            )
+
+                    .control__btns
+                      input.btn__control.set__new-name(type="submit" value="")
+                      input.btn__control.delete__new-name(type="reset" value="")
+
+                    .color__span(v-if="$v.category.title.$error")  Заполните категорию
+
             .group__skill
-              form.form__group-skill
-                input.skill__new-name(placeholder="Новый навык")
+              form.form__group-skill(
+                  :class={blocked: loading})
+                input.skill__new-name(
+                    placeholder="Новый навык")
                 .percent__conteiner
                    input.skill__new-rate(placeholder="100")
-                button.add__skill.btn__add--plus +
+                button.add__skill.btn__add--plus jj
 
-          li.group__item
+          li.group__item(
+            v-for="category in categories" :key="category.id"
+            v-if="categories.length"
+            )
             .form__group
               .group__name
-                form.form__group-name
-                  input.group__new-name(placeholder="Название новой группы" value="Frontend")
+                form.form__group-name(id="group" @submit.prevent="createSkill")
+                  input.group__new-name(:value='category.category' )
                   .control__btns
                     input.btn__control.set__new-name(type="submit" value="")
-                    input.btn__control.delete__new-name(type="reset" value="")
-              .group__skill
-                ul.skill__list
-                  li.skill__item
-                    .skill__name Html
-                    .skill__percent 30 %
-                    .skill__control
-                      .skill__redactor
-                      .skill__remove
-                  li.skill__item
-                    .skill__name CSS
-                    .skill__percent 50 %
-                    .skill__control
-                      .skill__redactor
-                      .skill__remove
-                  li.skill__item
-                    .skill__name JavaScript
-                    .skill__percent 100 %
-                    .skill__control
-                      .skill__redactor
-                      .skill__remove
-              .group__skill
-                form.form__group-skill
-                  input.skill__new-name(placeholder="Новый навык")
-                  .percent__conteiner
-                    input.skill__new-rate(placeholder="0")
-                  button.add__skill.btn__add--plus +
+                    input.btn__control.delete__new-name(type="button", @click="removeExistedCategory(category.id)")
+              skillsGroup(
+                  :category="category"
+              )
+
 </template>
 
 <script>
+import skillsGroup from "./skillGroup";
+import { required } from 'vuelidate/lib/validators';
+
 export default {
-    
+    data() {
+        return {
+            loading:true,
+            addCategory:false,
+            test: "",
+            category: {
+                title: '',
+            },
+            editedCategory: { ...this.category },
+
+
+        };
+    },
+
+    // Модель для валидации, которую Vuelidate превратит в computed-поле $v
+    validations: {
+        category: {
+            title: {required}
+        }
+    },
+
+    components: {
+        skillsGroup,
+
+    },
+    created () {
+        this.$store.dispatch('skills/getCategories');
+       // this.$refs.errorShow();
+      },
+    computed:{
+       categories(){
+          return this.$store.state.skills.categories
+      },
+
+    },
+    methods:{
+        createCategory(){
+            console.log(789)
+
+            //this.$emit('errorShow', "gsfhsf")
+            //Vue.$refs.snackbar.error("ndnjkgb")
+
+           //this..$refs.snackbar.error("ndnjkgb")
+            //this.$refs.errorShow();
+            this.$store.dispatch('skills/createCategory',{"title":this.category.title});
+            this.addCategory=false;
+            this.category.title='';
+            this.loading=false
+        },
+        removeExistedCategory(category){
+            this.$store.dispatch('skills/removeCategory',category);
+            this.addCategory=false
+        },
+    }
 }
 </script>
 
