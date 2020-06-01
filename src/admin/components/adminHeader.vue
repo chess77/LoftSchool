@@ -14,7 +14,8 @@
   export default {
     methods:{
         logoutSystem(){
-            this.$store.dispatch('logout')
+            this.$store.dispatch('user/logout')
+            console.log(111, localStorage.getItem("token"))
            // this.$store.login.logout()
             this.$router.push('/login')
         }

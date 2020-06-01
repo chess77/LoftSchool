@@ -96,13 +96,6 @@ export default {
     },
     methods:{
         createCategory(){
-            console.log(789)
-
-            //this.$emit('errorShow', "gsfhsf")
-            //Vue.$refs.snackbar.error("ndnjkgb")
-
-           //this..$refs.snackbar.error("ndnjkgb")
-            //this.$refs.errorShow();
             this.$store.dispatch('skills/createCategory',{"title":this.category.title});
             this.addCategory=false;
             this.category.title='';

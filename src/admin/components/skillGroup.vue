@@ -23,7 +23,7 @@
                     input.skill__new-rate(
                         placeholder="0"
                         v-model="skill.percent"
-                        :class="{input_error: $v.skill.percent.$error|errorPercent}"
+                        :class="{input_error: $v.skill.percent.$error||errorPercent}"
                         @blur="$v.skill.percent.$touch()"
                         @focus="errorPercent=false"
                         )
@@ -89,13 +89,21 @@
                 }
 
                 try {
+
                     await this.$store.dispatch('skills/addSkill',this.skill);
+                    console.log(789)
                     this.skill.title = "";
                     this.skill.percent = "";
+                    this.errorPercent=false;
+                    this.errorTitle=false;
+                    this.$v.$reset();
+                    console.log(this.errorPercent, this.errorTitle)
                 } catch (error) {
                     // handling error
                 } finally {
                     this.loading = false;
+                    this.errorPercent=false;
+                    this.errorTitle=false;
                 }
             },
 

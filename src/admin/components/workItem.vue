@@ -1,14 +1,17 @@
 <template lang="pug">
 
     li.group__item(v-if="editmode === false")
-        .work_prev
-            img.prev__image(:src="`${work.photo}`")
-        .info__name {{work.title}}
-        .info__desc {{work.description}}
-        a.work__link(href="#") {{work.link}}
-        .work__control-btns
-            button.work__control-btn.work__edit(@click="editmode=true") Править
-            button.work__control-btn.work__delete(type="button" @click="removeExistedWork") Удалить
+        .group__content
+            .work_prev
+                img.prev__image(:src="`${work.photo}`")
+            .info___tech_block
+                .works-slider__tag-item(v-for="tech in edited_tegs" style="{color: black}") {{tech}}
+            .info__name_work {{work.title}}
+            .info__desc {{work.description}}
+            a.work__link(href="#") {{work.link}}
+            .work__control-btns
+                button.work__control-btn.work__edit(@click="editmode=true") Править
+                button.work__control-btn.work__delete(type="button" @click="removeExistedWork") Удалить
 
 
 
@@ -51,10 +54,10 @@
                     .form__row
                         h6.input-title.work__tags Тэг
                         input.input__item.input__work--tags(v-model='editedWork.techs')
-                    .form__row
-                        button.btn__tag HTML
-                        button.btn__tag CSS
-                        button.btn__tag Javascript
+
+                    .form__row.div_tag
+                        .div_tag(v-for="teg in tegs")
+                            button.btn__tag(@click="delTech(teg)") {{teg}}
                     .form__row.control-btns.control-btns--for-feeds
                         button.control-btn.new__reset(type="reset" @click="editmode = false") Отмена
                         button.control-btn.new__save(type="submit") СОХРАНИТЬ
@@ -88,6 +91,26 @@
                 description: {required},
             }
         },
+        computed:{
+            edited_tegs(){
+                return (this.work.techs).split(',')
+            },
+            tegs: {
+                // геттер:
+                get: function () {
+
+                    if (this.editedWork.techs.length>0)
+                    {
+                        return (this.editedWork.techs).split(',')
+                    }
+                },
+                // сеттер:
+                set: function (newValue) {
+                    this.editedWork.techs = newValue.join(',');
+                }
+            },
+
+        },
         props: {
             work: {
                 type: Object,
@@ -119,7 +142,9 @@
 
                 }
             },
-
+            delTech(teg){
+                this.tegs = this.tegs.filter(item => item !== teg);
+            },
             async removeExistedWork() {
                 try {
                     await this.$store.dispatch('works/removeWork',this.work);
@@ -151,5 +176,27 @@
     }
 </script>
 <style lang="postcss" scoped>
+    .div_tag{
+        display: flex;
+    }
+    .info___tech_block{
+        display: flex;
+        color: red;
+      //  z-index: 1000;
+        margin-top: -70px;
+    }
+    .group__content{
+        display: block;
+    }
+    .works-slider__tag-item {
+        margin-right: 15px;
+        margin-bottom: 15px;
+        background-color: #ffffff;
+        border-radius: 28px;
+        padding: 18px 20px;
+        color: #686d76;
+    }
+    .info__name_work{
 
+    }
 </style>

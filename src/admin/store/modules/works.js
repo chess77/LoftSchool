@@ -20,7 +20,6 @@ export default {
 
         ADD_WORK(state, works) {
             works.photo=baseURL+'/'+works.photo;
-            console.log(works.photo)
             state.works.push(works)
         },
 
@@ -44,11 +43,14 @@ export default {
                 .then(response => {
                     //console.log(response.data)
                     commit('loadWorks',response.data)
-                });
+                })
+              .catch(e=>{
+                  commit('setError',e,{root: true});
+
+              })
         },
 
         async createWorks ({commit},params) {
-
            try {
                await $axios.post('/works',
                    params,
@@ -59,10 +61,15 @@ export default {
                    }
                ).then(response => {
                    commit('ADD_WORK', response.data)
-               });
+               })
+                   .catch(e=>{
+                   commit('setError',e,{root: true});
+
+               })
            }
             catch (e) {
                 commit('setError',e,{root: true})
+
             }
         },
 
@@ -72,9 +79,14 @@ export default {
                 await $axios.delete(`/works/${work.id}`)
                     .then(response => {
                         commit('REMOVE_WORK',work)
-                    });
+                    })
+                    .catch(e=>{
+                        commit('setError',e,{root: true});
+
+                    })
             } catch (error) {
-                commit('setError',error,{root: true})
+                commit('setError',error,{root: true});
+
             }
         },
 
@@ -88,13 +100,16 @@ export default {
                         }
                     })
                     .then(response => {
-
                         commit("EDIT_WORK", response.data);
-
+                    })
+                    .catch(e=>{
+                        commit('setError',e,{root: true});
 
                     })
             } catch (error) {
-                commit('setError',error,{root: true})
+                commit('setError',error,{root: true});
+
+
             }
         }
     }

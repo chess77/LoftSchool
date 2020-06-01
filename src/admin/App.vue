@@ -1,24 +1,14 @@
 <template lang="pug">
 
+
   .maincontent__sibling
-    .dialog(v-if="error_state"   style=" display:flex; flex-direction: column; background-color: red;  color: white; position: fixed; left: 25%; top: calc(0.25rem); z-index: 2000; width: 30%; padding: 0px calc(1rem);  text-align: center;"
-    )
-        .close_dialog(v-on:click="closeError" style="text-align: right;")  X
-        .text_dialog {{this.error_state}}
 
 
     adminHeader
     mainMenu
-
     .admin__body
-
         router-view
-
-
-
-
-
-
+    | <snackbar  baseSize="5rem" ref="snackbar" :holdTime="3000" :position="position"/>
 
 </template>
 
@@ -30,13 +20,7 @@
   import feedBlock from "./components/feedBlock";
   import loginBlock from "./components/loginBlock";
   import Vuelidate from "vuelidate";
-  //import VModal from "vue-js-modal";
-  //import VModal from "vue-js-modal";
 
-
-// import Vue from "vue";
- // import Router from "vue-router";
- // import Router from "./router/index";
   import Vue from 'vue';
   import Snackbar from 'vuejs-snackbar';
   import PictureInput from 'vue-picture-input'
@@ -49,32 +33,60 @@
   export default {
       namespaced: true,
       data: function () {
+
           return {
-              position: 'top-center',
-              colors:{open: '#333',info: '#3DBD7D',error: '#FA7377',warn: '#FF6600'}
+              position: 'bottom-center',
+              colors:{open: '#333',info: '#3DBD7D',error: '#FA7377',warn: '#FF6600'},
           }
           },
-    computed:{
-      error_state(){
-          //this.$router.push('login')
-
-          return this.$store.getters.errorGet;
-      }
+    computed: {
+        error_state() {
+            return this.$store.getters.errorGet;
+        }
 
     },
+      watch:{
+          error_state: function () {
+              console.log(555, this.$store.getters.errorGet)
+                if (this.$store.getters.errorGet  != null){
+                    console.log(66666, this.$store.getters.errorGet)
+                    this.$refs.snackbar.error(this.$store.getters.errorGet)
+
+                    //setTimeout(this.$store.dispatch('closeError', null, {root:true}), 8000)
+                }
+          }
+      },
+
+    //     computed:{
+    //
+    //         error_state: {
+    //             // геттер:
+    //             get: function () {
+    //                 return this.$store.getters.errorGet;
+    //             },
+    //             // сеттер:
+    //             set: function (newValue) {
+    //                 console.log(9999999)
+    //                 if (newValue === true) {
+    //                     this.$store.dispatch('closeError', null, {root: true})
+    //                 }
+    //             },
+    //         }
+    // },
       components: {
         loginBlock,
         adminHeader,
         mainMenu,
+          Snackbar,
 
     },
       mounted() {
-         // if (this.error_state()) {
-              this.$router.push('login')
-        //  }
+       //   this.$refs.snackbar.error('bldbld')
+           this.$router.push('login')
       },
       methods:{
             closeError(){
+                console.log(111111);
                 this.$store.dispatch('closeError', null, {root:true})
 
         },

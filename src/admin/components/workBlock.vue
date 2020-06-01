@@ -7,46 +7,45 @@
           .form__column_work
             .upload__image
                 .avatar__image_work(:style="{backgroundImage:`url(${imagePreview})`}")
-
                     img(:src="`url(${imagePreview})`" hidden=true)
-
-
-
-
                     input.feed__add-btn_work(type='file' ref="file" @change="previewImage" )
-
                     h5.title__upload-image_work Перетащите или загрузите для загрузки изображения
                     .upload__btn_work Загрузить
           .form__column
             .form__row
               h6.input-title.work-edit__name Название
               input.input__item.input__work--name(value="" v-model='work.title'
-                  :class="{input_error: $v.work.title.$error}"
-                  @blur="$v.work.title.$touch()")
-              .color__span(v-if="$v.work.title.$error")  Заполните название
+                  :class="{input_error: $v.work.title.$error||errorTitle}"
+                  @blur="$v.work.title.$touch()"
+                  @focus="errorTitle=false")
+              .color__span(v-if="$v.work.title.$error||errorTitle")  Заполните название
             .form__row
               h6.input-title.work__link Ссылка
               input.input__item.input__work--link(value="" v-model='work.link'
-                  :class="{input_error: $v.work.link.$error}"
-                  @blur="$v.work.link.$touch()")
-              .color__span(v-if="$v.work.link.$error")  Заполните ссылку
+                  :class="{input_error: $v.work.link.$error||errorLink}"
+                  @blur="$v.work.link.$touch()"
+                  @focus="errorLink=false")
+              .color__span(v-if="$v.work.link.$error||errorLink")  Заполните ссылку
             .form__row
               h6.input-title.info__desc Описание
-              textarea.input__item.input__work--desc(value="" v-model='work.description'
-              :class="{input_error: $v.work.link.$error}"
-              @blur="$v.work.link.$touch()")
-              .color__span(v-if="$v.work.title.$error")  Заполните описание
+              textarea.input__item.input__work--desc(
+                  v-model='work.description'
+                  :class="{input_error: $v.work.description.$error||errorDescription}"
+                  @blur="$v.work.description.$touch()"
+                  @focus="errorDescription=false")
+              .color__span(v-if="$v.work.description.$error||errorDescription")  Заполните описание
             .form__row
               h6.input-title.work__tags Добавление тэга
               input.input__item.input__work--tags(
                   v-model='work.techs'
-                  :class="{input_error: $v.work.techs.$error}"
-                  @blur="$v.work.techs.$touch()")
-              .color__span(v-if="$v.work.techs.$error")  Заполните тэг
-            .form__row
-                button.btn__tag HTML
-                button.btn__tag CSS
-                button.btn__tag Javascript
+                  :class="{input_error: $v.work.techs.$error||errorTech}"
+                  @blur="$v.work.techs.$touch()"
+                  @focus="errorTech=false")
+              .color__span(v-if="$v.work.techs.$error||errorTech")  Заполните тэг
+            .form__row.div_tag
+              .div_tag(v-for="teg in tegs")
+                     button.btn__tag(@click="delTech(teg)") {{teg}}
+
             .form__row.control-btns
               button.control-btn.new__reset(@click="addWork=false") Отмена
               button.control-btn.new__save(type="submit") СОХРАНИТЬ
@@ -76,6 +75,10 @@
       },
       data() {
           return {
+              errorTitle:false,
+              errorLink:false,
+              errorTech:false,
+              errorDescription:false,
               imagePreview:null,
               showPreview:false,
               addWork:false,
@@ -99,6 +102,21 @@
           }
       },
       computed:{
+
+          tegs: {
+              // геттер:
+              get: function () {
+
+                  if (this.work.techs.length>0)
+                  {
+                      return (this.work.techs).split(',')
+                  }
+              },
+              // сеттер:
+              set: function (newValue) {
+                  this.work.techs = newValue.join(',');
+              }
+          },
           works(){
               return this.$store.state.works.works
           },
@@ -122,7 +140,37 @@
                   reader.readAsDataURL(image_.files[0]);
               }
           },
-          addWorks(event){
+          async addWorks(event){
+              console.log(222,this.work.description);
+              if(this.work.title.length==0 ) {
+                      this.errorTitle=true;
+                      return
+              }
+              else{
+                      this.errorTitle=false;
+              }
+              if(this.work.link.length==0 ) {
+                  this.errorLink=true;
+                  return
+              }
+              else{
+                  this.errorLink=false;
+              }
+              if(this.work.techs.length==0) {
+                  this.errorTech=true;
+                  return
+              }
+              else{
+                  this.errorTech=false;
+              }
+              if(this.work.description.length==0 ) {
+
+                  this.errorDescription=true;
+                  return
+              }
+              else{
+                  this.errorDescription=false;
+              }
               this.file = this.$refs.file.files[0];
               const formData=new FormData();
               formData.append("title",this.work.title);
@@ -132,10 +180,22 @@
               formData.append("link",this.work.link);
               formData.append("description",this.work.description);
 
-              this.$store.dispatch('works/createWorks', formData);
-              this.addWork=false
-          },
+              try {
+                  await this.$store.dispatch('works/createWorks', formData);
+              }
+              catch (e) {
+              }
+              this.addWork=false;
+              this.work.title='';
+              this.work.techs= '';
+              this.work.photo=null;
+              this.work.link= '';
+              this.work.description= ''
 
+          },
+          delTech(teg){
+              this.tegs = this.tegs.filter(item => item !== teg);
+          }
       },
       components: {
           workItem,
@@ -210,5 +270,7 @@
 
         margin: 0 0 0 12.5%;
     }
-
+    .div_tag{
+        display: flex;
+    }
 </style>

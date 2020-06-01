@@ -14,9 +14,7 @@ export default {
                 //console.log(payload[index].photo);
                 payload[index].photo=baseURL+'/'+payload[index].photo;
             }
-
             state.reviews=payload
-
         },
 
         ADD_REVIEW(state, review) {
@@ -46,7 +44,11 @@ export default {
                 .then(response => {
                     //console.log(response.data)
                     commit('loadReviews',response.data)
-                });
+                })
+              .catch(e=>{
+                  commit('setError',e,{root: true});
+
+              })
         },
 
         async createReview ({commit},params) {
@@ -61,10 +63,16 @@ export default {
                    }
                ).then(response => {
                    commit('ADD_REVIEW', response.data)
-               });
+               })
+                   .catch(e=>{
+                       commit('setError',e,{root: true});
+                       console.log("review")
+
+                   })
            }
             catch (e) {
-                commit('setError',e,{root: true})
+                commit('setError',e,{root: true});
+
             }
         },
 
@@ -74,9 +82,14 @@ export default {
                 await $axios.delete(`/reviews/${review.id}`)
                     .then(response => {
                         commit('REMOVE_REVIEW',review)
-                    });
+                    })
+                    .catch(e=>{
+                        commit('setError',e,{root: true});
+
+                    })
             } catch (error) {
-                commit('setError',error,{root: true})
+                commit('setError',error,{root: true});
+
             }
         },
 
@@ -91,13 +104,15 @@ export default {
                         }
                     })
                     .then(response => {
-
                         commit("EDIT_REVIEW", response.data);
-
+                    })
+                    .catch(e=>{
+                        commit('setError',e,{root: true});
 
                     })
             } catch (error) {
-                commit('setError',error,{root: true})
+                commit('setError',error,{root: true});
+
             }
         }
     }

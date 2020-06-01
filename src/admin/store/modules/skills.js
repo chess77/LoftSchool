@@ -75,18 +75,20 @@ export default {
     actions: {
          async getCategories ({commit}) {
              try {
-                 this.dispatch('checkUser')
+                // this.dispatch('checkUser')
+                 console.log()
                  await $axios
                      .get('/categories/322')
                      .then(response => {
                          commit('loadCategories', response.data)
                      });
              } catch (e) {
+
                  commit('setError',error,{root: true})
              }
         },
         createCategory ({commit},params) {
-            this.dispatch('checkUser')
+            //this.dispatch('checkUser')
             $axios
                 .post('/categories',{"title":params.title})
                 .then(response => {
@@ -94,52 +96,72 @@ export default {
                 });
         },
         async addSkill({ commit }, skill) {
-            this.dispatch('checkUser')
+           // this.dispatch('checkUser')
             try {
                 //console.log(skill);
                 await $axios.post("/skills", skill)
                     .then(response => {
-                        console.log(33333);
                         commit('addSkill',response.data)
-                    });
+                    })
+                    .catch(e=>{
+                        commit('setError',e,{root: true});
+                        //setTimeout(() =>this.$store.disp.dispatch('login/clearError'), 1000);
+
+                    })
             } catch(e){
-                commit('setError',e)
+                commit('setError',e);
+                setTimeout(() => commit('login/clearError',{root: true}), 1000);
             }
         },
         async removeCategory({ commit }, category) {
-            this.dispatch('checkUser')
+           // this.dispatch('checkUser')
             try {
                 await $axios.delete(`/categories/${category}`)
                     .then(response => {
                         commit('REMOVE_CATEGORY',category)
-                    });
+                    })
+                    .catch(e=>{
+                        commit('setError',e,{root: true});
+
+                    })
             } catch (error) {
-                commit('setError',error,{root: true})
+                commit('setError',error,{root: true});
+                setTimeout(() => commit('clearError',{root: true}), 1000)
             }
         },
 
         async removeSkill({ commit }, skill) {
-            this.dispatch('checkUser')
+            //this.dispatch('checkUser')
             try {
                 await $axios.delete(`/skills/${skill.id}`)
                     .then(response => {
                         commit('REMOVE_SKILL',skill)
-                    });
+                    })
+                    .catch(e=>{
+                        commit('setError',e,{root: true});
+
+                    })
             } catch (error) {
-                commit('setError',error,{root: true})
+                commit('setError',error,{root: true});
+
             }
         },
 
         async editSkill({ commit }, editedSkill) {
-            this.dispatch('checkUser')
+          //  this.dispatch('checkUser')
             try {
                 await this.$axios.post(`/skills/${editedSkill.id}`, editedSkill)
                     .then(response => {
                         commit("EDIT_SKILL", response.data);
 
                     })
+                    .catch(e=>{
+                        commit('setError',e,{root: true});
+
+                    })
             } catch (error) {
-                commit('setError',error,{root: true})
+                commit('setError',error,{root: true});
+                setTimeout(() => commit('clearError',{root: true}), 1000)
             }
         }
     }

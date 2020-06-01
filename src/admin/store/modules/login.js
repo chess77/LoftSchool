@@ -1,4 +1,5 @@
 import $axios from "../../requests";
+import store from "../index";
 //import {baseURL, token} from "./constants";
 
 //axios.defaults.headers.baseUrl=baseURL
@@ -19,56 +20,7 @@ import $axios from "../../requests";
             },
         },
         actions: {
-              loginUser({commit},params) {
-                try {
-                    $axios.post("/login",  {'name':params['name'],'password':params['password']})
-                        .then(response => {
-                           // console.log(response.data.token)
-                            const token = response.data.token;
-                            localStorage.setItem("token", token);
-                            $axios.defaults.headers["Authorization"] = `Bearer ${token}`
-                           // this.$root.$router.push('/')
-                        })
 
-                } catch (e) {
-                    commit('setError',error,{root: true})
-                }
-            },
-            checkUser({commit}){
-                try {
-
-                    $axios.get("/user")
-                        .then(response => {
-
-                        })
-                    return true
-
-                } catch (e) {
-                    commit('setError',e,{root: true})
-                }
-                return false
-
-
-            },
-            logout({commit}){
-
-                try {
-                    this.dispatch('checkUser')
-                    $axios.post("/logout")
-                        .then(response => {
-                            // console.log(response.data.token)
-                            //const token = response.data.token;
-                            //localStorage.setItem("token", token);
-                            //$axios.defaults.headers["Authorization"] = `Bearer ${token}`
-                            // this.$root.$router.push('/')
-                        })
-
-                } catch (e) {
-                    commit('setError',e,{root: true})
-                }
-
-
-            },
 
             closeError({commit}) {
                 commit('clearError')
@@ -81,6 +33,7 @@ import $axios from "../../requests";
                 return state.error;
             }
         }
+
 
     }
 

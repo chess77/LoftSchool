@@ -12,7 +12,7 @@ import login from '../store/modules/login.js';
 import skills from '../store/modules/skills.js';
 import reviews from '../store/modules/reviews';
 import works from '../store/modules/works';
-
+import user from '../store/modules/user';
 
 
 const baseUrl="https://webdev-api.loftschool.com/";
@@ -27,7 +27,8 @@ export default new Vuex.Store({
         login,
         skills,
         reviews,
-        works
+        works,
+        user
 
     },
 
