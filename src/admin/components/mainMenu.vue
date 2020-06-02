@@ -27,7 +27,6 @@
         },
         computed:{
             user_state() {
-                console.log(6666666,this.$store.getters.userIsLoggedIn)
                 return this.$store.getters.userIsLoggedIn;
             }
         }

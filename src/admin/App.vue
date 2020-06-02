@@ -47,13 +47,9 @@
     },
       watch:{
           error_state: function () {
-              console.log(555, this.$store.getters.errorGet)
                 if (this.$store.getters.errorGet  != null){
-                    console.log(66666, this.$store.getters.errorGet)
                     this.$refs.snackbar.error(this.$store.getters.errorGet)
-
-                    //setTimeout(this.$store.dispatch('closeError', null, {root:true}), 8000)
-                }
+               }
           }
       },
 
@@ -86,7 +82,6 @@
       },
       methods:{
             closeError(){
-                console.log(111111);
                 this.$store.dispatch('closeError', null, {root:true})
 
         },

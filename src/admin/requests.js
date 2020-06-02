@@ -15,8 +15,7 @@ requests.interceptors.response.use(
     response => response,
     async error => {
         const originalRequest = error.config;
-
-        if (error.response.status === 401 && localStorage.getItem("token").length===0) {
+        if (error.response.status === 401) {
             console.log('error 401')
             const response = await requests.post("/refreshToken");
             const token = response.data.token;

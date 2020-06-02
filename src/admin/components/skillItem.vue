@@ -11,7 +11,7 @@
             placeholder="Новый навык"
             v-model="editedSkill.title"
             :class="{input_error: $v.editedSkill.title.$error}"
-            @blur="$v.skill.title.$touch()"
+            @blur="$v.editedSkill.title.$touch()"
 
 
         )
@@ -42,7 +42,7 @@
             };
         },
         validations: {
-            skill: {
+            editedSkill: {
                 title: {required},
                 percent:{required,numeric}
             }

@@ -91,13 +91,11 @@
                 try {
 
                     await this.$store.dispatch('skills/addSkill',this.skill);
-                    console.log(789)
                     this.skill.title = "";
                     this.skill.percent = "";
                     this.errorPercent=false;
                     this.errorTitle=false;
                     this.$v.$reset();
-                    console.log(this.errorPercent, this.errorTitle)
                 } catch (error) {
                     // handling error
                 } finally {

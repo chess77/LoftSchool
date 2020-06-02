@@ -1,5 +1,10 @@
 import Vue from "vue";
+import axios from "axios";
+import "babel-polyfill"
 
+const skills_data = axios.create({
+    baseURL: "https://webdev-api.loftschool.com"
+});
 const skill = {
     template: "#skill",
     props: ["skill"],
@@ -16,6 +21,7 @@ const skill = {
     mounted() {
         this.drawColoredCircle();
     },
+
 };
 
 const skillsRow = {
@@ -34,12 +40,14 @@ new Vue({
     },
     data() {
         return {
-            skills: [],
+            skills: {},
         };
     },
-    created() {
-        const data = require("../data/skills.json");
+
+    async created() {
+        const { data } = await skills_data.get("/categories/322");
         this.skills = data;
-    },
+    }
+
 });
 

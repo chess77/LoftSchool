@@ -39,8 +39,6 @@
                         .form__row.control-btns.login
                             button.control-btn.new__save__login(type="submit") СОХРАНИТЬ
 
-
-
 </template>
 
 <script>
@@ -106,10 +104,6 @@ export default {
             }
 
                 this.$store.dispatch("loginUser", {"name":this.user.name,"password":this.user.password})
-
-                console.log(222, this.error_state)
-                // this.$root.$router.push('/')
-                // router
             if (this.error_state){
                 router.push({ path: '/login' })
             }

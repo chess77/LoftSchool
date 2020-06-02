@@ -66,8 +66,6 @@ export default {
                })
                    .catch(e=>{
                        commit('setError',e,{root: true});
-                       console.log("review")
-
                    })
            }
             catch (e) {

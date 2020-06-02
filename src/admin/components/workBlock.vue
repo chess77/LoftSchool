@@ -141,7 +141,6 @@
               }
           },
           async addWorks(event){
-              console.log(222,this.work.description);
               if(this.work.title.length==0 ) {
                       this.errorTitle=true;
                       return

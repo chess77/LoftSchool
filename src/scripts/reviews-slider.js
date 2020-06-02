@@ -1,6 +1,10 @@
 import Vue from "vue";
 import Flickity from 'vue-flickity';
-
+import axios from "axios";
+const reviews_data = axios.create({
+    baseURL: "https://webdev-api.loftschool.com"
+});
+const baseURL_pic= "https://webdev-api.loftschool.com";
 new Vue({
     el: ".reviews__content1",
 
@@ -33,11 +37,26 @@ new Vue({
         }
     },
 
-    created() {
+    async created() {
 
-        const data = require("../data/reviews.json");
-        this.reviews = data;
-        this.works = this.makeArrWithRequireImages(data);
+                      // const data1 = require("../data/reviews.json");
+                   //this.reviews = data1;
+                 //  console.log(data1)
+              //this.works = this.makeArrWithRequireImages(data);
+
+        const  data = await reviews_data.get("/reviews/322")
+            .then(response => {
+                if (response && response.status === 200) {
+                    this.flickityOptions.reviews = this.makeArrWithRequireImages( response.data) // this will be used in v-for inside flickity
+                } else {
+                    // raven....
+                }
+            })
+        .then(response => {
+                this.$nextTick(function () { // the magic
+                    this.$refs.flickity.rerender()
+                })
+            })
     },
     methods: {
         next() {
@@ -51,7 +70,7 @@ new Vue({
         },
         makeArrWithRequireImages(array) {
             return array.map((item) => {
-                const requirePic = require(`../images/content/${item.photo}`);
+                const requirePic =  (baseURL_pic+'/'+item.photo);
                 item.photo = requirePic;
                 return item;
             });

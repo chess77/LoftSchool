@@ -11,7 +11,6 @@ export default {
     },
     getters: {
         userIsLoggedIn: state => {
-            console.log(1234, state.user)
             const userObj = state.user;
             let userObjectIsEmpty = true
 

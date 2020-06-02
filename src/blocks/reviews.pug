@@ -9,20 +9,21 @@ section.reviews
                         +icon('arrow-down', 'btn__icon')
                     button.review-slider__btn.review-slider__btn--next(id="nextBtn" @click="next" :class="{disabled: statusSlidernext}" )
                         +icon('arrow-down', 'btn__icon')
+                flickity(  class="reviews__box" ref="flickity" :options="flickityOptions")
 
-                flickity(ref="flickity" :options="flickityOptions").reviews__box
 
-                    .reviews__item(v-for="item in reviews" :key="item.name")
-                        .reviews__desc__quote
-                            +icon('quote', 'reviews__quote')
-                            .reviews__desc {{item.text}}
 
-                        .author__box
-                            .author__photo
-                                img(:src="item.photo").author__image
-                            .author__info
-                                .author__name {{item.name}}
-                                .author__position {{item.position}}
+                            .reviews__item(v-for="item in flickityOptions.reviews" )
+                                .reviews__desc__quote
+                                    +icon('quote', 'reviews__quote')
+                                    .reviews__desc {{item.text}}
+
+                                .author__box
+                                    .author__photo
+                                        img(:src="item.photo").author__image
+                                    .author__info
+                                        .author__name {{item.author}}
+                                        .author__position {{item.occ}}
 
 
         include ./reviews-els/reviews-form.pug

@@ -1,9 +1,6 @@
 import axios from 'axios'
 import {baseURL, token} from "./constants";
 import regeneratorRuntime from "regenerator-runtime";
-//const baseUrl="https://webdev-api.loftschool.com";
-//axios.defaults.headers['Authorization'] = `Bearer ${token}`;
-//axios.defaults.headers['Authorization'] = `Bearer ${token}`;
 import $axios from "../../requests";
 
 export default {
@@ -29,13 +26,20 @@ export default {
 
         ADD_CATEGORY (state, category) {
             state.categories.push(category);
-            state.error='yyyyyyy'
         },
         REMOVE_CATEGORY(state, category){
             state.categories = state.categories.filter(item => item.id !== category);
             //state.categories = state.categories.map(findCategory);
         },
-
+        EDIT_CATEGORY(state, editedCategory){
+            const findCategory = category => {
+                if (category.id === editedCategory.id) {
+                    category.category=editedCategory.category;
+                }
+                return category;
+            };
+            state.categories = state.categories.map(findCategory);
+        },
         REMOVE_SKILL(state, deletedSkill) {
                 const removeSkillInCategory = category => {
                     category.skills = category.skills.filter(
@@ -76,7 +80,6 @@ export default {
          async getCategories ({commit}) {
              try {
                 // this.dispatch('checkUser')
-                 console.log()
                  await $axios
                      .get('/categories/322')
                      .then(response => {
@@ -94,6 +97,19 @@ export default {
                 .then(response => {
                     commit('ADD_CATEGORY',response.data)
                 });
+        },
+        editCategory ({commit},category) {
+             console.log(category.category);
+            $axios
+                .post(`/categories/${category.id}`,category.category)
+                .then(response => {
+                    commit('EDIT_CATEGORY',response.data)
+                })
+                .catch(e=>{
+                commit('setError',e,{root: true});
+
+            })
+
         },
         async addSkill({ commit }, skill) {
            // this.dispatch('checkUser')
@@ -161,7 +177,6 @@ export default {
                     })
             } catch (error) {
                 commit('setError',error,{root: true});
-                setTimeout(() => commit('clearError',{root: true}), 1000)
             }
         }
     }

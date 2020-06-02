@@ -182,11 +182,12 @@
     .info___tech_block{
         display: flex;
         color: red;
-      //  z-index: 1000;
-        margin-top: -70px;
+        z-index: 1000;
+       // margin-top: -70px;
     }
     .group__content{
         display: block;
+        margin-top: 130px;
     }
     .works-slider__tag-item {
         margin-right: 15px;

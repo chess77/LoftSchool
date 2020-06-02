@@ -37,13 +37,13 @@
                    input.skill__new-rate(placeholder="100")
                 button.add__skill.btn__add--plus jj
 
-          li.group__item(
+        li.group__item(
             v-for="category in categories" :key="category.id"
             v-if="categories.length"
             )
             .form__group
               .group__name
-                form.form__group-name(id="group" @submit.prevent="createSkill")
+                form.form__group-name(id="group" @submit.prevent="editCategory(editedCategory)")
                   input.group__new-name(:value='category.category' )
                   .control__btns
                     input.btn__control.set__new-name(type="submit" value="")
@@ -104,6 +104,9 @@ export default {
         removeExistedCategory(category){
             this.$store.dispatch('skills/removeCategory',category);
             this.addCategory=false
+        },
+        editCategory(category){
+            this.$store.dispatch('skills/editCategory',category);
         },
     }
 }
