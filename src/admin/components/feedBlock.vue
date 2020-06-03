@@ -66,6 +66,7 @@
     //import modalError from "./modalError";
 
     import "babel-polyfill"
+    import store from "../store";
     export default {
         data() {
             return {
@@ -102,7 +103,7 @@
             this.$store.dispatch('reviews/getReviews');
         },
         methods:{
-            handleFileChange(event){
+            async handleFileChange(event){
 
 
 
@@ -115,8 +116,21 @@
                 formData.append("occ",this.author.title);
                 formData.append("text",this.author.desc);
 
-                this.$store.dispatch('reviews/createReview', formData);
-                this.addReview=false
+
+
+
+                try{
+                    await this.$store.dispatch('reviews/createReview', formData);
+                    this.addReview=false;
+                    this.author.name='';
+                    this.author.title='';
+                    this.author.desc='';
+                    this.file=null
+                }catch (error) {
+                    store.commit('setError',error,{root: true})
+                }
+
+
 
             },
 

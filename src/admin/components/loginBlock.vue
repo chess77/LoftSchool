@@ -28,7 +28,7 @@
                                 p Пароль
                                 .form__input__block
                                     input.form__input.form__password(
-                                        type="text",
+                                        type="password",
                                         placeholder="***********",
                                         v-model="user.password"
                                         :class="{input_error: $v.user.password.$error||errorPassword}"
@@ -46,6 +46,7 @@
 import {required} from "vuelidate/lib/validators";
 import $axios from "../requests";
 import router from "../router";
+import store from '../store/index.js'
 
 export default {
     state:{
@@ -76,15 +77,28 @@ export default {
     },
      methods: {
          async login() {
+             if (this.user.name == "" || this.user.password==="") return
              try {
-                 const response = await $axios.post("/login",  this.user);
+                 var response = await $axios.post("/login",  this.user);
                  const token = response.data.token;
                  localStorage.setItem("token", token);
                  $axios.defaults.headers["Authorization"] = `Bearer ${token}`;
+
+                  response = await $axios.get("/user");
+                  store.commit("user/SET_USER", response.data.user);
+
                  this.$router.replace("/");
 
-             } catch (error) {
+                 // try {
+                      const response1 = await $axios.get("/user");
+                // console.log(response1.data.user)
+                     // this.$store.commit("user/SET_USER", response.data.user)
+                        //console.log(this.$store.getters.userIsLoggedIn)
+                      store.commit("user/SET_USER", response1.data.user);
+                 //console.log("store", store.getters.userIsLoggedIn)
 
+             } catch (error) {
+                 store.commit('setError',error,{root: true})
              }
          },
         login_fr() {

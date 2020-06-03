@@ -33,7 +33,7 @@
 </template>
 <script>
     import "babel-polyfill"
-    import {required,numeric} from "vuelidate/lib/validators";
+    import { required, maxValue, between ,integer,minValue} from 'vuelidate/lib/validators'
     export default {
         data() {
             return {
@@ -44,7 +44,7 @@
         validations: {
             editedSkill: {
                 title: {required},
-                percent:{required,numeric}
+                percent: {required, minValue:0,maxValue:100,integer}
             }
         },
         props: {

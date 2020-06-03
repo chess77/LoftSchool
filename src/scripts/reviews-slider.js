@@ -76,23 +76,27 @@ new Vue({
             });
         },
         checkArrows(){
+            //console.log("index", this.$refs.flickity.selectedIndex())
             if (this.$refs.flickity.selectedIndex() == 0){
                 this.statusSliderback=true;
                 this.statusSlidernext=false;
-                document.getElementById("backBtn").disabled=true;
+                //document.getElementById("backBtn").disabled=true;
+                return
             } else
                 if(this.$refs.flickity.selectedIndex()
                     ==this.$refs.flickity.slides().length-1)
                 {
-                    document.getElementById("nextBtn").disabled=true;
+                   // document.getElementById("nextBtn").disabled=true;
+                  //  document.getElementById("backBtn").disabled=false;
                     this.statusSlidernext=true;
                     this.statusSliderback=false;
+                    return
                 } else
                     {
                     this.statusSliderback=false;
                     this.statusSlidernext=false;
-                    document.getElementById("backBtn").disabled=false;
-                    document.getElementById("nextBtn").disabled=false;
+                  //  document.getElementById("backBtn").disabled=false;
+                   // document.getElementById("nextBtn").disabled=false;
                      }
         },
     }

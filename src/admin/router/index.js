@@ -61,24 +61,28 @@ Vue.use(VueRouter);
 const router = new VueRouter({ routes });
 
 router.beforeEach(async (to, from, next) => {
-
+   // console.log("beforeCHangeRoute")
     const isPublicRoute_from = from.matched.some(route => route.meta.public);
     //if (isPublicRoute_from) return ;
     const isPublicRoute = to.matched.some(route => route.meta.public);
     const isUserLoggedIn = store.getters["user/userIsLoggedIn"];
+    const token = localStorage.getItem("token");
+
+    if (token == ""){router.replace('/login');}
+
     if (isPublicRoute === false && isUserLoggedIn === false ) {
-        const token = localStorage.getItem("token");
 
-        guard.defaults.headers["Authorization"] = `Bearer ${token}`;
 
-        try {
-            const response = await guard.get("/user");
-            store.commit("user/SET_USER", response.data.user);
-            next();
-        } catch (error) {
+        // guard.defaults.headers["Authorization"] = `Bearer ${token}`;
+        //
+        // try {
+        //     const response = await guard.get("/user");
+        //     store.commit("user/SET_USER", response.data.user);
+        //     next();
+        // } catch (error) {
             router.replace('/login');
             localStorage.clear();
-        }
+   //     }
     } else {
         next();
     }

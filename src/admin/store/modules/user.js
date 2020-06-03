@@ -6,20 +6,34 @@ export default {
         user: {}
     },
     mutations: {
-        SET_USER: (state, user) => (state.user = user),
-        CLEAR_USER: state => (state.user = {})
+        SET_USER: function(state, user){
+            (state.user = user )
+          //  console.log("state", state)
+
+        },
+        CLEAR_USER: state => (state.user = {}),
+        LOGOUT_USER:  function () {
+
+
+            //this.dispatch('checkUser')
+
+            state.user = {};
+
+        }
     },
     getters: {
         userIsLoggedIn: state => {
             const userObj = state.user;
-            let userObjectIsEmpty = true
-
-                if(Object.keys(userObj).length === 0 && userObj.constructor === Object){
-                    userObjectIsEmpty = false
+            let userObjectIsEmpty = false
+            console.log("userobj", userObj)
+//Object.keys(userObj).length === 0 && userObj.constructor === Object
+                if(  Object.keys(userObj).length === 0 && userObj.constructor === Object){
+                    userObjectIsEmpty = true
                 };
+               // console.log("isloggedon", userObjectIsEmpty)
 
 
-            return userObjectIsEmpty ;
+            return !userObjectIsEmpty ;
         }
     },
     actions: {

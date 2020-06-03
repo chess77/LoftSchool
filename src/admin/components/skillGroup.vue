@@ -2,6 +2,7 @@
     .skill_group
         .group__skill
             ul.skill__list
+
                 skillsItem(v-for="skill in category.skills"
                     :key="skill.id"
                     :skill="skill")
@@ -10,13 +11,15 @@
                 @submit.prevent="addNewSkill"
                 :class={blocked: loading}
             )
-                input.skill__new-name(
-                    placeholder="Новый навык"
-                    v-model="skill.title"
-                    :class="{input_error: errorTitle }"
-                    @blur="$v.skill.title.$touch()"
-                    @focus="errorTitle=false"
-                    )
+                .skill_name_container
+                    input.skill__new-name(
+                        placeholder="Новый навык"
+                        v-model="skill.title"
+                        :class="{input_error: errorTitle }"
+                        @blur="$v.skill.title.$touch()"
+                        @focus="errorTitle=false"
+                        )
+                    .color__span(v-if="$v.skill.title.$error || errorTitle")  Заполните название
 
 
                 .percent__conteiner
@@ -27,18 +30,20 @@
                         @blur="$v.skill.percent.$touch()"
                         @focus="errorPercent=false"
                         )
+                    .color__span(v-if="$v.skill.percent.$error")  Заполните процент
 
 
                 button(type="submit" ).add__skill.btn__add--plus +
-            .group__skill_error
-                .color__span(v-if="$v.skill.title.$error || errorTitle")  Заполните название
-                .color__span(v-if="$v.skill.percent.$error")  Заполните процент
+
+
+
 
 </template>
 <script>
     import skillsItem from "./skillItem";
     import "babel-polyfill"
-    import { required,numeric } from 'vuelidate/lib/validators';
+    import { required, maxValue, between ,integer,minValue} from 'vuelidate/lib/validators'
+
     export default {
         data() {
             return {
@@ -55,7 +60,7 @@
         validations: {
             skill: {
                 title: {required},
-                percent:{required,numeric}
+                percent:{required, minValue:0,maxValue:100,integer}
             }
         },
         props: {

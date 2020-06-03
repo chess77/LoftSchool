@@ -11,10 +11,28 @@
 </template>
 
 <script>
+    import store from '../store/index.js'
+    import $axios from "../requests";
+    import 'babel-polyfill';
+
   export default {
     methods:{
-        logoutSystem(){
-            this.$store.dispatch('user/logout')
+        async logoutSystem(){
+            //this.$store.dispatch('user/logout')
+            try {
+                //this.dispatch('checkUser')
+                await $axios
+                    .post('/logout')
+                    .then(response => {
+                        store.commit("user/CLEAR_USER");
+                        localStorage.clear();
+                    });
+            } catch (error) {
+                store.commit('setError',error,{root: true})
+            }
+
+           // store.commit("user/LOGOUT_USER")
+
            // this.$store.login.logout()
             this.$router.push('/login')
         }

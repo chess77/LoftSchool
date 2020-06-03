@@ -20,6 +20,7 @@
   import feedBlock from "./components/feedBlock";
   import loginBlock from "./components/loginBlock";
   import Vuelidate from "vuelidate";
+  import store from './store/index.js'
 
   import Vue from 'vue';
   import Snackbar from 'vuejs-snackbar';
@@ -42,6 +43,9 @@
     computed: {
         error_state() {
             return this.$store.getters.errorGet;
+        },
+        success_state() {
+            return this.$store.getters.successGet;
         }
 
     },
@@ -50,34 +54,24 @@
                 if (this.$store.getters.errorGet  != null){
                     this.$refs.snackbar.error(this.$store.getters.errorGet)
                }
+          },
+          success_state: function () {
+              if (this.$store.getters.successGet  != null){
+                  this.$refs.snackbar.info(this.$store.getters.successGet)
+              }
+              setTimeout(store.commit("clearSuccess"), 100)
           }
       },
 
-    //     computed:{
-    //
-    //         error_state: {
-    //             // геттер:
-    //             get: function () {
-    //                 return this.$store.getters.errorGet;
-    //             },
-    //             // сеттер:
-    //             set: function (newValue) {
-    //                 console.log(9999999)
-    //                 if (newValue === true) {
-    //                     this.$store.dispatch('closeError', null, {root: true})
-    //                 }
-    //             },
-    //         }
-    // },
+
       components: {
         loginBlock,
         adminHeader,
         mainMenu,
-          Snackbar,
+        Snackbar,
 
     },
       mounted() {
-       //   this.$refs.snackbar.error('bldbld')
            this.$router.push('login')
       },
       methods:{
@@ -789,6 +783,7 @@
       border: none;
       border-bottom: 1px solid #0a001d;
     }
+
   }
 
   .skill__new-name {
@@ -846,7 +841,21 @@
     text-align: center;
     cursor: pointer;
     background: linear-gradient(90deg, #1e51dd 10%, #3f35cb 50%);
+
+
   }
+    .blocked__button{
+        background: none;
+        background-color:grey;
+       // cursor: none;
+    }
+
+    .blocked__form{
+        //background: none;
+
+        color:grey;
+       // cursor: none;
+    }
   .form__container{
       margin: auto;
   }
@@ -872,12 +881,29 @@
             background-position: 0px 10px;
             background-size: 40px 40px;
 
+
       &:focus {
            border-color: $main-color;
            color: $main-color;
        }
       }
+    & input[type=password] {
+          font-size: 18px;
+          padding: 20px 45px 20px 60px;
+          color: #5a5266;
+          font-weight: 700;
+          outline: none;
+          border-bottom: 2px solid #b9b9b9;
+          background-repeat: no-repeat;
+          background-position: 0px 10px;
+          background-size: 40px 40px;
 
+
+    &:focus {
+         border-color: $main-color;
+         color: $main-color;
+     }
+    }
       & .form__input {
             background: none;
             border: none;
@@ -896,6 +922,7 @@
 
   .form__input.form__name {
 
+
       background-image: svg-load('user.svg', fill=#b9b9b9, width=100%, height=100%);
 
       &:focus {
@@ -903,6 +930,7 @@
        }
   }
   .form__input.form__password {
+
 
       background-image: svg-load('key.svg', fill=#b9b9b9, width=100%, height=100%);
 

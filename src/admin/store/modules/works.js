@@ -61,6 +61,7 @@ export default {
                    }
                ).then(response => {
                    commit('ADD_WORK', response.data)
+                   commit('setSuccess',"Работа добавлена",{root: true});
                })
                    .catch(e=>{
                    commit('setError',e,{root: true});
@@ -79,6 +80,7 @@ export default {
                 await $axios.delete(`/works/${work.id}`)
                     .then(response => {
                         commit('REMOVE_WORK',work)
+                        commit('setSuccess',"Работа удалена",{root: true});
                     })
                     .catch(e=>{
                         commit('setError',e,{root: true});
@@ -101,6 +103,7 @@ export default {
                     })
                     .then(response => {
                         commit("EDIT_WORK", response.data);
+                        commit('setSuccess',"Работа сохранена",{root: true});
                     })
                     .catch(e=>{
                         commit('setError',e,{root: true});

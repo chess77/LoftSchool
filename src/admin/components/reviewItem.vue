@@ -57,6 +57,7 @@
 <script>
     import requests from "../requests";
     import {required} from "vuelidate/lib/validators";
+    import store from "../store";
 
     export default {
         //const baseUrl = requests.baseURL,
@@ -113,6 +114,7 @@
             async removeExistedReview() {
                 try {
                     await this.$store.dispatch('reviews/removeReview',this.review);
+                    //this.$root.$refs.snackbar.wa
                 } catch (error) {}
             },
 

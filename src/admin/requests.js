@@ -1,5 +1,6 @@
 
 import axios from "axios";
+import 'babel-polyfill';
 
 const token = localStorage.getItem("token");
 
@@ -15,8 +16,7 @@ requests.interceptors.response.use(
     response => response,
     async error => {
         const originalRequest = error.config;
-        if (error.response.status === 401) {
-            console.log('error 401')
+        if (error.response.status === 401 && token.length>0) {
             const response = await requests.post("/refreshToken");
             const token = response.data.token;
 

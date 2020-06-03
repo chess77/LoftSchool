@@ -9,7 +9,8 @@ import store from "../index";
 
     export default {
         state:{
-            error:null
+            error:null,
+            success:null
         },
         mutations:{
             setError(state,payload){
@@ -18,6 +19,13 @@ import store from "../index";
             clearError(state){
                 state.error=null
             },
+            setSuccess(state,payload){
+                state.success=payload
+            },
+            clearSuccess(state){
+                state.success=null
+            }
+
         },
         actions: {
 
@@ -31,8 +39,13 @@ import store from "../index";
         getters:{
             errorGet(state) {
                 return state.error;
-            }
+            },
+            successGet(state) {
+                return state.success;
+            },
+
         }
+
 
 
     }

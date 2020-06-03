@@ -18,7 +18,9 @@ export default {
         addSkill(state, newSkill) {
             state.categories = state.categories.map(category => {
                 if (category.id === newSkill.category) {
-                    category.skills.push(newSkill);
+                    if (!category.skills){
+                        category.skills=[newSkill]
+                    }else{category.skills.push(newSkill);}
                 }
                 return category;
             });
@@ -92,10 +94,13 @@ export default {
         },
         createCategory ({commit},params) {
             //this.dispatch('checkUser')
+           // console.log("skill",params, "rate",params.rate)
+
             $axios
                 .post('/categories',{"title":params.title})
                 .then(response => {
                     commit('ADD_CATEGORY',response.data)
+                    commit('setSuccess',"Категория добавлена",{root: true});
                 });
         },
         editCategory ({commit},category) {
@@ -104,6 +109,7 @@ export default {
                 .post(`/categories/${category.id}`,category.category)
                 .then(response => {
                     commit('EDIT_CATEGORY',response.data)
+                    commit('setSuccess',"Категория сохранена",{root: true});
                 })
                 .catch(e=>{
                 commit('setError',e,{root: true});
@@ -118,6 +124,7 @@ export default {
                 await $axios.post("/skills", skill)
                     .then(response => {
                         commit('addSkill',response.data)
+                        commit('setSuccess',"Навык добавлен",{root: true});
                     })
                     .catch(e=>{
                         commit('setError',e,{root: true});
@@ -126,7 +133,6 @@ export default {
                     })
             } catch(e){
                 commit('setError',e);
-                setTimeout(() => commit('login/clearError',{root: true}), 1000);
             }
         },
         async removeCategory({ commit }, category) {
@@ -135,6 +141,7 @@ export default {
                 await $axios.delete(`/categories/${category}`)
                     .then(response => {
                         commit('REMOVE_CATEGORY',category)
+                        commit('setSuccess',"Категория удалена",{root: true});
                     })
                     .catch(e=>{
                         commit('setError',e,{root: true});
@@ -142,7 +149,6 @@ export default {
                     })
             } catch (error) {
                 commit('setError',error,{root: true});
-                setTimeout(() => commit('clearError',{root: true}), 1000)
             }
         },
 
@@ -152,6 +158,7 @@ export default {
                 await $axios.delete(`/skills/${skill.id}`)
                     .then(response => {
                         commit('REMOVE_SKILL',skill)
+                        commit('setSuccess',"Навык удален",{root: true});
                     })
                     .catch(e=>{
                         commit('setError',e,{root: true});
@@ -169,6 +176,7 @@ export default {
                 await this.$axios.post(`/skills/${editedSkill.id}`, editedSkill)
                     .then(response => {
                         commit("EDIT_SKILL", response.data);
+                        commit('setSuccess',"Навык сохранен",{root: true});
 
                     })
                     .catch(e=>{

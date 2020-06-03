@@ -183,6 +183,7 @@
         display: flex;
         color: red;
         z-index: 1000;
+        position: relative;
        // margin-top: -70px;
     }
     .group__content{

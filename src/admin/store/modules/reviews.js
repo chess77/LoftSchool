@@ -27,7 +27,6 @@ export default {
             },
 
         EDIT_REVIEW(state, editedReview)  {
-            console.log(editedReview)
 
             state.reviews = state.reviews.filter(item => item.id !== editedReview.review.id);
             editedReview.review.photo=baseURL+'/'+editedReview.review.photo;
@@ -63,6 +62,7 @@ export default {
                    }
                ).then(response => {
                    commit('ADD_REVIEW', response.data)
+                   commit('setSuccess',"Отзыв добавлен",{root: true});
                })
                    .catch(e=>{
                        commit('setError',e,{root: true});
@@ -80,6 +80,8 @@ export default {
                 await $axios.delete(`/reviews/${review.id}`)
                     .then(response => {
                         commit('REMOVE_REVIEW',review)
+                        commit('setSuccess',"Отзыв удален",{root: true});
+
                     })
                     .catch(e=>{
                         commit('setError',e,{root: true});
@@ -103,6 +105,7 @@ export default {
                     })
                     .then(response => {
                         commit("EDIT_REVIEW", response.data);
+                        commit('setSuccess',"Отзыв сохранен",{root: true});
                     })
                     .catch(e=>{
                         commit('setError',e,{root: true});
