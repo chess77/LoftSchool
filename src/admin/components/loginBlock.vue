@@ -42,7 +42,6 @@
 </template>
 
 <script>
-//import {baseURL, token} from "../store/modules/constants";
 import {required} from "vuelidate/lib/validators";
 import $axios from "../requests";
 import router from "../router";
@@ -52,13 +51,11 @@ export default {
     state:{
         data:[]
     },
-
     data() {
         return {
-           // url: baseURL+"/login",
-            user: {
-                name: '',
-                password: ''
+                user: {
+                    name: '',
+                    password: ''
             },
             errorName:'',
             errorPassword:''
@@ -77,63 +74,41 @@ export default {
     },
      methods: {
          async login() {
-             if (this.user.name == "" || this.user.password==="") return
+             if (this.user.name ==="" || this.user.password==="") return
              try {
                  var response = await $axios.post("/login",  this.user);
                  const token = response.data.token;
                  localStorage.setItem("token", token);
                  $axios.defaults.headers["Authorization"] = `Bearer ${token}`;
-
-                  response = await $axios.get("/user");
-                  store.commit("user/SET_USER", response.data.user);
-
+                 response = await $axios.get("/user");
+                 store.commit("user/SET_USER", response.data.user);
                  this.$router.replace("/");
-
-                 // try {
-                      const response1 = await $axios.get("/user");
-                // console.log(response1.data.user)
-                     // this.$store.commit("user/SET_USER", response.data.user)
-                        //console.log(this.$store.getters.userIsLoggedIn)
-                      store.commit("user/SET_USER", response1.data.user);
-                 //console.log("store", store.getters.userIsLoggedIn)
-
              } catch (error) {
                  store.commit('setError',error,{root: true})
              }
          },
         login_fr() {
-            if(this.user.name.length==0) {
+            if(this.user.name.length===0) {
                 this.errorName=true;
                 return
             }
             else{
                 this.errorName=false;
             }
-            if(this.user.password.length==0 ) {
+            if(this.user.password.length===0 ) {
                 this.errorPassword=true;
                 return
             }
             else{
                 this.errorPassword=false;
             }
-
                 this.$store.dispatch("loginUser", {"name":this.user.name,"password":this.user.password})
             if (this.error_state){
                 router.push({ path: '/login' })
             }
-            else{    router.push({ path: '/' })}
-
-
-
-
-
-           // this.$store.dispatch("loginUser",{user:this.user})
-            //this.$store.dispatch( "login",{user:this.user})
-           // this.$store.dispatch("login.login")
+            else{router.push({ path: '/' })}
         }
     }
-
-
 }
 </script>
 

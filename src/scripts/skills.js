@@ -1,9 +1,9 @@
 import Vue from "vue";
 import axios from "axios";
-import "babel-polyfill"
+import "babel-polyfill";
 
 const skills_data = axios.create({
-    baseURL: "https://webdev-api.loftschool.com"
+    baseURL: "https://webdev-api.loftschool.com",
 });
 const skill = {
     template: "#skill",
@@ -12,7 +12,7 @@ const skill = {
         drawColoredCircle() {
             const circle = this.$refs["circle"];
             const dashArray = parseInt(
-                getComputedStyle(circle).getPropertyValue("stroke-dasharray")
+                getComputedStyle(circle).getPropertyValue("stroke-dasharray"),
             );
             const percent = (dashArray / 100) * (100 - this.skill.percent);
             circle.style.strokeDashoffset = percent;
@@ -21,7 +21,6 @@ const skill = {
     mounted() {
         this.drawColoredCircle();
     },
-
 };
 
 const skillsRow = {
@@ -47,7 +46,5 @@ new Vue({
     async created() {
         const { data } = await skills_data.get("/categories/322");
         this.skills = data;
-    }
-
+    },
 });
-

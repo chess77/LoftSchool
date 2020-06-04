@@ -1,9 +1,5 @@
 <template lang="pug">
-
-
   .maincontent__sibling
-
-
     adminHeader
     mainMenu
     .admin__body
@@ -19,22 +15,14 @@
   import workBlock from "./components/workBlock";
   import feedBlock from "./components/feedBlock";
   import loginBlock from "./components/loginBlock";
-  import Vuelidate from "vuelidate";
   import store from './store/index.js'
-
   import Vue from 'vue';
   import Snackbar from 'vuejs-snackbar';
-  import PictureInput from 'vue-picture-input'
-
-  // Global register
   Vue.component('snackbar', Snackbar);
-
   const eventBus = new Vue();
-
   export default {
       namespaced: true,
       data: function () {
-
           return {
               position: 'bottom-center',
               colors:{open: '#333',info: '#3DBD7D',error: '#FA7377',warn: '#FF6600'},
@@ -47,7 +35,6 @@
         success_state() {
             return this.$store.getters.successGet;
         }
-
     },
       watch:{
           error_state: function () {
@@ -62,22 +49,15 @@
               setTimeout(store.commit("clearSuccess"), 100)
           }
       },
-
-
       components: {
         loginBlock,
         adminHeader,
         mainMenu,
         Snackbar,
-
     },
-      mounted() {
-           this.$router.push('login')
-      },
       methods:{
             closeError(){
                 this.$store.dispatch('closeError', null, {root:true})
-
         },
     }
   }
@@ -86,9 +66,7 @@
 <style lang="postcss">
     .error_dialog{
         color: black;
-
     }
-
   .feed__author-info {
     display: flex;
     border-bottom: 1px solid #dedee0;

@@ -59,8 +59,6 @@
               :key="work.id"
               :work="work")
 
-
-
 </template>
 
 <script>
@@ -104,7 +102,6 @@
       computed:{
 
           tegs: {
-              // геттер:
               get: function () {
 
                   if (this.work.techs.length>0)
@@ -112,7 +109,6 @@
                       return (this.work.techs).split(',')
                   }
               },
-              // сеттер:
               set: function (newValue) {
                   this.work.techs = newValue.join(',');
               }
@@ -120,7 +116,6 @@
           works(){
               return this.$store.state.works.works
           },
-
       },
       created () {
           this.$store.dispatch('works/getWorks');
@@ -141,28 +136,28 @@
               }
           },
           async addWorks(event){
-              if(this.work.title.length==0 ) {
+              if(this.work.title.length===0 ) {
                       this.errorTitle=true;
                       return
               }
               else{
                       this.errorTitle=false;
               }
-              if(this.work.link.length==0 ) {
+              if(this.work.link.length===0 ) {
                   this.errorLink=true;
                   return
               }
               else{
                   this.errorLink=false;
               }
-              if(this.work.techs.length==0) {
+              if(this.work.techs.length===0) {
                   this.errorTech=true;
                   return
               }
               else{
                   this.errorTech=false;
               }
-              if(this.work.description.length==0 ) {
+              if(this.work.description.length===0 ) {
 
                   this.errorDescription=true;
                   return
@@ -190,7 +185,6 @@
               this.work.photo=null;
               this.work.link= '';
               this.work.description= ''
-
           },
           delTech(teg){
               this.tegs = this.tegs.filter(item => item !== teg);

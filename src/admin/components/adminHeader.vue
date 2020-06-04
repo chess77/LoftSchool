@@ -18,22 +18,16 @@
   export default {
     methods:{
         async logoutSystem(){
-            //this.$store.dispatch('user/logout')
             try {
-                //this.dispatch('checkUser')
                 await $axios
                     .post('/logout')
                     .then(response => {
                         store.commit("user/CLEAR_USER");
-                        localStorage.clear();
+                        localStorage.setItem("token", "");
                     });
             } catch (error) {
                 store.commit('setError',error,{root: true})
             }
-
-           // store.commit("user/LOGOUT_USER")
-
-           // this.$store.login.logout()
             this.$router.push('/login')
         }
 

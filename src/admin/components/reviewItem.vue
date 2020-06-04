@@ -12,13 +12,10 @@
             button.work__control-btn.work__edit(@click="editmode=true") Править
             button.work__control-btn.work__delete(type="button" @click="removeExistedReview") Удалить
     li.group__item_edit(v-else )
-
-
                 form.form__feed(@submit.prevent="editExistedReview" )
                     .form__block
                         .form__column
                             .avatar__container(:style="{backgroundImage:`url(${editedReview.photo})`}")
-
                                 .avatar__image(:style="{backgroundImage:`url(${imagePreview})`}")
                                     img(:src="`url(${imagePreview})`" hidden=true)
                                     input.feed__add-btn(type='file' ref="file" @change="editImage" )
@@ -50,17 +47,12 @@
                             .form__row.control-btns.control-btns--for-feeds
                                 button.control-btn.new__reset(type="reset" @click="editmode=false") Отмена
                                 button.control-btn.new__save(type="submit") СОХРАНИТЬ
-
-
-
 </template>
 <script>
     import requests from "../requests";
     import {required} from "vuelidate/lib/validators";
     import store from "../store";
-
     export default {
-        //const baseUrl = requests.baseURL,
         data() {
             return {
                 baseUrl : requests.baseURL,
@@ -69,7 +61,6 @@
                 imagePreview:'',
                 showPreview: false,
                 editFile:'',
-
             };
         },
         validations: {
@@ -88,46 +79,31 @@
         },
         methods:{
             editImage(event) {
-                // Reference to the DOM input element
                 let image_ = event.target;
-                // Ensure that you have a file before attempting to read it
                 if (image_.files && image_.files[0]) {
-                    // create a new FileReader to read this image and convert to base64 format
                     let reader = new FileReader();
-                    // Define a callback function to run, when FileReader finishes its job
                     try {
                         reader.onload = (e) => {
-                            // Note: arrow function used here, so that "this.imageData" refers to the imageData of Vue component
-                            // Read image as base64 and set to imageData
                             this.imagePreview = e.target.result;
                             this.showPreview = true;
                         }
                     }catch (e) { console.log(444)
-
                     }
-                    // Start the reader job - read file as a data url (base64 format)
                     reader.readAsDataURL(image_.files[0]);
-
                 }
             },
-
             async removeExistedReview() {
                 try {
                     await this.$store.dispatch('reviews/removeReview',this.review);
-                    //this.$root.$refs.snackbar.wa
                 } catch (error) {}
             },
-
             async editExistedReview() {
                 this.editFile = this.$refs.file.files[0];
-
                 const formData=new FormData();
                 formData.append("photo", this.editFile);
                 formData.append("author",this.editedReview.author);
                 formData.append("occ",this.editedReview.occ);
                 formData.append("text",this.editedReview.text);
-
-
                 try {
                     await this.$store.dispatch('reviews/editReview',{"editReview":this.editedReview.id,"formData":formData});
                     this.editmode = false;

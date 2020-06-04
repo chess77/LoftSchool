@@ -20,8 +20,6 @@
                         @focus="errorTitle=false"
                         )
                     .color__span(v-if="$v.skill.title.$error || errorTitle")  Заполните название
-
-
                 .percent__conteiner
                     input.skill__new-rate(
                         placeholder="0"
@@ -31,13 +29,7 @@
                         @focus="errorPercent=false"
                         )
                     .color__span(v-if="$v.skill.percent.$error")  Заполните процент
-
-
                 button(type="submit" ).add__skill.btn__add--plus +
-
-
-
-
 </template>
 <script>
     import skillsItem from "./skillItem";
@@ -77,7 +69,7 @@
 
             async addNewSkill() {
                 this.loading = true;
-                if(this.skill.title=="" ) {
+                if(this.skill.title==="" ) {
 
                     this.errorTitle=true;
                     return
@@ -85,16 +77,14 @@
                 else{
                     this.errorTitle=false;
                 }
-                if(this.skill.persent=="" ) {
+                if(this.skill.persent==="" ) {
                     this.errorPercent=true;
                     return
                 }
                 else{
                     this.errorPercent=false;
                 }
-
                 try {
-
                     await this.$store.dispatch('skills/addSkill',this.skill);
                     this.skill.title = "";
                     this.skill.percent = "";

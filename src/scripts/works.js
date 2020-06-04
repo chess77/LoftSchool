@@ -1,10 +1,10 @@
 import Vue from "vue";
 import axios from "axios";
-import {baseURL} from "../admin/store/modules/constants";
+import { baseURL } from "../admin/store/modules/constants";
 const works_data = axios.create({
-    baseURL: "https://webdev-api.loftschool.com"
+    baseURL: "https://webdev-api.loftschool.com",
 });
-const baseURL_pic= "https://webdev-api.loftschool.com";
+const baseURL_pic = "https://webdev-api.loftschool.com";
 const btns = {
     template: "#slider-btns",
 };
@@ -21,13 +21,13 @@ const display = {
         reversedWorks() {
             const works = [...this.works];
             return works.reverse();
-        }
-    }
+        },
+    },
 };
 
 const tags = {
     template: "#slider-tags",
-    props: ["tags"]
+    props: ["tags"],
 };
 
 const info = {
@@ -36,10 +36,9 @@ const info = {
     props: ["currentWork"],
     computed: {
         tagsArray() {
-            return this.currentWork
-        }
+            return this.currentWork;
+        },
     },
-
 };
 
 new Vue({
@@ -48,7 +47,7 @@ new Vue({
     components: { display, info },
     data() {
         return {
-            works:{},
+            works: {},
             currentIndex: 0,
         };
     },
@@ -79,27 +78,19 @@ new Vue({
             }
         },
 
-        selectItem(item){
-           // console.log(item);
+        selectItem(item) {
             this.currentIndex = item;
-           // }
-
         },
         makeArrWithRequireImages(array) {
             return array.map((item) => {
-                const requirePic = (baseURL_pic+'/'+item.photo);
+                const requirePic = baseURL_pic + "/" + item.photo;
                 item.photo = requirePic;
                 return item;
             });
         },
     },
-    // created() {
-    //     const data = require("../data/works.json");
-    //     this.works = this.s(data);
-    // },
-
     async created() {
         const { data } = await works_data.get("/works/322");
         this.works = this.makeArrWithRequireImages(data);
-    }
+    },
 });

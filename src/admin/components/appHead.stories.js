@@ -1,12 +1,9 @@
-import loginBlock from "./loginBlock.vue"
-//import "./login.spec.js"
-
+import loginBlock from "./loginBlock.vue";
 export default {
     title: "login",
     component: loginBlock,
-}
-
+};
 export const defaultView = () => ({
     components: { loginBlock },
-    template: '<loginBlock />',
+    template: "<loginBlock />",
 });

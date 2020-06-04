@@ -56,21 +56,15 @@
             v-for="review in reviews"
             :key="review.id"
             :review="review")
-
-
 </template>
 <script>
     import reviewItem from "./reviewItem";
-    import {renderer} from "../helpers/pictures"
     import {required,numeric} from "vuelidate/lib/validators";
-    //import modalError from "./modalError";
-
     import "babel-polyfill"
     import store from "../store";
     export default {
         data() {
             return {
-
                 imagePreview:null,
                 showPreview:false,
                 addReview:false,
@@ -97,28 +91,18 @@
             reviews(){
                 return this.$store.state.reviews.reviews
             },
-
         },
         created () {
             this.$store.dispatch('reviews/getReviews');
         },
         methods:{
             async handleFileChange(event){
-
-
-
-
                 this.file = this.$refs.file.files[0];
-
                 const formData=new FormData();
                 formData.append("photo", this.file);
                 formData.append("author",this.author.name);
                 formData.append("occ",this.author.title);
                 formData.append("text",this.author.desc);
-
-
-
-
                 try{
                     await this.$store.dispatch('reviews/createReview', formData);
                     this.addReview=false;
@@ -129,13 +113,7 @@
                 }catch (error) {
                     store.commit('setError',error,{root: true})
                 }
-
-
-
             },
-
-
-
             previewImage(event) {
                 let image_ = event.target;
                 if (image_.files && image_.files[0]) {

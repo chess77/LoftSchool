@@ -1,7 +1,5 @@
 <template lang="pug">
   .container
-
-
     .block-intro__title
       h2.admin__title Блок &laquo;Обо мне&raquo;
       button.add__group.btn__add--plus(@click="addCategory=true") Добавить группу
@@ -91,8 +89,6 @@ export default {
 
         };
     },
-
-    // Модель для валидации, которую Vuelidate превратит в computed-поле $v
     validations: {
         category: {
             title: {required},
@@ -100,20 +96,16 @@ export default {
             rate: {required, minValue:0,maxValue:100,integer}
         }
     },
-
     components: {
         skillsGroup,
-
     },
     created () {
         this.$store.dispatch('skills/getCategories');
-       // this.$refs.errorShow();
       },
     computed:{
        categories(){
           return this.$store.state.skills.categories
       },
-
     },
     methods:{
         createCategory(){

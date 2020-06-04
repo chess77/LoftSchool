@@ -1,19 +1,18 @@
 import Vue from "vue";
-import Vuelidate from 'vuelidate';
+import Vuelidate from "vuelidate";
 Vue.use(Vuelidate);
-import { required, maxLength } from 'vuelidate/lib/validators';
-
+import { required, maxLength } from "vuelidate/lib/validators";
 
 new Vue({
     el: "#reviews-check-form",
-    template: '#reviews-check-template',
+    template: "#reviews-check-template",
     data() {
         return {
-            errorEmail:false,
+            errorEmail: false,
             errors: [],
-            name:null,
+            name: null,
             email: null,
-            content:null
+            content: null,
         };
     },
     validations: {
@@ -32,17 +31,17 @@ new Vue({
             this.errors = [];
 
             if (!this.name) {
-                this.errors.push('Укажите имя.');
-                this.errorName=true;
+                this.errors.push("Укажите имя.");
+                this.errorName = true;
             }
             if (!this.content) {
-                this.errors.push('ведите текст.');
+                this.errors.push("ведите текст.");
             }
             if (!this.email) {
-                this.errors.push('Укажите электронную почту.');
-                this.errorEmail=true;
+                this.errors.push("Укажите электронную почту.");
+                this.errorEmail = true;
             } else if (!this.validEmail(this.email)) {
-                this.errors.push('Укажите корректный адрес электронной почты.');
+                this.errors.push("Укажите корректный адрес электронной почты.");
             }
 
             if (!this.errors.length) {
@@ -52,19 +51,13 @@ new Vue({
             e.preventDefault();
             if (this.errors.length) {
                 alert("Пожалуйста, исправьте ошибки!: \n" + this.errors);
-                //this.errorName=false;
-
+            } else {
+                alert("Форма отправлена");
             }
-            else {alert("Форма отправлена")
-
-
-            }
-            //console.log(this.errors);
         },
-
         validEmail: function (email) {
             var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
-        }
-    }
+        },
+    },
 });

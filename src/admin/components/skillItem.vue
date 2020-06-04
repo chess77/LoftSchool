@@ -12,8 +12,6 @@
             v-model="editedSkill.title"
             :class="{input_error: $v.editedSkill.title.$error}"
             @blur="$v.editedSkill.title.$touch()"
-
-
         )
         .percent__conteiner
             input.skill__new-rate(
@@ -27,8 +25,6 @@
         .group__skill_error
             .color__span(v-if="$v.editedSkill.title.$error")  Заполните название
             .color__span(v-if="$v.editedSkill.percent.$error")  Заполните процент
-
-
 
 </template>
 <script>
