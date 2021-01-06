@@ -63,7 +63,7 @@
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-links": "^5.3.19",
     "@vue/test-utils": "^1.0.3",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-preset-vue": "^2.0.2",
     "normalize.css": "^8.0.1",
     "promptly": "^3.0.3",
